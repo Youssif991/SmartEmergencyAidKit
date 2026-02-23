@@ -87,7 +87,7 @@ void loop()
        
       if (checkForBeat(irValue) == true)
       {
-        //We sensed a beat!
+        
         long delta = millis() - lastBeat;
         lastBeat = millis();
       
