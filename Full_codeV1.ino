@@ -4,6 +4,7 @@
 #include "heartRate.h"
 #include <DHT.h>
 #include "BluetoothSerial.h"
+#include <math.h>
 
 MAX30105 particleSensor;
 BluetoothSerial SerialBT;
@@ -30,7 +31,7 @@ bool initialSetupComplete = false;
 
 float temperature = 0.0;
 unsigned long lastDHTRead = 0;
-
+unsigned long lastsend = 0;
 void sendBT_func(int hr, int temp_i , int temp_d, int spo2);
 
 void setup() { 
@@ -144,12 +145,13 @@ void loop() {
       Serial.println("Calculating...");
     }
   }
-
+if (millis() - lastsend >= 2000){
   int temp_int = (int)temperature;
-  int temp_dec = (int)((temperature - temp_int) * 100); 
+  int temp_dec = (int)(fabs(temperature - temp_int) * 100); 
   
   sendBT_func(constrain(beatAvg, 0, 255), constrain(temp_int, 0, 255), temp_dec, constrain(sp02Avg, 0, 100));
-
+  lastsend=lastsend+2000;
+}
   yield(); 
 }
 
@@ -160,4 +162,6 @@ void sendBT_func(int hr, int temp_i , int temp_d, int spo2) {
   SerialBT.write(temp_d);
   SerialBT.write(spo2);
   SerialBT.write(255);
+  
+  Serial.println("packet sended");
 }
