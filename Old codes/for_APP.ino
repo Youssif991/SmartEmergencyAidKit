@@ -50,7 +50,7 @@ void loop() {
   // Only push data when Firebase is ready
   if (Firebase.ready() && signupOK) {
 
-    int   hr   = 100;   // Replace with real sensor reads
+    int   hr   = 100;   // the sensors variables
     float temp = 37.5;
     int   spo2 = 95;
 
