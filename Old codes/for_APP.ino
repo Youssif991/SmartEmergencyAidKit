@@ -3,8 +3,8 @@
 #include "addons/TokenHelper.h"   
 #include "addons/RTDBHelper.h"    
 
-#define WIFI_SSID     "WE_798AE4"      //esm el shaabaka
-#define WIFI_PASSWORD "dc7228a7"      //password
+#define WIFI_SSID     "------"      //esm el shaabaka
+#define WIFI_PASSWORD "------"      //password
 
 #define API_KEY       "AIzaSyC-ad77Wyw4_9FCQIbQwq53y-BRY02oe_o"
 #define DATABASE_URL  "https://health-71a04-default-rtdb.europe-west1.firebasedatabase.app/"
