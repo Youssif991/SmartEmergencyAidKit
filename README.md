@@ -1,2 +1,2 @@
 # SmartEmergencyAidKit
-[Soon]
+[Cumming soon]
