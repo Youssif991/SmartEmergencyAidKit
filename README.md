@@ -1,2 +1,2 @@
 # SmartEmergencyAidKit
-[Comming soon]
+[soon]
