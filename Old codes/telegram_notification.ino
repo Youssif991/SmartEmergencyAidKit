@@ -9,7 +9,7 @@
 String botToken = "8685668389:AAFU7-nuRck-qb4Gr5FAcVvDwq13-dUBx7w";
 
 #define DATABASE_URL "https://health-71a04-default-rtdb.europe-west1.firebasedatabase.app"
-#define API_KEY       "AIzaSyC-ad77Wyw4_9FCQIbQwq53y-BRY02oe_o"
+#define API_KEY "AIzaSyC-ad77Wyw4_9FCQIbQwq53y-BRY02oe_o"
 
 FirebaseData fbdo;
 FirebaseAuth auth;
@@ -43,16 +43,20 @@ void loop() {
   int spo2 = 90;
 
   sendToFirebase(hr, temp, spo2);
-  bool isCritical = (hr > 120 || hr < 50 || temp > 38.0 || spo2 < 90);
-
+  bool isCritical = heartRate > 120 || heartRate < 50 || temperature > 38.0 || spo2 < 90 || temperature < 35.0;
+  bool isWarning = (heartRate > 100 && heartRate <= 120) ||(heartRate >= 50 && heartRate < 60) ||(temperature >= 37.5 && temperature <= 38.0) || 
+  (temperature >= 35.0 && temperature < 36.0)||(spo2 >= 90 && spo2 < 95);
   if (isCritical) {
-    
  String alertMsg =
         "🚨 EMERGENCY ALERT 🚨\nhelp the patient!\ncall 123!";
-
   sendTelegram(alertMsg);
-  telegramSent = true;
-      
+  telegramSent = true;    
+  }
+  else if(isWarning){
+ String alertMsg =
+        ""⚠️ Warning ⚠️\n Vitals slightly abnormal!";
+  sendTelegram(alertMsg);
+    telegramSent = true; 
   }
   else {
     telegramSent = false;
