@@ -1,23 +1,21 @@
-#include <Arduino.h>
-#include <Wire.h>
-#include "MAX30100_PulseOximeter.h"
-#include "MLX90614.h"
+#include "config.h" // Central configuration for all includes and shared variables
 
-// ── Sensor instances ─────────────────────────────────────────────────────────
-PulseOximeter pox;
-MLX90614      mlx;
+FirebaseData   fbdo;
+FirebaseAuth   auth;
+FirebaseConfig config;
+bool           signupOK = false;
 
-// ── Timing ───────────────────────────────────────────────────────────────────
-#define REPORTING_PERIOD_MS 1000   // Print readings every second
-#define TEMP_PERIOD_MS      5000   // MLX read every 5 s (slow sensor)
+PulseOximeter  pox;
+MLX90614       mlx;
 
-uint32_t tsLastReport = 0;
-uint32_t tsLastTemp   = 0;
+uint32_t tsLastPush = 0;
+uint32_t tsLastTemp = 0;
 
-float   tempC = 0.0;
-float   tempF = 0.0;
+float    tempC = 0.0;
+float    hr    = 0.0;
+uint8_t  spo2  = 0;
 
-// ── Beat callback ─────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
 void onBeatDetected() {
   Serial.println("Beat!");
 }
@@ -25,11 +23,34 @@ void onBeatDetected() {
 // ─────────────────────────────────────────────────────────────────────────────
 void setup() {
   Serial.begin(115200);
-  Serial.println("MAX30100 + MLX90614 Health Monitor");
 
+  // ── WiFi ──────────────────────────────────────────────────────────────────
+  Serial.print("Connecting to WiFi");
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi connected. IP: " + WiFi.localIP().toString());
+
+  // ── Firebase ──────────────────────────────────────────────────────────────
+  config.api_key               = API_KEY;
+  config.database_url          = DATABASE_URL;
+  config.token_status_callback = tokenStatusCallback;
+
+  if (Firebase.signUp(&config, &auth, "", "")) {
+    Serial.println("Firebase signup OK");
+    signupOK = true;
+  } else {
+    Serial.printf("Firebase signup failed: %s\n",
+                  config.signer.signupError.message.c_str());
+  }
+  Firebase.begin(&config, &auth);
+  Firebase.reconnectWiFi(true);
+
+  // ── Sensors ───────────────────────────────────────────────────────────────
   Wire.begin();
 
-  // ── MAX30100 ───────────────────────────────────────────────────────────────
   if (!pox.begin()) {
     Serial.println("ERROR: MAX30100 not found. Check wiring.");
     while (true);
@@ -38,56 +59,49 @@ void setup() {
   pox.setOnBeatDetectedCallback(onBeatDetected);
   Serial.println("MAX30100 ready.");
 
-  // ── MLX90614 ──────────────────────────────────────────────────────────────
   if (!mlx.begin()) {
     Serial.println("ERROR: MLX90614 not found. Check wiring.");
     while (true);
   }
   Serial.println("MLX90614 ready.");
-  Serial.println("-------------------------------------------");
+  Serial.println("--------------------------------------------------");
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 void loop() {
-  // Must be called as fast as possible to keep up with the sensor FIFO
-  pox.update();
+  pox.update();   // Must run every iteration — no delays
 
   uint32_t now = millis();
 
-  // ── Read temperature periodically ─────────────────────────────────────────
-  if (now - tsLastTemp >= TEMP_PERIOD_MS) {
+  // ── Temperature ───────────────────────────────────────────────────────────
+  if (now - tsLastTemp >= TEMP_READ_MS) {
     tsLastTemp = now;
     tempC = (float)mlx.readTemp(MLX90614::MLX90614_SRC01, MLX90614::MLX90614_TC);
-    tempF = (float)mlx.readTemp(MLX90614::MLX90614_SRC01, MLX90614::MLX90614_TF);
   }
 
-  // ── Print all readings periodically ───────────────────────────────────────
-  if (now - tsLastReport >= REPORTING_PERIOD_MS) {
-    tsLastReport = now;
+  // ── HR & SpO2 ─────────────────────────────────────────────────────────────
+  hr   = pox.getHeartRate();
+  spo2 = pox.getSpO2();
 
-    float    hr   = pox.getHeartRate();
-    uint8_t  spo2 = pox.getSpO2();
+  // ── Firebase push ─────────────────────────────────────────────────────────
+  if (Firebase.ready() && signupOK && (now - tsLastPush >= FIREBASE_PUSH_MS)) {
+    tsLastPush = now;
 
-    Serial.print("Heart Rate: ");
-    if (hr > 0) {
-      Serial.print(hr, 1);
-      Serial.print(" bpm");
-    } else {
-      Serial.print("-- (no finger?)");
-    }
+    if (Firebase.RTDB.setFloat(&fbdo, "/health/hr",   hr))
+      Serial.println("HR sent: "     + String(hr, 1));
+    else
+      Serial.println("HR failed: "   + fbdo.errorReason());
 
-    Serial.print("  |  SpO2: ");
-    if (spo2 > 0) {
-      Serial.print(spo2);
-      Serial.print("%");
-    } else {
-      Serial.print("--");
-    }
+    if (Firebase.RTDB.setInt(&fbdo,   "/health/spo2", spo2))
+      Serial.println("SpO2 sent: "   + String(spo2));
+    else
+      Serial.println("SpO2 failed: " + fbdo.errorReason());
 
-    Serial.print("  |  Temp: ");
-    Serial.print(tempC, 1);
-    Serial.print("C / ");
-    Serial.print(tempF, 1);
-    Serial.println("F");
+    if (Firebase.RTDB.setFloat(&fbdo, "/health/temp", tempC))
+      Serial.println("Temp sent: "   + String(tempC, 1) + "C");
+    else
+      Serial.println("Temp failed: " + fbdo.errorReason());
+
+    Serial.println("--------------------------------------------------");
   }
 }
