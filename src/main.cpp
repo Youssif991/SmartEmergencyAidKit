@@ -31,7 +31,8 @@ void setup() {
     delay(500);
     Serial.print(".");
   }
-  Serial.println("\nWiFi connected. IP: " + WiFi.localIP().toString());
+  Serial.print("\nWiFi connected. IP: ");
+  Serial.println(WiFi.localIP().toString());
 
   // ── Firebase ──────────────────────────────────────────────────────────────
   config.api_key               = API_KEY;
@@ -42,8 +43,8 @@ void setup() {
     Serial.println("Firebase signup OK");
     signupOK = true;
   } else {
-    Serial.printf("Firebase signup failed: %s\n",
-                  config.signer.signupError.message.c_str());
+    Serial.print("Firebase signup failed: ");
+    Serial.println(config.signer.signupError.message.c_str());
   }
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
@@ -87,20 +88,23 @@ void loop() {
   if (Firebase.ready() && signupOK && (now - tsLastPush >= FIREBASE_PUSH_MS)) {
     tsLastPush = now;
 
-    if (Firebase.RTDB.setFloat(&fbdo, "/health/hr",   hr))
-      Serial.println("HR sent: "     + String(hr, 1));
-    else
-      Serial.println("HR failed: "   + fbdo.errorReason());
+    if (Firebase.RTDB.setFloat(&fbdo, "/health/hr", hr)) {
+      Serial.print("HR sent: ");     Serial.println(hr, 1);
+    } else {
+      Serial.print("HR failed: ");   Serial.println(fbdo.errorReason());
+    }
 
-    if (Firebase.RTDB.setInt(&fbdo,   "/health/spo2", spo2))
-      Serial.println("SpO2 sent: "   + String(spo2));
-    else
-      Serial.println("SpO2 failed: " + fbdo.errorReason());
+    if (Firebase.RTDB.setInt(&fbdo, "/health/spo2", spo2)) {
+      Serial.print("SpO2 sent: ");   Serial.println(spo2);
+    } else {
+      Serial.print("SpO2 failed: "); Serial.println(fbdo.errorReason());
+    }
 
-    if (Firebase.RTDB.setFloat(&fbdo, "/health/temp", tempC))
-      Serial.println("Temp sent: "   + String(tempC, 1) + "C");
-    else
-      Serial.println("Temp failed: " + fbdo.errorReason());
+    if (Firebase.RTDB.setFloat(&fbdo, "/health/temp", tempC)) {
+      Serial.print("Temp sent: ");   Serial.print(tempC, 1); Serial.println("C");
+    } else {
+      Serial.print("Temp failed: "); Serial.println(fbdo.errorReason());
+    }
 
     Serial.println("--------------------------------------------------");
   }
