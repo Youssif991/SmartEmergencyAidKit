@@ -7,7 +7,7 @@
 #include "heartRate.h"
 #include "spo2_algorithm.h"
 #include "Property.h"
-#include <SparkFunMLX90614.h>
+#include <Adafruit_MLX90614.h> // Changed to Adafruit library
 #include "helpers.h"
 
 // ── I2C Pins (ESP32-C3 DevKitC-02) ───────────────────────────────────────────
@@ -16,7 +16,7 @@ constexpr uint8_t  I2C_SCL_PIN = 9;
 constexpr uint32_t I2C_CLOCK_HZ = 100000UL;  // safe shared bus speed for both sensors
 
 // ── Algorithm / Buffer Settings ──────────────────────────────────────────────
-constexpr uint16_t FINGER_THRESHOLD     = 50000;  // Minimum IR value to trigger beat detection
+constexpr uint16_t FINGER_THRESHOLD     = 5000;  // Minimum IR value to trigger beat detection
 constexpr int32_t  BUFFER_LENGTH        = 100;    // 4-second window at 25Hz
 constexpr int32_t  BUFFER_SHIFT         = 25;     // How many old samples to drop when shifting
 
@@ -32,7 +32,7 @@ constexpr int      MAX30105_ADC_RANGE   = 4096;   // ADC Range (options: 2048, 4
 constexpr byte     MAX30105_LED_AMP     = 0x0A;   // Operating brightness for Red/IR LEDs (0x00 to 0xFF)
 
 // ── Beat Detection Settings ──────────────────────────────────────────────────
-constexpr byte     RATE_SIZE          = 4;
+constexpr byte     RATE_SIZE            = 4;
 
 // ── Timing Intervals ─────────────────────────────────────────────────────────
 constexpr uint32_t TEMP_INTERVAL_MS   = 2000;
@@ -40,9 +40,12 @@ constexpr uint32_t PRINT_INTERVAL_MS  = 1000;
 
 // ── Shared Objects ───────────────────────────────────────────────────────────
 extern MAX30105 particleSensor;
-extern IRTherm therm;
+extern Adafruit_MLX90614 therm; // Changed to Adafruit object
 
 // ── Shared State Variables ───────────────────────────────────────────────────
+extern int hrState;
+extern int fillCount;
+extern int rollCount;
 
 // Temperature
 extern float    objectTemp;

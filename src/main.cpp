@@ -2,7 +2,7 @@
 
 // Define the objects
 MAX30105 particleSensor;
-IRTherm therm;
+Adafruit_MLX90614 therm; // Changed to Adafruit object
 
 // Define the temperature variables
 float    objectTemp;
@@ -27,28 +27,43 @@ int      spo2Avg;
 byte     rates[RATE_SIZE];
 byte     rateSpot = 0;
 long     lastBeat = 0;
+int hrState = 0;
+int fillCount = 0;
+int rollCount = 0;
 
 // ─────────────────────────────────────────────────────────────────────────────
 void setup() {
   Serial.begin(115200);
-  Serial.println("MAX30105 (SpO2/HR) + MLX90614 (Temp)");
-
-  Wire.begin();
   
-  // Initialize MAX30105
+  // Give USB time to connect
+  delay(10000); 
+  Serial.println("\n--- Sensor Initialization ---");
+
+  // 1. Start I2C at a slow, safe speed for the MLX90614
+  Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN, 50000); 
+  
+  Serial.println("Initializing MLX90614...");
+  // Using 0x5A (default) and the current Wire configuration
+  if (!therm.begin(0x5A, &Wire)) {
+    Serial.println("MLX90614 not found. Check wiring.");
+    // Don't freeze the whole board, just note the error
+  } else {
+    Serial.println("MLX90614 OK.");
+  }
+
+  // 2. Now crank the speed up for the MAX30105
+  // Most MAX30105 libraries will internally call setClock, 
+  // but we'll set it manually to be sure.
+  Wire.setClock(400000); 
+  
+  Serial.println("Initializing MAX30105...");
   if (!particleSensor.begin(Wire, I2C_SPEED_FAST)) {
     Serial.println("MAX30105 not found. Check wiring.");
-    while (true);
+    while (1) { delay(10); } // Freeze here if the HR sensor fails
   }
+  Serial.println("MAX30105 OK.");
 
-  // Initialize MLX90614
-  if (therm.begin() == false) {
-    Serial.println("MLX90614 not found. Check wiring.");
-    while(true);
-  }
-  therm.setUnit(TEMP_C); // Set to Celsius for our baseline reading
-
-  // Configure MAX30105: powerLevel, sampleAverage, ledMode (2=Red+IR), sampleRate, pulseWidth
+  // Configure MAX30105 settings
   particleSensor.setup(
     MAX30105_SETUP_POWER, 
     MAX30105_AVERAGE, 
@@ -61,79 +76,147 @@ void setup() {
   particleSensor.setPulseAmplitudeRed(MAX30105_LED_AMP);
   particleSensor.setPulseAmplitudeIR(MAX30105_LED_AMP);
 
-  // Fill buffer with an initial 4-second window before starting the loop
   Serial.println("Collecting initial samples...");
   collectSamples(redBuffer, irBuffer, BUFFER_SIZE);
+  
+  // Initial calculation
   maxim_heart_rate_and_oxygen_saturation(irBuffer, BUFFER_SIZE, redBuffer,
                                          &spo2, &validSPO2,
                                          &heartRate, &validHeartRate);
-  Serial.println("Ready.");
+  Serial.println("System Ready.");
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 void loop() {
-  // Add one new sample at the end 
-  for (int i = 0; i < BUFFER_SIZE - 1; i++) {
-    redBuffer[i] = redBuffer[i + 1];
-    irBuffer[i]  = irBuffer[i + 1];
+  // 1. NON-BLOCKING TEMPERATURE TASK
+  if (millis() - lastTempMs >= TEMP_INTERVAL_MS) {
+    lastTempMs = millis();
+    
+    Wire.setClock(50000); // Slow down for MLX
+    double obj = therm.readObjectTempC();
+    double amb = therm.readAmbientTempC();
+    Wire.setClock(400000); // Speed back up for MAX
+    
+    // Simple validation
+    if (!isnan(obj)) objectTemp = (float)obj;
+    if (!isnan(amb)) ambientTemp = (float)amb;
   }
 
-  while (particleSensor.available() == 0)
-    particleSensor.check();
+  // 2. HEART RATE / SPO2 DATA PUMP
+  particleSensor.check(); // Look for new data in the sensor FIFO
 
-  redBuffer[BUFFER_SIZE - 1] = particleSensor.getRed();
-  irBuffer[BUFFER_SIZE - 1]  = particleSensor.getIR();
-  particleSensor.nextSample();
-
-  // Heart Beat Detection
-  long irValue = irBuffer[BUFFER_SIZE - 1];
-
-  if (irValue < 50000) {
-    Serial.println("No finger detected.");
+  if (!particleSensor.available()) {
+    // If no new sample, check if we've lost the pulse for too long
+    if (lastBeat > 0 && (millis() - lastBeat > 10000)) {
+      beatAvg = 0;
+    }
   } else {
-    if (checkForBeat(irValue)) {
-      long delta  = millis() - lastBeat;
-      lastBeat    = millis();
-      beatsPerMinute = 60.0 / (delta / 1000.0);
+    uint32_t irVal  = particleSensor.getIR();
+    uint32_t redVal = particleSensor.getRed();
+    particleSensor.nextSample(); // Advance the sensor pointer
 
-      if (beatsPerMinute > 20 && beatsPerMinute < 255) {
-        rates[rateSpot++] = (byte)beatsPerMinute;
-        rateSpot %= RATE_SIZE;
+    // --- State 0: No Finger ---
+    if (irVal < FINGER_THRESHOLD) {
+      if (hrState != 0) {
+        Serial.println("No finger detected. HR/SpO2 paused.");
+        beatAvg   = 0;
+        spo2Avg   = 0;
+        fillCount = 0;
+        rollCount = 0;
+        hrState   = 0;
+      }
+    } 
+    else {
+      // --- State 1: Finger detected, filling initial 100-sample buffer ---
+      if (hrState == 0) {
+        Serial.println("Finger detected. Filling buffer...");
+        fillCount = 0;
+        hrState   = 1;
+      }
 
-        beatAvg = 0;
-        for (byte x = 0; x < RATE_SIZE; x++)
-          beatAvg += rates[x];
-        beatAvg /= RATE_SIZE;
+      if (hrState == 1) {
+        redBuffer[fillCount] = redVal;
+        irBuffer[fillCount]  = irVal;
+        fillCount++;
+
+        if (fillCount >= BUFFER_LENGTH) {
+          maxim_heart_rate_and_oxygen_saturation(
+            irBuffer, BUFFER_LENGTH, redBuffer,
+            &spo2, &validSPO2, &heartRate, &validHeartRate);
+          
+          rollCount = 0;
+          hrState   = 2;
+          Serial.println("Buffer ready. Streaming...");
+        }
+      }
+      // --- State 2: Buffer full, performing rolling updates ---
+      else if (hrState == 2) {
+        // Instant beat detection for the BPM display
+        if (checkForBeat(irVal)) {
+          long delta     = millis() - lastBeat;
+          lastBeat       = millis();
+          float instantBPM = 60.0f / (delta / 1000.0f);
+          
+          if (instantBPM > 20 && instantBPM < 200) {
+            // Using your ema (Exponential Moving Average) helper
+            beatAvg = (int)ema((float)beatAvg, instantBPM);
+          }
+        }
+
+        // Add newest sample to the end of the buffer
+        // (75 is BUFFER_LENGTH - BUFFER_SHIFT)
+        redBuffer[75 + rollCount] = redVal;
+        irBuffer[75 + rollCount]  = irVal;
+        rollCount++;
+
+        // Every 25 samples, shift the window and recalculate SpO2
+        if (rollCount >= BUFFER_SHIFT) {
+          for (int i = 0; i < 75; i++) {
+            redBuffer[i] = redBuffer[i + 25];
+            irBuffer[i]  = irBuffer[i + 25];
+          }
+
+          maxim_heart_rate_and_oxygen_saturation(
+            irBuffer, BUFFER_LENGTH, redBuffer,
+            &spo2, &validSPO2, &heartRate, &validHeartRate);
+
+          if (validSPO2 && spo2 > 50 && spo2 <= 100) {
+            if (spo2Avg == 0) spo2Avg = spo2; // Initial seed
+            else spo2Avg = (int)ema((float)spo2Avg, (float)spo2);
+          }
+
+          rollCount = 0;  
+        }
       }
     }
+  }
 
-    // Recalculate SpO2 each loop iteration
-    maxim_heart_rate_and_oxygen_saturation(irBuffer, BUFFER_SIZE, redBuffer,
-                                           &spo2, &validSPO2,
-                                           &heartRate, &validHeartRate);
+  // 3. PERIODIC PRINTING TASK
+  if (millis() - lastPrintMs >= PRINT_INTERVAL_MS) {
+    lastPrintMs = millis();
+    
+    Serial.print("Temp (obj): ");
+    Serial.print(objectTemp, 1);
+    Serial.print(" C  |  Temp (amb): ");
+    Serial.print(ambientTemp, 1);
+    Serial.print(" C");
 
-    // Print HR and SpO2
-    Serial.print("BPM=");        Serial.print(beatsPerMinute, 1);
-    Serial.print("  Avg BPM=");  Serial.print(beatAvg);
-
-    Serial.print("  |  SpO2=");
-    if (validSPO2)  Serial.print(spo2); else Serial.print("--");
-    Serial.print("%");
-
-    Serial.print("  HR(algo)=");
-    if (validHeartRate) Serial.print(heartRate); else Serial.print("--");
-    Serial.print(" bpm");
-
-    // Read and print Temperature from MLX90614
-    if (therm.read()) {
-      float tempC = therm.object(); 
-      float tempF = (tempC * 9.0 / 5.0) + 32.0; // Calculate Fahrenheit locally
-
-      Serial.print("  |  Obj Temp=");
-      Serial.print(tempC, 1); Serial.print("C / ");
-      Serial.print(tempF, 1); Serial.println("F");
+    if (hrState == 0) {
+      Serial.println("  |  HR: -- (no finger)  |  SpO2: --");
+    } else if (hrState == 1) {
+      Serial.print("  |  HR: filling (");
+      Serial.print(fillCount);
+      Serial.println("/100)  |  SpO2: filling");
     } else {
-      Serial.println("  |  Temp=Error");
+      Serial.print("  |  HR: ");
+      if (beatAvg > 20) Serial.print(String(beatAvg) + " bpm");
+      else Serial.print("Calculating...");
+
+      Serial.print("  |  SpO2: ");
+      if (spo2Avg > 50) Serial.println(String(spo2Avg) + " %");
+      else Serial.println("Calculating...");
     }
   }
+
+  yield(); // Let ESP32 background tasks run
 }
