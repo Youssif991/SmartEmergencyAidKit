@@ -9,39 +9,22 @@
 #include <Wire.h>
 #include <WiFi.h>
 
-// ── Firebase ─────────────────────────────────────────────────────────────────
-#include <Firebase_ESP_Client.h>
-#include "addons/TokenHelper.h"
-#include "addons/RTDBHelper.h"
-
 // ── Sensors ───────────────────────────────────────────────────────────────────
 #include "MAX30100_PulseOximeter.h"
 #include "MLX90614.h"
-
-// ═════════════════════════════════════════════════════════════════════════════
-//  WiFi & Firebase credentials  —  edit these
-// ═════════════════════════════════════════════════════════════════════════════
-#define WIFI_SSID       "------"
-#define WIFI_PASSWORD   "------"
-#define API_KEY         "AIzaSyC-ad77Wyw4_9FCQIbQwq53y-BRY02oe_o"
-#define DATABASE_URL    "https://health-71a04-default-rtdb.europe-west1.firebasedatabase.app/"
+#include "MAX30100_SpO2Calculator.h"
+#include "MAX30100_BeatDetector.h"
+#include "CircularBuffer.h"
+#include "Crc8.h"
+#include "MAX30100.h"
 
 // ═════════════════════════════════════════════════════════════════════════════
 //  Timing intervals (ms)
 // ═════════════════════════════════════════════════════════════════════════════
-#define FIREBASE_PUSH_MS  2000   // How often to push readings to Firebase
-#define TEMP_READ_MS      5000   // How often to read the MLX90614
+#define REPORTING_PERIOD_MS 1000   // Print readings every second
+#define TEMP_PERIOD_MS      5000   // MLX read every 5 s (slow sensor)
 
 // ═════════════════════════════════════════════════════════════════════════════
-//  Shared global objects  —  defined once in main.cpp, declared extern here
-//  so any future .cpp file can access them with just #include "config.h"
-// ═════════════════════════════════════════════════════════════════════════════
-
-// Firebase
-extern FirebaseData   fbdo;
-extern FirebaseAuth   auth;
-extern FirebaseConfig config;
-extern bool           signupOK;
 
 // Sensors
 extern PulseOximeter  pox;
