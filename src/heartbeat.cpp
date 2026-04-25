@@ -40,6 +40,7 @@ void HeartBeat::process(long irValue) {
 
     const long  delta      = millis() - _lastBeat;
     _lastBeat              = millis();
+   if (delta == 0) return; //divisin by zero protection
     _beatsPerMinute        = 60.0f / (delta / 1000.0f);
 
     // Plausibility gate: ignore readings outside human heart-rate range.
