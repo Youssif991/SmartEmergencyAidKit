@@ -8,6 +8,7 @@
 #include "spo2_algorithm.h"
 #include "Property.h"
 #include <SparkFunMLX90614.h>
+#include "helpers.h"
 
 // ── I2C Pins (ESP32-C3 DevKitC-02) ───────────────────────────────────────────
 constexpr uint8_t  I2C_SDA_PIN = 8;
