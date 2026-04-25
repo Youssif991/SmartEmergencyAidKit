@@ -1,62 +1,87 @@
 #pragma once
 
-#include "Config.h"         // must be first — defines BUFFER_LENGTH / BUFFER_SHIFT
-#include "MAX30105.h"
-#include "heartRate.h"
-#include "spo2_algorithm.h"
+/*
+  Oximeter -- SpO2 (blood-oxygen saturation) only.
+  Heart-rate (BPM) detection lives in heartbeat.h / heartbeat.cpp.
 
-// Wraps the MAX30105 pulse-oximeter.
-// Call begin() once in setup(), then update() every loop iteration.
-//
-// Internally runs a three-state machine:
-//   NoFinger  → no finger on the sensor
-//   Filling   → collecting the initial 100-sample buffer
-//   Streaming → rolling window + live beat detection
+  Design
+  ------
+  This class is sensor-agnostic at runtime: samples arrive via process()
+  calls from main.cpp, which owns the FIFO drain loop.
+  The sensor is configured once inside begin() and never touched again.
 
-enum class OximeterState { NoFinger, Filling, Streaming };
+  State machine
+  -------------
+    NoFinger  -> IR below FINGER_THRESHOLD; waiting for finger
+    Filling   -> collecting the initial BUFFER_LENGTH-sample window
+    Streaming -> rolling window update + live SpO2 output
 
-class Oximeter {
+  Typical use
+  -----------
+    // setup()
+    oxygen.begin(sensor);          // sensor configured here
+
+    // loop() -- called once per FIFO sample drained by main.cpp
+    oxygen.process(irValue, redValue);
+*/
+
+#include "Config.h"         // BUFFER_LENGTH, BUFFER_SHIFT, FINGER_THRESHOLD
+#include "MAX30105.h"       // only needed in begin() for sensor init
+#include "spo2_algorithm.h" // maxim_heart_rate_and_oxygen_saturation()
+
+enum class OximeterState
+{
+    NoFinger,
+    Filling,
+    Streaming
+};
+
+class Oximeter
+{
 public:
-    bool begin();
+    // ── Lifecycle ──────────────────────────────────────────────────────────────
 
-    // Should be called every loop(). Drains the sensor FIFO and advances state.
-    void update();
+    // Initialises the MAX30105 hardware with SpO2-optimal settings and resets
+    // internal state. Call once from setup() after Wire.begin().
+    // Returns false if the sensor is not found (wiring error).
+    bool begin(MAX30105 &sensor);
 
-    OximeterState state()        const { return _state;     }
-    int           beatAvg()      const { return _beatAvg;   }
-    int           spo2Avg()      const { return _spo2Avg;   }
-    int           fillProgress() const { return _fillCount; }  // 0 – BUFFER_LENGTH
+    // Feed one IR + Red sample pair (call for every sample drained from the
+    // sensor FIFO). Advances the internal state machine and recomputes SpO2
+    // every BUFFER_SHIFT new samples.
+    void process(uint32_t irValue, uint32_t redValue);
+
+    // ── Results ────────────────────────────────────────────────────────────────
+
+    OximeterState state() const { return _state; }
+    int spo2Avg() const { return _spo2Avg; }
+
+    // Samples collected so far during the Filling phase (0 - BUFFER_LENGTH).
+    int fillProgress() const { return _fillCount; }
 
 private:
-    // ── Helpers ──────────────────────────────────────────────────────────────
-    void  collectInitialSamples();
-    void  runAlgorithm();
-    void  shiftBuffer();
-    void  handleBeat(uint32_t irVal);
-    void  handleRollingUpdate(uint32_t irVal, uint32_t redVal);
-    void  reset();
-    static float ema(float current, float next);
-
-    // ── Hardware ─────────────────────────────────────────────────────────────
-    MAX30105 _sensor;
-
-    // ── Buffers ───────────────────────────────────────────────────────────────
-    uint32_t _irBuffer[BUFFER_LENGTH]  = {};
+    // ── SpO2 buffers ───────────────────────────────────────────────────────────
+    uint32_t _irBuffer[BUFFER_LENGTH] = {};
     uint32_t _redBuffer[BUFFER_LENGTH] = {};
 
-    // ── Algorithm results ────────────────────────────────────────────────────
-    int32_t _spo2          = 0;
-    int8_t  _validSPO2     = 0;
-    int32_t _heartRate     = 0;
-    int8_t  _validHeartRate = 0;
+    // ── Algorithm outputs ──────────────────────────────────────────────────────
+    int32_t _spo2 = 0;
+    int8_t _validSPO2 = 0;
+    int32_t _heartRate = 0; // produced by algorithm but not exposed here
+    int8_t _validHeartRate = 0;
 
-    // ── State ────────────────────────────────────────────────────────────────
-    OximeterState _state     = OximeterState::NoFinger;
-    int           _fillCount = 0;
-    int           _rollCount = 0;
-    int           _beatAvg   = 0;
-    int           _spo2Avg   = 0;
-    long          _lastBeat  = 0;
+    // ── State ──────────────────────────────────────────────────────────────────
+    OximeterState _state = OximeterState::NoFinger;
+    int _fillCount = 0;
+    int _rollCount = 0;
+    int _spo2Avg = 0;
 
-    static constexpr int ROLL_OFFSET = BUFFER_LENGTH - BUFFER_SHIFT;  // 75
+    static constexpr int ROLL_OFFSET = BUFFER_LENGTH - BUFFER_SHIFT; // 75
+
+    // ── Helpers ────────────────────────────────────────────────────────────────
+    void runAlgorithm();
+    void shiftBuffer();
+    void handleRollingUpdate(uint32_t irVal, uint32_t redVal);
+    void reset();
+    static float ema(float current, float next);
 };

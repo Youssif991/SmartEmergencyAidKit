@@ -1,0 +1,69 @@
+/*
+  heartbeat.cpp — Peripheral Beat Amplitude (PBA) heart-rate detection
+  Based on SparkFun Example5_HeartRate by Nathan Seidle, Oct 2016.
+  https://github.com/sparkfun/MAX30105_Breakout
+
+  This module is intentionally decoupled from the MAX30105 sensor:
+  it receives pre-read IR samples from main.cpp so that the same sensor
+  can simultaneously feed the Oximeter (SpO2) module without conflict.
+*/
+
+#include "heartbeat.h"
+
+// ── Public ────────────────────────────────────────────────────────────────────
+
+void HeartBeat::begin() {
+    reset();
+    Serial.println("[HeartBeat] Ready — place your index finger on the sensor.");
+}
+
+void HeartBeat::process(long irValue) {
+    _irValue = irValue;
+
+    // ── Finger detection ─────────────────────────────────────────────────────
+    if (irValue < HR_FINGER_THRESHOLD) {
+        if (_fingerPresent) {
+            Serial.println("[HeartBeat] Finger removed.");
+            reset();
+        }
+        return;
+    }
+
+    if (!_fingerPresent) {
+        Serial.println("[HeartBeat] Finger detected.");
+        _fingerPresent = true;
+        _lastBeat      = millis();  // seed so first delta is meaningful
+    }
+
+    // ── PBA beat detection ───────────────────────────────────────────────────
+    if (!checkForBeat(irValue)) return;
+
+    const long  delta      = millis() - _lastBeat;
+    _lastBeat              = millis();
+    _beatsPerMinute        = 60.0f / (delta / 1000.0f);
+
+    // Plausibility gate: ignore readings outside human heart-rate range.
+    if (_beatsPerMinute < 255.0f && _beatsPerMinute > 20.0f) {
+        _rates[_rateSpot++] = (byte)_beatsPerMinute; // store in circular buffer
+        _rateSpot %= HR_RATE_SIZE;                   // wrap index
+
+        // Compute rolling average.
+        _beatAvg = 0;
+        for (byte x = 0; x < HR_RATE_SIZE; x++) {
+            _beatAvg += _rates[x];
+        }
+        _beatAvg /= HR_RATE_SIZE;
+    }
+}
+
+// ── Private ───────────────────────────────────────────────────────────────────
+
+void HeartBeat::reset() {
+    memset(_rates, 0, sizeof(_rates));
+    _rateSpot       = 0;
+    _lastBeat       = 0;
+    _beatsPerMinute = 0.0f;
+    _beatAvg        = 0;
+    _fingerPresent  = false;
+    _irValue        = 0;
+}
