@@ -10,6 +10,7 @@ constexpr uint8_t  I2C_SCL_PIN = 9;
 // ── Timing ────────────────────────────────────────────────────────────────────
 constexpr uint32_t TEMP_INTERVAL_MS  = 2000;
 constexpr uint32_t PRINT_INTERVAL_MS = 1000;
+constexpr uint32_t IMU_INTERVAL_MS   = 20;    // 50 Hz IMU sampling
 
 // ── MAX30105 Sensor Configuration ─────────────────────────────────────────────
 // Values match the SparkFun SPO2 reference sketch (Example8_SPO2).

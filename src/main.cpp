@@ -3,35 +3,49 @@
 #include "temperature.h"
 #include "oximeter.h"
 #include "heartbeat.h"
+#include "imu.h"
 
 // ── Module instances ──────────────────────────────────────────────────────────
 MAX30105 sensor;
 TempSensor temp;
 Oximeter oxygen;
 HeartBeat heartbeat;
+IMU imu;
 
 static uint32_t lastPrintMs = 0;
 
 // ─────────────────────────────────────────────────────────────────────────────
-void setup()
-{
+void setup() {
   Serial.begin(115200);
-  delay(10000);
+  delay(10000); 
 
   Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN);
+  
+  // 1. Start with the IMU at a conservative speed
+  Wire.setClock(100000); 
+  delay(100);
+  if (!imu.begin()) {
+     Serial.println("IMU failed at 100kHz, retrying at 400kHz...");
+     Wire.setClock(400000);
+     if(!imu.begin()) while(1); 
+  }
+
+  // 2. Then do the Oximeter
+  Wire.setClock(400000);
+  oxygen.begin(sensor);
+
+  // 3. Then the slow Temp sensor
+  Wire.setClock(50000);
   temp.begin();
-  if (!oxygen.begin(sensor))
-    while (true)
-      delay(10); // halt on wiring error
-  heartbeat.begin();
-
-  Serial.println("\n--- SmartAidKit ready ---\n");
+  
+  // 4. Finally set back to 400kHz for the main loop
+  Wire.setClock(400000);
 }
-
 // ─────────────────────────────────────────────────────────────────────────────
 void loop()
 {
   temp.update();
+  imu.update();
 
   // Drain sensor FIFO and feed each sample to both modules.
   sensor.check();
@@ -41,8 +55,8 @@ void loop()
     const uint32_t red = sensor.getFIFORed();
     sensor.nextSample();
 
-    oxygen.process(ir, red); // SpO2  (IR + Red)
-    heartbeat.process(ir);   // BPM   (IR only, PBA algorithm)
+    oxygen.process(ir, red);
+    heartbeat.process(ir);
   }
 
   // ── Periodic Serial output ────────────────────────────────────────────────
@@ -82,6 +96,16 @@ void loop()
     else
       Serial.println("calculating...");
     break;
+  }
+
+  // IMU output
+  if (imu.ready())
+  {
+    Serial.printf("IMU: Accel(g) X=%.2f Y=%.2f Z=%.2f  |  "
+                  "Gyro(dps) X=%.1f Y=%.1f Z=%.1f  |  Die: %.1f C\n",
+                  imu.accelX(), imu.accelY(), imu.accelZ(),
+                  imu.gyroX(),  imu.gyroY(),  imu.gyroZ(),
+                  imu.temperature());
   }
 
   yield();
