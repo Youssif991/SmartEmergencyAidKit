@@ -33,7 +33,8 @@ void HeartBeat::process(long irValue) {
         Serial.println("[HeartBeat] Finger detected.");
         _fingerPresent = true;
         _lastBeat      = millis();  // seed so first delta is meaningful
-  //possibly add return here }
+  //possibly add return here 
+    }
         
     // ── PBA beat detection ───────────────────────────────────────────────────
     if (!checkForBeat(irValue)) return;

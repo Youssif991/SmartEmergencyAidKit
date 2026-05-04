@@ -4,6 +4,7 @@
 #include "oximeter.h"
 #include "heartbeat.h"
 #include "imu.h"
+#include "oled.h"
 
 // ── Module instances ──────────────────────────────────────────────────────────
 MAX30105 sensor;
@@ -11,8 +12,10 @@ TempSensor temp;
 Oximeter oxygen;
 HeartBeat heartbeat;
 IMU imu;
+OLED display;
 
 static uint32_t lastPrintMs = 0;
+static uint32_t lastOledMs = 0;
 
 // ─────────────────────────────────────────────────────────────────────────────
 void setup() {
@@ -40,6 +43,16 @@ void setup() {
   
   // 4. Finally set back to 400kHz for the main loop
   Wire.setClock(400000);
+  
+  // 5. Initialize OLED display
+  if (!display.begin()) {
+    Serial.println("[OLED] Failed to initialize display");
+  } else {
+    Serial.println("[OLED] Display initialized");
+    display.printText("SmartAidKit", 30, 10);
+    display.display();
+    delay(1000);
+  }
 }
 // ─────────────────────────────────────────────────────────────────────────────
 void loop()
@@ -95,7 +108,18 @@ void loop()
       Serial.printf("%d%%\n", oxygen.spo2Avg());
     else
       Serial.println("calculating...");
-    break;
+   
+
+  // ── Update OLED display (less frequently to save cycles) ────────────────────
+  if (millis() - lastOledMs >= OLED_INTERVAL_MS)
+  {
+    lastOledMs = millis();
+    int bpm_val = heartbeat.beatAvg() > 0 ? heartbeat.beatAvg() : 0;
+    int spo2_val = oxygen.spo2Avg() > 50 ? oxygen.spo2Avg() : 0;
+    display.printSensorData(temp.objectTemp(), temp.ambientTemp(),
+                           bpm_val, spo2_val,
+                           imu.accelX(), imu.accelY(), imu.accelZ());
+  } break;
   }
 
   // IMU output
