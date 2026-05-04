@@ -44,7 +44,8 @@ void HeartBeat::process(long irValue) {
     _beatsPerMinute        = 60.0f / (delta / 1000.0f);
 
     // Plausibility gate: ignore readings outside human heart-rate range.
-    if (_beatsPerMinute < 255.0f && _beatsPerMinute > 20.0f) {
+    // Normal: 60-100 bpm | Exercise: up to 200 bpm | Physically impossible: 255+ bpm
+    if (_beatsPerMinute <= 200.0f && _beatsPerMinute >= 40.0f) {
         _rates[_rateSpot++] = (byte)_beatsPerMinute; // store in circular buffer
         _rateSpot %= HR_RATE_SIZE;                   // wrap index
 

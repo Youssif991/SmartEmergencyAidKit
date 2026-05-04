@@ -102,10 +102,9 @@ void loop()
   if (imu.ready())
   {
     Serial.printf("IMU: Accel(g) X=%.2f Y=%.2f Z=%.2f  |  "
-                  "Gyro(dps) X=%.1f Y=%.1f Z=%.1f  |  Die: %.1f C\n",
+                  "Gyro(dps) X=%.1f Y=%.1f Z=%.1f\n",
                   imu.accelX(), imu.accelY(), imu.accelZ(),
-                  imu.gyroX(),  imu.gyroY(),  imu.gyroZ(),
-                  imu.temperature());
+                  imu.gyroX(),  imu.gyroY(),  imu.gyroZ());
   }
 
   yield();

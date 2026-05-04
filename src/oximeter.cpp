@@ -126,6 +126,14 @@ void Oximeter::shiftBuffer()
 
 void Oximeter::reset()
 {
+    // Clear all buffers to prevent old data from interfering with new calculations
+    memset(_irBuffer, 0, sizeof(_irBuffer));
+    memset(_redBuffer, 0, sizeof(_redBuffer));
+    
+    _spo2 = 0;
+    _validSPO2 = 0;
+    _heartRate = 0;
+    _validHeartRate = 0;
     _spo2Avg = 0;
     _fillCount = 0;
     _rollCount = 0;
