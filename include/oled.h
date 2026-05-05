@@ -23,6 +23,9 @@
 #include <Wire.h>
 #include <cstring>
 
+// Forward declaration to avoid circular includes
+struct SensorReadings;
+
 // ── OLED Display Dimensions ────────────────────────────────────────────────────
 constexpr uint8_t OLED_WIDTH = 128;
 constexpr uint8_t OLED_HEIGHT = 32;
@@ -85,6 +88,9 @@ public:
 
     // Print sensor readings on screen
     void printSensorData(float tempObj, float tempAmb, int bpm, int spo2);
+
+    // Print sensor readings from a SensorReadings struct
+    void printSensorDataStruct(const SensorReadings &readings);
 
     // Render the buffer to the display
     void display();

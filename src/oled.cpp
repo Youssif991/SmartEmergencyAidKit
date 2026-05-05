@@ -8,6 +8,7 @@
 */
 
 #include "oled.h"
+#include "Types.h"
 
 // ── SSD1306 Initialization Commands ─────────────────────────────────────────
 static const uint8_t ssd1306_init_sequence[] = {
@@ -211,6 +212,12 @@ void OLED::printSensorData(float tempObj, float tempAmb, int bpm, int spo2)
     printText(line_buf, 0, 18); // y = 18 (plenty of room for the font height)
 
     display();
+}
+
+void OLED::printSensorDataStruct(const SensorReadings &readings)
+{
+    printSensorData(readings.objectTemp, readings.ambientTemp,
+                    readings.heartRate, readings.spo2);
 }
 
 void OLED::display()

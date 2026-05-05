@@ -1,10 +1,4 @@
-#include "Config.h"
-#include "MAX30105.h"
-#include "temperature.h"
-#include "oximeter.h"
-#include "heartbeat.h"
-#include "imu.h"
-#include "oled.h"
+#include "Sensors.h"
 
 // ── Module instances ──────────────────────────────────────────────────────────
 MAX30105 sensor;
@@ -120,10 +114,8 @@ void loop()
     if (millis() - lastOledMs >= OLED_INTERVAL_MS)
     {
       lastOledMs = millis();
-      int bpm_val = heartbeat.beatAvg() > 0 ? heartbeat.beatAvg() : 0;
-      int spo2_val = oxygen.spo2Avg() > 50 ? oxygen.spo2Avg() : 0;
-      display.printSensorData(temp.objectTemp(), temp.ambientTemp(),
-                              bpm_val, spo2_val);
+      SensorReadings readings = gatherSensorReadings();
+      display.printSensorDataStruct(readings);
     }
     break;
   }
