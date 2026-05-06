@@ -1,3 +1,13 @@
+/**
+ * @file Property.h
+ * @brief C++ Property template for getter/setter access patterns
+ * @author Joeman
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Template class implementing property pattern for C++.
+ *          Thank you Joeman for this code - http://forums.codeguru.com/showthread.php?459696-GET-SET-in-C
+ */
+
 #ifndef _Property_H_
 #define _Property_H_
 

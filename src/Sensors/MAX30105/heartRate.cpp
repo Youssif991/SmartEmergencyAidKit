@@ -1,3 +1,13 @@
+/**
+ * @file heartRate.cpp
+ * @brief Implementation of beat detection algorithm functions
+ * @author Nathan Seidle (SparkFun)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Low-level beat detection using DC estimator and FIR filtering.
+ *          Implements Maxim's PBA algorithm primitives
+ */
+
 /*
  Optical Heart Rate Detection (PBA Algorithm)
  By: Nathan Seidle

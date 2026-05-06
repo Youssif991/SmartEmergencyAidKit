@@ -1,4 +1,14 @@
 /**
+ * @file driver_mpu6050_basic.h
+ * @brief LibDriver MPU6050 simplified basic API
+ * @author Shifeng Li (LibDriver)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Simplified high-level API for MPU6050 basic operations.
+ *          Makes driver easier to use for typical applications
+ */
+
+/**
  * Copyright (c) 2015 - present LibDriver All rights reserved
  * 
  * The MIT License (MIT)

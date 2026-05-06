@@ -16,6 +16,16 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
+/**
+ * @file Adafruit_MLX90614.cpp
+ * @brief Implementation of Adafruit MLX90614 temperature library
+ * @author Adafruit Industries
+ * @date 2026-05-06
+ * @version 1.0
+ * @details I2C communication and sensor operations for MLX90614 thermometer.
+ *          Reads object and ambient temperature via I2C
+ */
+
 #include "../../../include/Sensors/MLX90614/Adafruit_MLX90614.h"
 
 Adafruit_MLX90614::~Adafruit_MLX90614() {

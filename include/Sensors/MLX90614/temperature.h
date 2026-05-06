@@ -1,3 +1,13 @@
+/**
+ * @file temperature.h
+ * @brief Non-contact infrared thermometer wrapper for MLX90614
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Wrapper class for MLX90614 sensor with I2C clock management.
+ *          Provides throttled reading updates. Requires 50kHz I2C speed
+ */
+
 #pragma once
 
 #include "Adafruit_MLX90614.h"

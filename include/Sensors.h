@@ -1,3 +1,13 @@
+/**
+ * @file Sensors.h
+ * @brief Central aggregator header for all sensor modules
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Single entry point that includes all sensor definitions and utilities.
+ *          Include this file in main.cpp to access all sensors.
+ */
+
 #pragma once
 
 /*

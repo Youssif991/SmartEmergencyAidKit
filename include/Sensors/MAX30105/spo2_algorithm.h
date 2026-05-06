@@ -1,3 +1,13 @@
+/**
+ * @file spo2_algorithm.h
+ * @brief SpO2 calculation algorithm declarations
+ * @author Maxim Integrated Products, Inc.
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Maxim's reference algorithm for SpO2 (blood oxygen saturation) calculation.
+ *          Includes lookup table and helper functions
+ */
+
 /** \file algorithm.h ******************************************************
 *
 * Project: MAXREFDES117#

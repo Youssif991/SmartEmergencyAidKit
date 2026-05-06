@@ -1,3 +1,13 @@
+/**
+ * @file imu.h
+ * @brief MPU6050 6-axis IMU (Accelerometer + Gyroscope) wrapper
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Wrapper class using libdriver/mpu6050 basic API. Provides throttled readings
+ *          with averaging over 4 samples. Outputs acceleration in g and rotation in dps
+ */
+
 #pragma once
 
 /*

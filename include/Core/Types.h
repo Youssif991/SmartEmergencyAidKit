@@ -1,3 +1,13 @@
+/**
+ * @file Types.h
+ * @brief Shared data structures for sensor readings and system state
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Defines struct types for passing aggregated sensor data between modules:
+ *          SensorReadings, IMUData, BiometricData, TemperatureData
+ */
+
 #pragma once
 
 /*

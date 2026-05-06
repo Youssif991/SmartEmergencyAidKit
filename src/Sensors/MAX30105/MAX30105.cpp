@@ -9,6 +9,16 @@
   BSD license, all text above must be included in any redistribution.
  *****************************************************/
 
+/**
+ * @file MAX30105.cpp
+ * @brief Implementation of MAX30105 sensor driver
+ * @author Peter Jansen and Nathan Seidle (SparkFun)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details I2C communication and register operations for MAX30105 optical sensor.
+ *          Handles FIFO management and sensor configuration
+ */
+
 #include "../../../include/Sensors/MAX30105/MAX30105.h"
 
 // Status Registers

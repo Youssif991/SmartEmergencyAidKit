@@ -1,3 +1,13 @@
+/**
+ * @file heartbeat.h
+ * @brief Heart rate detection using Peripheral Beat Amplitude (PBA) algorithm
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Implements PBA algorithm for beat detection. Maintains rolling average of recent BPM values.
+ *          Based on SparkFun Example5_HeartRate by Nathan Seidle
+ */
+
 #pragma once
 
 /*

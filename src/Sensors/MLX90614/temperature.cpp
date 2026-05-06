@@ -1,3 +1,13 @@
+/**
+ * @file temperature.cpp
+ * @brief Implementation of MLX90614 temperature sensor wrapper
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Temperature sensor operations with I2C clock management.
+ *          Switches to 50kHz for reads, restores 400kHz after
+ */
+
 #include "../../../include/Sensors/MLX90614/temperature.h"
 
 bool TempSensor::begin()

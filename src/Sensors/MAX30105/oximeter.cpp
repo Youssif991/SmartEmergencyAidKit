@@ -1,3 +1,13 @@
+/**
+ * @file oximeter.cpp
+ * @brief Implementation of SpO2 calculation and state management
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details SpO2 algorithm implementation with rolling window buffer.
+ *          Manages state machine and Maxim's reference algorithm
+ */
+
 /*
   oximeter.cpp -- SpO2 (blood-oxygen saturation) computation.
 

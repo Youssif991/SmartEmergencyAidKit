@@ -1,3 +1,13 @@
+/**
+ * @file main.cpp
+ * @brief Program entry point and main application loop
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Initializes all sensors and runs the main event loop.
+ *          Manages I2C clock switching, sensor polling, and display updates
+ */
+
 #include "Sensors.h"
 
 // ── Module instances ──────────────────────────────────────────────────────────

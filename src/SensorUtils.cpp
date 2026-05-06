@@ -1,3 +1,13 @@
+/**
+ * @file SensorUtils.cpp
+ * @brief Implementation of sensor data aggregation utility functions
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Implements functions to gather sensor readings into structured data types.
+ *          Accesses global sensor objects and packages their data
+ */
+
 /*
   SensorUtils.cpp — Implementation of sensor utility functions.
   

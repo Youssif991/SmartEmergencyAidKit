@@ -1,3 +1,13 @@
+/**
+ * @file Adafruit_MLX90614.h
+ * @brief Adafruit MLX90614 temperature sensor library
+ * @author Adafruit Industries
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Library for Adafruit MLX90614 non-contact thermometer.
+ *          Measures object temperature and ambient temperature via I2C
+ */
+
 /***************************************************
   This is a library for the MLX90614 Temp Sensor
 

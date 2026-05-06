@@ -1,3 +1,13 @@
+/**
+ * @file spo2_algorithm.cpp
+ * @brief Implementation of Maxim SpO2 calculation algorithm
+ * @author Maxim Integrated Products, Inc.
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Maxim's reference algorithm for blood oxygen saturation (SpO2) calculation.
+ *          Peak detection, ratio calculation, and lookup table
+ */
+
 /** \file algorithm.cpp ******************************************************
  *
  * Project: MAXREFDES117#

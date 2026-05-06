@@ -34,6 +34,16 @@
  * </table>
  */
 
+/**
+ * @file driver_mpu6050.c
+ * @brief LibDriver MPU6050 core driver implementation
+ * @author Shifeng Li (LibDriver)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Core MPU6050 driver implementation with register operations.
+ *          Copyright (c) 2015-present LibDriver All rights reserved
+ */
+
 #include "../../../include/Sensors/MPU6050/driver_mpu6050.h"
 #include "../../../include/Sensors/MPU6050/driver_mpu6050_code.h"
 #include <math.h>

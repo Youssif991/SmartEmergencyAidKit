@@ -1,3 +1,13 @@
+/**
+ * @file SensorUtils.h
+ * @brief Helper functions for aggregating sensor data
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Provides utility functions to gather readings from all sensors into structured formats.
+ *          Functions: gatherSensorReadings, gatherIMUData, gatherBiometricData, gatherTemperatureData
+ */
+
 #pragma once
 
 /*

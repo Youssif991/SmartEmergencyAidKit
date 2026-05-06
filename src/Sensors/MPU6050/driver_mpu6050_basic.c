@@ -34,6 +34,16 @@
  * </table>
  */
 
+/**
+ * @file driver_mpu6050_basic.c
+ * @brief LibDriver MPU6050 simplified basic API implementation
+ * @author Shifeng Li (LibDriver)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Simplified high-level API for common MPU6050 operations.
+ *          Makes driver easier to use for typical applications
+ */
+
 #include "../../../include/Sensors/MPU6050/driver_mpu6050_basic.h"
 
 static mpu6050_handle_t gs_handle;        /**< mpu6050 handle */

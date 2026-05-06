@@ -1,3 +1,13 @@
+/**
+ * @file MAX30105.h
+ * @brief MAX30105 optical sensor driver for pulse oximetry
+ * @author Peter Jansen and Nathan Seidle (SparkFun)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Driver for Maxim MAX30105 optical smoke detector / pulse oximeter sensor.
+ *          Handles I2C communication, register operations, and FIFO management
+ */
+
 /*************************************************** 
  This is a library written for the Maxim MAX30105 Optical Smoke Detector
  It should also work with the MAX30102. However, the MAX30102 does not have a Green LED.

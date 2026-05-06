@@ -1,3 +1,13 @@
+/**
+ * @file driver_mpu6050_interface.cpp
+ * @brief Implementation of MPU6050 driver Arduino Wire interface adapter
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details C++ wrapper implementation for Arduino Wire library.
+ *          Platform-specific I2C functions for ESP32-C3
+ */
+
 /*
   driver_mpu6050_interface.cpp
   ----------------------------

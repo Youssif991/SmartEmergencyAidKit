@@ -1,3 +1,13 @@
+/**
+ * @file heartRate.h
+ * @brief Low-level beat detection functions for heart rate calculation
+ * @author Nathan Seidle (SparkFun Electronics)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Provides primitive beat detection algorithm functions: checkForBeat, filtering, DC estimation.
+ *          October 2016
+ */
+
 /*
  Optical Heart Rate Detection (PBA Algorithm)
  By: Nathan Seidle

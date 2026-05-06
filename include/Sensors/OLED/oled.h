@@ -1,3 +1,13 @@
+/**
+ * @file oled.h
+ * @brief SSD1306 OLED display driver (128x32, I2C)
+ * @author Youssef Mohammed, Youssef Hisham (Integration), mtmal and Waveshare (Original)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Minimal Arduino-compatible SSD1306 OLED driver optimized for SmartAidKit.
+ *          0.91" monochrome display with text and graphics functions
+ */
+
 #pragma once
 
 /*

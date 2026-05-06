@@ -1,3 +1,13 @@
+/**
+ * @file Config.h
+ * @brief Global system configuration constants
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Central configuration hub for all I2C settings, sensor parameters, and timing intervals.
+ *          Modify values here to adjust system behavior globally.
+ */
+
 #pragma once
 
 #include <Arduino.h>

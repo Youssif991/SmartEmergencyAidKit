@@ -7,6 +7,16 @@
   Arduino-compatible implementation for SmartAidKit project.
 */
 
+/**
+ * @file oled.cpp
+ * @brief Implementation of SSD1306 OLED display driver
+ * @author Youssef Mohammed, Youssef Hisham (Integration), mtmal & Waveshare (Original)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details SSD1306 driver with font data, initialization sequence, and drawing primitives.
+ *          Supports text and graphics rendering on 128x32 display
+ */
+
 #include "../../../include/Sensors/OLED/oled.h"
 #include "../../Core/Types.h"
 

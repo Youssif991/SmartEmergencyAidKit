@@ -1,3 +1,13 @@
+/**
+ * @file heartbeat.cpp
+ * @brief Implementation of heart rate detection using PBA algorithm
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details Peripheral Beat Amplitude algorithm implementation for heart rate detection.
+ *          Based on SparkFun Example5_HeartRate
+ */
+
 /*
   heartbeat.cpp — Peripheral Beat Amplitude (PBA) heart-rate detection
   Based on SparkFun Example5_HeartRate by Nathan Seidle, Oct 2016.

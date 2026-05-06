@@ -1,4 +1,14 @@
 /**
+ * @file driver_mpu6050.h
+ * @brief LibDriver MPU6050 main driver interface
+ * @author Shifeng Li (LibDriver)
+ * @date 2026-05-06
+ * @version 1.0
+ * @details LibDriver professional MPU6050 driver. Core driver interface and definitions.
+ *          Copyright (c) 2015-present LibDriver All rights reserved
+ */
+
+/**
  * Copyright (c) 2015 - present LibDriver All rights reserved
  * 
  * The MIT License (MIT)

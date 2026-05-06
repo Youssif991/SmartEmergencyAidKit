@@ -1,3 +1,13 @@
+/**
+ * @file imu.cpp
+ * @brief Implementation of MPU6050 IMU sensor wrapper
+ * @author Youssef Mohammed, Youssef Hisham
+ * @date 2026-05-06
+ * @version 1.0
+ * @details IMU wrapper using libdriver/mpu6050 basic API.
+ *          Manages I2C clock, averaging, and throttled updates
+ */
+
 /*
   imu.cpp — MPU6050 wrapper using the libdriver/mpu6050 basic API.
 
