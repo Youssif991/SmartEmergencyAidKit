@@ -10,17 +10,6 @@
 
 #pragma once
 
-/*
-  Sensors.h — Aggregator header for all sensor modules.
-  
-  Include this single file in main.cpp for access to all sensors and utilities.
-  This abstracts away the sensor folder structure and provides a clean interface.
-  
-  New Structure (Option 3):
-    - Core system files in include/Core/
-    - Each sensor is self-contained in include/Sensors/{SensorName}/
-    - Each sensor defines its own dependencies and files
-*/
 
 // Core system
 #include "Core/Config.h"

@@ -10,31 +10,6 @@
 
 #pragma once
 
-/*
-  Oximeter -- SpO2 (blood-oxygen saturation) only.
-  Heart-rate (BPM) detection lives in heartbeat.h / heartbeat.cpp.
-
-  Design
-  ------
-  This class is sensor-agnostic at runtime: samples arrive via process()
-  calls from main.cpp, which owns the FIFO drain loop.
-  The sensor is configured once inside begin() and never touched again.
-
-  State machine
-  -------------
-    NoFinger  -> IR below FINGER_THRESHOLD; waiting for finger
-    Filling   -> collecting the initial BUFFER_LENGTH-sample window
-    Streaming -> rolling window update + live SpO2 output
-
-  Typical use
-  -----------
-    // setup()
-    oxygen.begin(sensor);          // sensor configured here
-
-    // loop() -- called once per FIFO sample drained by main.cpp
-    oxygen.process(irValue, redValue);
-*/
-
 #include "../../Core/Config.h"    // BUFFER_LENGTH, BUFFER_SHIFT, FINGER_THRESHOLD
 #include "MAX30105.h"             // only needed in begin() for sensor init
 #include "spo2_algorithm.h"       // maxim_heart_rate_and_oxygen_saturation()

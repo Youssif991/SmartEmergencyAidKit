@@ -8,14 +8,7 @@
  *          Accesses global sensor objects and packages their data
  */
 
-/*
-  SensorUtils.cpp — Implementation of sensor utility functions.
-  
-  These functions aggregate data from the various sensor modules into
-  structured formats for easier passing between modules and systems.
-*/
-
-#include "SensorUtils.h"
+#include "../include/Core/SensorUtils.h"
 #include "Sensors.h"
 
 // ── External sensor objects (declared in main.cpp) ────────────────────────────

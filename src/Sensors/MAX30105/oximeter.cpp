@@ -8,21 +8,6 @@
  *          Manages state machine and Maxim's reference algorithm
  */
 
-/*
-  oximeter.cpp -- SpO2 (blood-oxygen saturation) computation.
-
-  Sensor configuration
-  --------------------
-  begin() owns all MAX30105 initialisation so main.cpp stays clean.
-  Settings are taken directly from the SparkFun Example8_SPO2 reference sketch.
-
-  Sample flow
-  -----------
-  main.cpp drains the sensor FIFO each loop() tick and calls:
-      oxygen.process(irValue, redValue);
-  for every new sample.  This class never touches the sensor after begin().
-*/
-
 #include "../../../include/Sensors/MAX30105/oximeter.h"
 #include <Arduino.h>
 

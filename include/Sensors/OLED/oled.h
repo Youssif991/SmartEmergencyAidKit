@@ -10,25 +10,6 @@
 
 #pragma once
 
-/*
-  oled.h - Simple SSD1306 0.91" OLED Driver for ESP32
-
-  Adapted from mtmal/OLED-0.91in-Cpp (https://github.com/mtmal/OLED-0.91in-Cpp)
-  Original based on Waveshare SSD1306 OLED Module code
-
-  This is a minimal Arduino-compatible driver optimized for the SmartAidKit project.
-
-  Hardware:
-    - 0.91" SSD1306 OLED Display (128x32 pixels)
-    - I2C address: 0x3C (default)
-
-  Wiring (ESP32):
-    - SDA → GPIO 8  (I2C_SDA_PIN in Config.h)
-    - SCL → GPIO 9  (I2C_SCL_PIN in Config.h)
-    - VCC → 3.3V
-    - GND → GND
-*/
-
 #include <Arduino.h>
 #include <Wire.h>
 #include <cstring>

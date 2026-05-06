@@ -8,16 +8,6 @@
  *          Based on SparkFun Example5_HeartRate
  */
 
-/*
-  heartbeat.cpp — Peripheral Beat Amplitude (PBA) heart-rate detection
-  Based on SparkFun Example5_HeartRate by Nathan Seidle, Oct 2016.
-  https://github.com/sparkfun/MAX30105_Breakout
-
-  This module is intentionally decoupled from the MAX30105 sensor:
-  it receives pre-read IR samples from main.cpp so that the same sensor
-  can simultaneously feed the Oximeter (SpO2) module without conflict.
-*/
-
 #include "../../../include/Sensors/MAX30105/heartbeat.h"
 
 // ── Public ────────────────────────────────────────────────────────────────────

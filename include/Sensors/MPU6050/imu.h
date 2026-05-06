@@ -10,24 +10,6 @@
 
 #pragma once
 
-/*
-  imu.h — MPU6050 accelerometer + gyroscope wrapper.
-
-  Uses the libdriver/mpu6050 basic API under the hood.
-  Follows the same design as the rest of this project (TempSensor, Oximeter,
-  HeartBeat): begin() once in setup(), update() every loop().
-
-  Typical use
-  -----------
-      // setup()
-      if (!imu.begin()) { ... error ... }
-
-      // loop()
-      imu.update();
-      Serial.printf("Ax=%.2f Ay=%.2f Az=%.2f g\n",
-                    imu.accelX(), imu.accelY(), imu.accelZ());
-*/
-
 #include <Arduino.h>
 #include "../../Core/Config.h"   // IMU_INTERVAL_MS
 

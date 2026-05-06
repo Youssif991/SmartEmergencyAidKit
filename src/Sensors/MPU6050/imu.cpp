@@ -8,15 +8,6 @@
  *          Manages I2C clock, averaging, and throttled updates
  */
 
-/*
-  imu.cpp — MPU6050 wrapper using the libdriver/mpu6050 basic API.
-
-  Clock management follows the same convention as temperature.cpp:
-    - update() sets Wire to its required speed before reading
-    - update() restores Wire to 400 kHz after reading so the
-      MAX30105 (which runs at 400 kHz) is never left at the wrong speed.
-*/
-
 #include "../../../include/Sensors/MPU6050/imu.h"
 #include <Wire.h>
 

@@ -8,21 +8,6 @@
  *          Platform-specific I2C functions for ESP32-C3
  */
 
-/*
-  driver_mpu6050_interface.cpp
-  ----------------------------
-  ESP32-C3 / Arduino Wire implementation of the seven platform functions
-  declared in driver_mpu6050_interface.h.
-
-  Wire.begin() is called once in main.cpp before any sensor begin() call,
-  so the IIC init/deinit stubs here are deliberate no-ops.
-
-  Wiring:
-    SDA → GPIO 8  (I2C_SDA_PIN in Config.h)
-    SCL → GPIO 9  (I2C_SCL_PIN in Config.h)
-    AD0 → GND     → I2C address 0x68 (MPU6050_ADDRESS_AD0_LOW)
-*/
-
 #include "../../../include/Sensors/MPU6050/driver_mpu6050_interface.h"
 
 #include <Arduino.h>

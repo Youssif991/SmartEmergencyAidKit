@@ -10,23 +10,6 @@
 
 #pragma once
 
-/*
-  HeartBeat — Peripheral Beat Amplitude (PBA) algorithm
-  Based on SparkFun Example5_HeartRate by Nathan Seidle, Oct 2016
-  https://github.com/sparkfun/MAX30105_Breakout
-
-  This class is intentionally sensor-agnostic.
-  Feed it one IR sample per call to process(); read results with the
-  getter functions below.
-
-  Typical use (in main.cpp loop):
-      sensor.check();
-      while (sensor.available()) {
-          heartbeat.process(sensor.getFIFOIR());
-          sensor.nextSample();
-      }
-*/
-
 #include <Arduino.h>
 #include "heartRate.h"          // checkForBeat()
 
