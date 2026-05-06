@@ -16,7 +16,7 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-#include "Adafruit_MLX90614.h"
+#include "../../../include/Sensors/MLX90614/Adafruit_MLX90614.h"
 
 Adafruit_MLX90614::~Adafruit_MLX90614() {
   if (i2c_dev)

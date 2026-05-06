@@ -13,7 +13,7 @@
     AD0 → GND     → I2C address 0x68 (MPU6050_ADDRESS_AD0_LOW)
 */
 
-#include "driver_mpu6050_interface.h"
+#include "../../../include/Sensors/MPU6050/driver_mpu6050_interface.h"
 
 #include <Arduino.h>
 #include <Wire.h>

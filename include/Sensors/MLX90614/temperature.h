@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Adafruit_MLX90614.h>
+#include "Adafruit_MLX90614.h"
 #include "../../Core/Config.h"
 
 // Wraps the MLX90614 non-contact thermometer.

@@ -34,7 +34,7 @@
  * </table>
  */
 
-#include "driver_mpu6050_basic.h"
+#include "../../../include/Sensors/MPU6050/driver_mpu6050_basic.h"
 
 static mpu6050_handle_t gs_handle;        /**< mpu6050 handle */
 

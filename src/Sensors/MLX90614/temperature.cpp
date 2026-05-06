@@ -1,4 +1,4 @@
-#include "temperature.h"
+#include "../../../include/Sensors/MLX90614/temperature.h"
 
 bool TempSensor::begin()
 {

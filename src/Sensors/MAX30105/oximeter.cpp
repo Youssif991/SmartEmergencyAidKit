@@ -13,7 +13,7 @@
   for every new sample.  This class never touches the sensor after begin().
 */
 
-#include "oximeter.h"
+#include "../../../include/Sensors/MAX30105/oximeter.h"
 #include <Arduino.h>
 
 // ── Public ────────────────────────────────────────────────────────────────────

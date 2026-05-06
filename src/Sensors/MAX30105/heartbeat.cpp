@@ -8,7 +8,7 @@
   can simultaneously feed the Oximeter (SpO2) module without conflict.
 */
 
-#include "heartbeat.h"
+#include "../../../include/Sensors/MAX30105/heartbeat.h"
 
 // ── Public ────────────────────────────────────────────────────────────────────
 

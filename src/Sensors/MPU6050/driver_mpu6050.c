@@ -34,8 +34,8 @@
  * </table>
  */
 
-#include "driver_mpu6050.h"
-#include "driver_mpu6050_code.h"
+#include "../../../include/Sensors/MPU6050/driver_mpu6050.h"
+#include "../../../include/Sensors/MPU6050/driver_mpu6050_code.h"
 #include <math.h>
 #include <stdlib.h>
 

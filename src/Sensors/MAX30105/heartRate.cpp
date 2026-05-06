@@ -55,7 +55,7 @@
 * 
 */
 
-#include "heartRate.h"
+#include "../../../include/Sensors/MAX30105/heartRate.h"
 
 int16_t IR_AC_Max = 20;
 int16_t IR_AC_Min = -20;

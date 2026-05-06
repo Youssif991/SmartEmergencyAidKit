@@ -7,11 +7,11 @@
       MAX30105 (which runs at 400 kHz) is never left at the wrong speed.
 */
 
-#include "imu.h"
+#include "../../../include/Sensors/MPU6050/imu.h"
 #include <Wire.h>
 
 extern "C" {
-#include "driver_mpu6050_basic.h"
+#include "../../../include/Sensors/MPU6050/driver_mpu6050_basic.h"
 }
 
 // ── Public ────────────────────────────────────────────────────────────────────
