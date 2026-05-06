@@ -25,9 +25,9 @@
     oxygen.process(irValue, redValue);
 */
 
-#include "Config.h"         // BUFFER_LENGTH, BUFFER_SHIFT, FINGER_THRESHOLD
-#include "MAX30105.h"       // only needed in begin() for sensor init
-#include "spo2_algorithm.h" // maxim_heart_rate_and_oxygen_saturation()
+#include "../../Core/Config.h"    // BUFFER_LENGTH, BUFFER_SHIFT, FINGER_THRESHOLD
+#include "MAX30105.h"             // only needed in begin() for sensor init
+#include "spo2_algorithm.h"       // maxim_heart_rate_and_oxygen_saturation()
 
 enum class OximeterState
 {

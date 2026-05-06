@@ -22,9 +22,9 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <cstring>
+#include "../../Core/Types.h"
 
-// Forward declaration to avoid circular includes
-struct SensorReadings;
+// Forward declaration removed - now include Types.h directly for SensorReadings
 
 // ── OLED Display Dimensions ────────────────────────────────────────────────────
 constexpr uint8_t OLED_WIDTH = 128;

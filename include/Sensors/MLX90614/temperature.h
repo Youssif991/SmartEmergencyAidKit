@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Adafruit_MLX90614.h>
-#include "Config.h"
+#include "../../Core/Config.h"
 
 // Wraps the MLX90614 non-contact thermometer.
 // Call begin() once in setup(), then update() every loop iteration.

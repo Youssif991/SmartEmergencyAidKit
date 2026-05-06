@@ -3,17 +3,29 @@
 /*
   Sensors.h — Aggregator header for all sensor modules.
   
-  Include this single file in main.cpp instead of including each sensor
-  module individually. This centralizes sensor dependencies and makes it
-  easier to manage the module list as the project grows.
+  Include this single file in main.cpp for access to all sensors and utilities.
+  This abstracts away the sensor folder structure and provides a clean interface.
+  
+  New Structure (Option 3):
+    - Core system files in include/Core/
+    - Each sensor is self-contained in include/Sensors/{SensorName}/
+    - Each sensor defines its own dependencies and files
 */
 
-#include "Config.h"
-#include "Types.h"
-#include "MAX30105.h"
-#include "temperature.h"
-#include "oximeter.h"
-#include "heartbeat.h"
-#include "imu.h"
-#include "oled.h"
-#include "SensorUtils.h"
+// Core system
+#include "Core/Config.h"
+#include "Core/Types.h"
+#include "Core/SensorUtils.h"
+
+// Sensor modules (each self-contained)
+#include "Sensors/MAX30105/MAX30105.h"
+#include "Sensors/MAX30105/oximeter.h"
+#include "Sensors/MAX30105/heartbeat.h"
+
+#include "Sensors/MLX90614/temperature.h"
+#include "Sensors/MLX90614/Adafruit_MLX90614.h"
+
+#include "Sensors/MPU6050/imu.h"
+#include "Sensors/MPU6050/driver_mpu6050.h"
+
+#include "Sensors/OLED/oled.h"

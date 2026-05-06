@@ -19,7 +19,7 @@
 */
 
 #include <Arduino.h>
-#include "Config.h"   // IMU_INTERVAL_MS
+#include "../../Core/Config.h"   // IMU_INTERVAL_MS
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
