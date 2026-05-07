@@ -112,22 +112,24 @@ void loop()
     Serial.println("--");
     break;
   case OximeterState::Filling:
-    Serial.printf("filling (%d/%d)\n", oxygen.fillProgress(), BUFFER_LENGTH);
+    Serial.println("--");
     break;
   case OximeterState::Streaming:
     if (oxygen.spo2Avg() > 50)
       Serial.printf("%d%%\n", oxygen.spo2Avg());
     else
       Serial.println("calculating...");
-
-    // ── Update OLED display (less frequently to save cycles) ────────────────────
-    if (millis() - lastOledMs >= OLED_INTERVAL_MS)
-    {
-      lastOledMs = millis();
-      SensorReadings readings = gatherSensorReadings();
-      display.printSensorDataStruct(readings);
-    }
     break;
+  }
+
+  // ── Update OLED display (always, less frequently to save cycles) ─────────────
+  // Runs regardless of SpO2 state so the display shows "--" when there
+  // is no finger or while the algorithm is still collecting data.
+  if (millis() - lastOledMs >= OLED_INTERVAL_MS)
+  {
+    lastOledMs = millis();
+    SensorReadings readings = gatherSensorReadings();
+    display.printSensorDataStruct(readings);
   }
 
   // IMU output

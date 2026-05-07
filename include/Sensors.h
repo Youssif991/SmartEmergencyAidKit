@@ -22,7 +22,6 @@
 #include "Sensors/MAX30105/heartbeat.h"
 
 #include "Sensors/MLX90614/temperature.h"
-#include "Sensors/MLX90614/Adafruit_MLX90614.h"
 
 #include "Sensors/MPU6050/imu.h"
 #include "Sensors/MPU6050/driver_mpu6050.h"

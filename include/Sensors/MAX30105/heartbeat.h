@@ -1,63 +1,83 @@
 /**
  * @file heartbeat.h
- * @brief Heart rate detection using Peripheral Beat Amplitude (PBA) algorithm
+ * @brief Heart rate detection using FFT (Fast Fourier Transform) algorithm
  * @author Youssef Mohammed, Youssef Hisham
  * @date 2026-05-06
- * @version 1.0
- * @details Implements PBA algorithm for beat detection. Maintains rolling average of recent BPM values.
- *          Based on SparkFun Example5_HeartRate by Nathan Seidle
+ * @version 2.0
+ * @details Collects IR samples into a sliding circular buffer and applies a
+ *          Cooley-Tukey radix-2 FFT to find the dominant frequency in the
+ *          heart-rate band (HR_MIN_BPM - HR_MAX_BPM).  Parabolic interpolation
+ *          refines the peak estimate to sub-bin accuracy.
+ *
+ *          Replaces the earlier PBA beat-detection + rolling-average approach.
+ *          The public API (beatAvg / bpm / fingerPresent / irValue) is unchanged
+ *          so no other files need modification.
  */
 
 #pragma once
 
 #include <Arduino.h>
-#include "heartRate.h"          // checkForBeat()
 
-// Number of recent BPM readings averaged together (4 is good per SparkFun).
-constexpr byte HR_RATE_SIZE = 4;
+// ── FFT Parameters ─────────────────────────────────────────────────────────────
+// HR_FFT_SAMPLES must be a power of 2.
+// At HR_SAMPLE_RATE = 100 Hz → 256 samples = 2.56 s window.
+// Frequency resolution = HR_SAMPLE_RATE / HR_FFT_SAMPLES = 0.39 Hz ≈ 23.4 BPM/bin.
+// Parabolic interpolation refines this to < 5 BPM accuracy in practice.
+constexpr uint16_t HR_FFT_SAMPLES  = 256;
+constexpr float    HR_SAMPLE_RATE  = 100.0f;  // Hz — must match MAX30105_RATE_HZ
+constexpr uint16_t HR_FFT_UPDATE   = 64;      // Recompute every N new samples
+                                               // (= 0.64 s sliding step at 100 Hz)
 
-// IR threshold below which no finger is considered present.
+// ── Detection Range ────────────────────────────────────────────────────────────
+constexpr float HR_MIN_BPM = 40.0f;
+constexpr float HR_MAX_BPM = 200.0f;
+
+// ── Finger Detection Threshold ─────────────────────────────────────────────────
 constexpr long HR_FINGER_THRESHOLD = 50000;
 
 class HeartBeat {
 public:
-    // ── Lifecycle ─────────────────────────────────────────────────────────────
+    // ── Lifecycle ──────────────────────────────────────────────────────────────
 
     // Call once from setup() after Serial and Wire are ready.
     // Sensor hardware is NOT touched here — the caller owns the sensor.
     void begin();
 
     // Feed one IR sample (call for every sample drained from the sensor FIFO).
-    // Internally runs the PBA beat-detection algorithm.
+    // Internally accumulates samples and triggers an FFT when the window is full.
     void process(long irValue);
 
-    // ── Results ───────────────────────────────────────────────────────────────
+    // ── Results ────────────────────────────────────────────────────────────────
 
-    // Rolling average BPM across the last HR_RATE_SIZE beats.
-    // Returns 0 while fewer than HR_RATE_SIZE beats have been detected.
-    int   beatAvg()       const { return _beatAvg;        }
+    // BPM derived from the dominant FFT frequency.
+    // Returns 0 until at least HR_FFT_SAMPLES samples have been collected.
+    int   beatAvg()       const { return _bpmFFT;        }
 
-    // Most recent instantaneous BPM (may be noisy; prefer beatAvg()).
-    float bpm()           const { return _beatsPerMinute; }
+    // Same value as beatAvg(), returned as float for API compatibility.
+    float bpm()           const { return (float)_bpmFFT; }
 
-    // True when IR value indicates a finger is present.
+    // True when the IR signal indicates a finger is present.
     bool  fingerPresent() const { return _fingerPresent;  }
 
-    // Raw IR value from the last process() call (useful for diagnostics).
+    // Raw IR value from the most recent process() call (useful for diagnostics).
     long  irValue()       const { return _irValue;        }
 
 private:
-    // ── PBA state ─────────────────────────────────────────────────────────────
-    byte  _rates[HR_RATE_SIZE] = {};    // circular buffer of recent BPMs
-    byte  _rateSpot            = 0;
-    long  _lastBeat            = 0;     // millis() timestamp of previous beat
-    float _beatsPerMinute      = 0.0f;
-    int   _beatAvg             = 0;
+    // ── Circular sample buffer ────────────────────────────────────────────────
+    float    _circBuf[HR_FFT_SAMPLES] = {};  // ring buffer of raw IR samples
+    uint16_t _circHead  = 0;                 // index of the next write position
+    uint32_t _totalSamp = 0;                 // total samples since begin()/reset()
 
-    // ── Finger tracking ───────────────────────────────────────────────────────
-    bool  _fingerPresent = false;
-    long  _irValue       = 0;
+    // ── FFT working arrays (reused every computation) ─────────────────────────
+    float _vReal[HR_FFT_SAMPLES] = {};  // real part (receives windowed signal)
+    float _vImag[HR_FFT_SAMPLES] = {};  // imaginary part (zeroed before each FFT)
 
-    // Reset all algorithm state (called when finger is removed).
-    void reset();
+    // ── Output ────────────────────────────────────────────────────────────────
+    int  _bpmFFT        = 0;
+    bool _fingerPresent = false;
+    long _irValue       = 0;
+
+    // ── Internal helpers ──────────────────────────────────────────────────────
+    void computeFFT();  // run FFT on current buffer, update _bpmFFT
+    void reset();       // clear all state (finger removal / begin)
 };

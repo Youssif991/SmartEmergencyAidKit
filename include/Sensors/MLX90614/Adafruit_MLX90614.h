@@ -8,6 +8,8 @@
  *          Measures object temperature and ambient temperature via I2C
  */
 
+#pragma once
+
 /***************************************************
   This is a library for the MLX90614 Temp Sensor
 

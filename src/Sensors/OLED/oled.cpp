@@ -18,7 +18,7 @@
  */
 
 #include "../../../include/Sensors/OLED/oled.h"
-#include "../../Core/Types.h"
+#include "../../../include/Core/Types.h"
 
 // ── SSD1306 Initialization Commands ─────────────────────────────────────────
 static const uint8_t ssd1306_init_sequence[] = {
