@@ -2,7 +2,7 @@
 
 Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.
 
-## 📦 Project Structure
+##  Project Structure
 
 This project uses **Doxygen** to automatically generate detailed code documentation from source comments. You can generate HTML docs by running `doxygen Doxyfile` and opening `html/index.html`.
 
