@@ -4,139 +4,79 @@ Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biome
 
 ## 📦 Project Structure
 
-### `include/` — Header Files (Declarations)
+This project uses **Doxygen** to automatically generate detailed code documentation from source comments. You can generate HTML docs by running `doxygen Doxyfile` and opening `html/index.html`.
 
-#### `include/Sensors.h`
-**Entry point for all sensor modules.** Include this single file in your code to access all sensors.
-```cpp
-#include "Sensors.h"  // Brings in ALL sensor definitions
+Below is a visual overview of the project structure.
+
+```text
+📁 SmartAidKit
+├── 📁 include/                 # Header Files (Declarations)
+│   ├── 📄 Sensors.h            # Entry point for all sensor modules
+│   ├── 📁 Core/                # Shared system-wide infrastructure
+│   │   ├── 📄 Config.h         # Global constants, I2C pins, sampling intervals
+│   │   ├── 📄 Types.h          # Shared data structures for sensor data
+│   │   └── 📄 SensorUtils.h    # Helper functions for data aggregation
+│   └── 📁 Sensors/             # Sensor-Specific Headers
+│       ├── 📁 MAX30105/        # Pulse Oximeter & Heart Rate
+│       │   ├── 📄 MAX30105.h   # Sensor driver & I2C communication
+│       │   ├── 📄 heartbeat.h  # FFT-based heart rate algorithm
+│       │   ├── 📄 heartRate.h  # Low-level beat detection
+│       │   ├── 📄 oximeter.h   # SpO2 calculation & state machine
+│       │   └── 📄 spo2_algorithm.h # Maxim's SpO2 math reference
+│       ├── 📁 MLX90614/        # Non-Contact Thermometer
+│       │   ├── 📄 Adafruit_MLX90614.h
+│       │   └── 📄 temperature.h# Wrapper class managing 50kHz I2C clock
+│       ├── 📁 MPU6050/         # 6-Axis IMU (Motion Tracking)
+│       │   ├── 📄 driver_mpu6050.h
+│       │   ├── 📄 driver_mpu6050_basic.h
+│       │   ├── 📄 driver_mpu6050_interface.h
+│       │   ├── 📄 driver_mpu6050_code.h
+│       │   ├── 📄 imu.h        # Sensor wrapper class (throttling & averaging)
+│       │   └── 📄 Property.h
+│       └── 📁 OLED/            # SSD1306 Display Driver
+│           └── 📄 oled.h       # Graphics primitives and formatting
+├── 📁 src/                     # Implementation Files (Source Code)
+│   ├── 📄 main.cpp             # Setup, main loop, and sensor initialization
+│   ├── 📄 SensorUtils.cpp      # Sensor aggregation implementations
+│   └── 📁 Sensors/             # Sensor implementations mirroring include/
+│       ├── 📁 MAX30105/        # MAX30105 (.cpp files)
+│       ├── 📁 MLX90614/        # MLX90614 (.cpp files)
+│       ├── 📁 MPU6050/         # MPU6050 (.c/.cpp files)
+│       └── 📁 OLED/            # OLED (.cpp files)
+├── 📁 lib/                     # Local library dependencies
+├── 📁 test/                    # Unit testing files
+├── 📄 Doxyfile                 # Doxygen configuration file
+├── 📄 platformio.ini           # PlatformIO configuration
+└── 📄 SmartAidKit.code-workspace # VS Code Workspace
 ```
 
-#### `include/Core/` — Core System Infrastructure
-Shared system-wide resources and utilities.
+###  File & Folder Details
 
-- **`Config.h`**
-  - Central configuration hub with all global constants
-  - I2C pins: SDA=GPIO8, SCL=GPIO9
-  - Sensor settings: LED brightness, sampling rates, buffer sizes
-  - Timing intervals: Temperature (2s), Print (1s), OLED (500ms), IMU (20ms)
-  - Update here to change sensor behavior globally
+####  Core System (`Core/`)
+- **`Config.h`**: Central configuration hub with all global constants. Update here to change sensor behavior globally (e.g. I2C pins, sensor settings, timing intervals).
+- **`Types.h`**: Shared data structures (`SensorReadings`, `IMUData`, `BiometricData`) for passing sensor data between modules.
+- **`SensorUtils.h` / `.cpp`**: Helper functions (`gatherSensorReadings()`, `gatherIMUData()`) for aggregating data from multiple sensors.
 
-- **`Types.h`**
-  - Shared data structures for passing sensor data between modules
-  - `SensorReadings`: Complete snapshot (all sensor data at once)
-  - `IMUData`: Motion data only (accelerometer + gyroscope)
-  - `BiometricData`: Heart rate + blood oxygen
-  - `TemperatureData`: Temperature readings only
+####  Pulse Oximeter & Heart Rate (`Sensors/MAX30105/`)
+- **`MAX30105`**: Sensor driver for handling I2C communication and register operations.
+- **`oximeter`**: SpO2 calculation with a state machine (NoFinger → Filling → Streaming).
+- **`heartbeat`**: Heart rate detection using an advanced FFT (Fast Fourier Transform) algorithm with IIR filtering, SNR gating, and EMA smoothing.
+- **`heartRate`**: Low-level beat detection algorithm.
+- **`spo2_algorithm`**: SpO2 calculation math (Maxim's reference algorithm).
 
-- **`SensorUtils.h`**
-  - Helper functions for aggregating sensor data
-  - `gatherSensorReadings()`: Get all sensor data at once
-  - `gatherIMUData()`: Get motion data only
-  - `gatherBiometricData()`: Get heart rate + SpO2 only
-  - `gatherTemperatureData()`: Get temperature only
+####  Non-Contact Thermometer (`Sensors/MLX90614/`)
+- **`temperature`**: Wrapper class handling proper I2C clock switching (requires 50kHz, unlike other 400kHz sensors).
 
-#### `include/Sensors/` — Sensor-Specific Headers
-Each sensor is completely self-contained in its own folder.
+####  6-Axis IMU (`Sensors/MPU6050/`)
+- **`imu`**: Wrapper class providing motion and orientation tracking with built-in averaging and throttling, utilizing the `driver_mpu6050` implementation.
 
-##### `MAX30105/` — Pulse Oximeter & Heart Rate
-Optical sensors for measuring blood oxygen saturation (SpO2) and heart rate.
+#### Display Driver (`Sensors/OLED/`)
+- **`oled`**: SSD1306 display driver for formatting and printing data (`printText()`, `printSensorDataStruct()`).
 
-- **`MAX30105.h`**: Sensor driver (handles I2C communication)
-- **`oximeter.h`**: SpO2 calculation with state machine (NoFinger → Filling → Streaming)
-- **`heartbeat.h`**: Heart rate detection using Peripheral Beat Amplitude (PBA) algorithm
-- **`heartRate.h`**: Low-level beat detection functions
-- **`spo2_algorithm.h`**: SpO2 calculation algorithm
-
-##### `MLX90614/` — Non-Contact Thermometer
-Infrared temperature measurement without physical contact.
-
-- **`Adafruit_MLX90614.h`**: Adafruit library for sensor hardware
-- **`temperature.h`**: Wrapper class with I2C clock management (requires 50kHz)
-
-##### `MPU6050/` — 6-Axis IMU (Accelerometer + Gyroscope)
-Motion and orientation tracking.
-
-- **`driver_mpu6050.h`**: Main driver interface
-- **`driver_mpu6050_basic.h`**: Simplified "basic" API
-- **`driver_mpu6050_interface.h`**: C++ wrapper for Arduino Wire library
-- **`driver_mpu6050_code.h`**: Additional algorithm code
-- **`imu.h`**: Sensor class with averaging and throttling
-- **`Property.h`**: Driver properties and enums
-
-##### `OLED/` — Display Driver
-SSD1306 OLED display (128x32 pixels) for showing sensor data.
-
-- **`oled.h`**: SSD1306 driver with graphics functions
-  - `printText()`: Display ASCII text
-  - `drawHLine()`, `drawVLine()`: Draw lines
-  - `printSensorData()`: Display formatted sensor values
-  - `printSensorDataStruct()`: Display from SensorReadings struct
-
----
-
-### `src/` — Implementation Files (Code)
-
-#### `src/main.cpp`
-**Program entry point.** Initializes all sensors and runs the main loop.
-- Sets up Serial, I2C, and all sensor modules in `setup()`
-- Reads sensors, processes data, and updates display in `loop()`
-- Manages I2C clock speeds for different sensors (50kHz for temperature, 400kHz default)
-- Uses single `#include "Sensors.h"` for all sensor access
-
-#### `src/SensorUtils.cpp`
-**Implementations of sensor aggregation functions.**
-- `gatherSensorReadings()`: Collects data from all sensors into one struct
-- `gatherIMUData()`, `gatherBiometricData()`, `gatherTemperatureData()`: Specialized gather functions
-- Accesses global sensor objects (`temp`, `oxygen`, `heartbeat`, `imu`, `display`)
-
-#### `src/Sensors/` — Sensor Implementations
-Each sensor has its implementation in its own folder, mirroring `include/Sensors/`.
-
-##### `MAX30105/` — Pulse Oximeter Implementation
-- **`MAX30105.cpp`**: I2C communication and register operations
-- **`oximeter.cpp`**: SpO2 state machine and rolling window algorithm
-- **`heartbeat.cpp`**: Heart rate detection and beat counting
-- **`heartRate.cpp`**: Low-level beat detection algorithm (checkForBeat, filtering)
-- **`spo2_algorithm.cpp`**: SpO2 calculation math (Maxim's reference algorithm)
-
-##### `MLX90614/` — Temperature Sensor Implementation
-- **`Adafruit_MLX90614.cpp`**: Library implementation
-- **`temperature.cpp`**: Wrapper class (handles I2C clock switching)
-
-##### `MPU6050/` — IMU Driver Implementation
-- **`driver_mpu6050.c`**: Core driver implementation
-- **`driver_mpu6050_basic.c`**: Simplified basic API
-- **`driver_mpu6050_interface.cpp`**: Arduino Wire adapter (C++ wrapper for C driver)
-- **`imu.cpp`**: Sensor class with averaging and throttling
-
-##### `OLED/` — Display Implementation
-- **`oled.cpp`**: Font data, SSD1306 initialization, drawing primitives
-
----
-
-### Configuration Files
-
-#### `platformio.ini`
-PlatformIO build configuration for ESP32-C3.
-- Specifies board, framework, and serial monitor settings
-- PlatformIO automatically compiles all `.cpp` and `.c` files in `src/`
-
-#### `SmartAidKit.code-workspace`
-VS Code workspace configuration for the project.
-
----
-
-### Library Folders
-
-#### `include/README`
-Placeholder for Arduino libraries that may be installed.
-
-#### `lib/README`
-Placeholder for local library dependencies.
-
-#### `test/README`
-Placeholder for unit test files.
+####  Configuration Files
+- **`Doxyfile`**: Configuration for generating Doxygen documentation.
+- **`platformio.ini`**: PlatformIO build configuration for ESP32-C3.
+- **`SmartAidKit.code-workspace`**: VS Code workspace settings.
 
 ---
 
@@ -160,7 +100,7 @@ Placeholder for unit test files.
 
 ---
 
-## 🚀 How to Use
+##  How to Use
 
 ### 1. Include All Sensors
 ```cpp
@@ -213,7 +153,7 @@ void loop() {
 
 ---
 
-## ⚙️ Configuration Guide
+## Configuration Guide
 
 ### Change Global Constants
 Edit `include/Core/Config.h`:
@@ -253,14 +193,14 @@ float ax = imu.accelX();
 
 ---
 
-## 📊 Sensor Specifications
+##  Sensor Specifications
 
 ### MAX30105 (Pulse Oximeter)
 - **Measurement Range**: SpO2 (50-100%), Heart Rate (40-200 bpm)
 - **Sampling Rate**: 100 Hz
 - **LED Brightness**: 60mA max
 - **Output**: IR + Red LEDs for optical sensing
-- **Algorithm**: Rolling 100-sample window with SpO2 lookup table
+- **Algorithm**: Rolling 100-sample window for SpO2, and a 512-sample sliding window FFT with parabolic interpolation and median filtering for Heart Rate
 
 ### MLX90614 (Thermometer)
 - **Measurement Range**: -40°C to 125°C (object)
@@ -284,7 +224,7 @@ float ax = imu.accelX();
 
 ---
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 ### Sensor Not Found
 1. Check wiring (SDA, SCL, GND, 3.3V)
@@ -304,7 +244,7 @@ float ax = imu.accelX();
 
 ---
 
-## 📝 Code Organization
+##  Code Organization
 
 **Philosophy**: Each sensor is self-contained and independently testable.
 
@@ -316,7 +256,7 @@ float ax = imu.accelX();
 
 ---
 
-## 🚀 Building & Uploading
+##  Building & Uploading
 
 ### Build
 ```bash
@@ -335,7 +275,7 @@ pio device monitor
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 - **Arduino Framework**: Core API and Wire library
 - **Adafruit MLX90614**: Thermometer library
@@ -347,7 +287,7 @@ All dependencies are included in the project.
 
 ---
 
-## 📄 License
+##  License
 
 See individual file headers for licensing information. Most code is:
 - **SparkFun**: BSD License (MAX30105, heartbeat, heart rate)
@@ -358,7 +298,7 @@ See individual file headers for licensing information. Most code is:
 
 ---
 
-## 🎯 Quick Reference
+##  Quick Reference
 
 ### Include Patterns
 ```cpp
@@ -394,7 +334,7 @@ display.update(...);              // Visual feedback (throttled)
 
 ---
 
-## 📞 Support
+##  Support
 
 For issues or questions:
 1. Check Serial output messages (all modules print status)
