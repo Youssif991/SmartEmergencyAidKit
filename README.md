@@ -25,6 +25,8 @@ graph TD
 ```
 
 ### 📁 File Structure
+
+```text
 📁 SmartAidKit
 ├── 📁 include/                 # Header Files (Declarations)
 │   ├── 📄 Sensors.h            # Entry point for all sensor modules
