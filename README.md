@@ -1,22 +1,30 @@
 # SmartAidKit - Embedded Health Monitoring System
 
-/**
- * @mainpage SmartAidKit Documentation
- * 
- * @section overview_sec Overview
- * Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.
- */
-
-
 Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.
 
 ##  Project Structure
 
 This project uses **Doxygen** to automatically generate detailed code documentation from source comments. You can generate HTML docs by running `doxygen Doxyfile` and opening `html/index.html`.
 
-Below is a visual overview of the project structure.
+Below is a visual overview of the project architecture and file structure.
 
-```text
+### 🏗️ Architecture
+```mermaid
+graph TD
+    Main[main.cpp] --> |Includes| SensorsH[Sensors.h]
+    SensorsH --> |Aggregates| MAX[MAX30105 Group]
+    SensorsH --> |Aggregates| MLX[MLX90614 Group]
+    SensorsH --> |Aggregates| MPU[MPU6050 Group]
+    SensorsH --> |Aggregates| OLED[OLED Group]
+    
+    MAX --> Oximeter[Oximeter Class]
+    MAX --> HeartBeat[HeartBeat Class]
+    MLX --> TempSensor[TempSensor Class]
+    MPU --> IMU[IMU Class]
+    OLED --> OLEDClass[OLED Class]
+```
+
+### 📁 File Structure
 📁 SmartAidKit
 ├── 📁 include/                 # Header Files (Declarations)
 │   ├── 📄 Sensors.h            # Entry point for all sensor modules
@@ -261,6 +269,40 @@ float ax = imu.accelX();
 - **Single Entry Point** (`include/Sensors.h`): Simplifies main.cpp
 - **No Circular Dependencies**: Clean dependency graph
 - **I2C Bus Managed**: Proper clock switching between sensors
+
+---
+
+## 🛠️ API Reference
+
+### 💓 MAX30105 Pulse Oximeter & Heart Rate
+- **`HeartBeat`**: Detects heart rate using FFT.
+    - `begin()`: Initialize algorithm.
+    - `process(long irValue)`: Feed IR samples.
+    - `beatAvg()`: Get smoothed BPM.
+- **`Oximeter`**: Manages SpO2 state machine.
+    - `begin(MAX30105&)`: Initialize hardware.
+    - `process(uint32_t ir, uint32_t red)`: Update samples.
+    - `spo2Avg()`: Get average SpO2 percentage.
+
+### 🌡️ MLX90614 Temperature
+- **`TempSensor`**: Non-contact IR thermometer.
+    - `begin()`: Configures I2C to 50kHz.
+    - `update()`: Throttled data collection.
+    - `objectTemp()`: Get target temperature (°C).
+
+### 🏃 MPU6050 Motion Tracking
+- **`IMU`**: 6-axis motion tracking.
+    - `begin()`: Initialize sensor.
+    - `update()`: Throttled sampling with averaging.
+    - `accelX/Y/Z()`: Get acceleration (g).
+    - `gyroX/Y/Z()`: Get rotation (dps).
+
+### 📺 SSD1306 OLED Display
+- **`OLED`**: Visual interface.
+    - `begin()`: Hardware init.
+    - `clear()`: Wipe screen buffer.
+    - `printText(text, x, y)`: Render string.
+    - `display()`: Push buffer to hardware.
 
 ---
 

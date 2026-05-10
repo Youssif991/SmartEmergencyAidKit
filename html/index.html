@@ -120,9 +120,268 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('index.html',''
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
-<p>/**</p><ul>
-<li></li>
-</ul>
+<p>Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Project Structure</h1>
+<p>This project uses <b>Doxygen</b> to automatically generate detailed code documentation from source comments. You can generate HTML docs by running <span class="tt">doxygen Doxyfile</span> and opening <span class="tt">html/index.html</span>.</p>
+<p>Below is a visual overview of the project architecture and file structure.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+🏗️ Architecture</h2>
+<div class="mermaidgraph">
+<pre class="mermaid">
+graph TD
+    Main[main.cpp] --&gt; |Includes| SensorsH[Sensors.h]
+    SensorsH --&gt; |Aggregates| MAX[MAX30105 Group]
+    SensorsH --&gt; |Aggregates| MLX[MLX90614 Group]
+    SensorsH --&gt; |Aggregates| MPU[MPU6050 Group]
+    SensorsH --&gt; |Aggregates| OLED[OLED Group]
+
+    MAX --&gt; Oximeter[Oximeter Class]
+    MAX --&gt; HeartBeat[HeartBeat Class]
+    MLX --&gt; TempSensor[TempSensor Class]
+    MPU --&gt; IMU[IMU Class]
+    OLED --&gt; OLEDClass[OLED Class]</pre>
+</div>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+📁 File Structure</h2>
+<p>📁 SmartAidKit ├── 📁 include/ # Header Files (Declarations) │ ├── 📄 <a class="el" href="_sensors_8h.html" title="Central aggregator header for all sensor modules.">Sensors.h</a> # Entry point for all sensor modules │ ├── 📁 Core/ # Shared system-wide infrastructure │ │ ├── 📄 <a class="el" href="_config_8h.html" title="Global system configuration constants.">Config.h</a> # Global constants, I2C pins, sampling intervals │ │ ├── 📄 <a class="el" href="_types_8h.html" title="Shared data structures for sensor readings and system state.">Types.h</a> # Shared data structures for sensor data │ │ └── 📄 <a class="el" href="_sensor_utils_8h.html" title="Helper functions for aggregating sensor data.">SensorUtils.h</a> # Helper functions for data aggregation │ └── 📁 Sensors/ # Sensor-Specific Headers │ ├── 📁 MAX30105/ # Pulse <a class="el" href="class_oximeter.html">Oximeter</a> &amp; Heart Rate │ │ ├── 📄 <a class="el" href="_m_a_x30105_8h.html" title="MAX30105 optical sensor driver for pulse oximetry.">MAX30105.h</a> # Sensor driver &amp; I2C communication │ │ ├── 📄 <a class="el" href="heartbeat_8h.html" title="Heart rate detection using FFT (Fast Fourier Transform) algorithm.">heartbeat.h</a> # FFT-based heart rate algorithm │ │ ├── 📄 <a class="el" href="heart_rate_8h.html" title="Low-level beat detection functions for heart rate calculation.">heartRate.h</a> # Low-level beat detection │ │ ├── 📄 <a class="el" href="oximeter_8h.html" title="SpO2 (blood-oxygen saturation) calculation and state management.">oximeter.h</a> # SpO2 calculation &amp; state machine │ │ └── 📄 <a class="el" href="spo2__algorithm_8h.html" title="SpO2 calculation algorithm declarations.">spo2_algorithm.h</a> # Maxim's SpO2 math reference │ ├── 📁 MLX90614/ # Non-Contact Thermometer │ │ ├── 📄 <a class="el" href="_adafruit___m_l_x90614_8h.html" title="Adafruit MLX90614 temperature sensor library.">Adafruit_MLX90614.h</a> │ │ └── 📄 <a class="el" href="temperature_8h.html" title="Non-contact infrared thermometer wrapper for MLX90614.">temperature.h</a># Wrapper class managing 50kHz I2C clock │ ├── 📁 MPU6050/ # 6-Axis <a class="el" href="class_i_m_u.html">IMU</a> (Motion Tracking) │ │ ├── 📄 <a class="el" href="driver__mpu6050_8h.html" title="LibDriver MPU6050 main driver interface.">driver_mpu6050.h</a> │ │ ├── 📄 <a class="el" href="driver__mpu6050__basic_8h.html" title="LibDriver MPU6050 simplified basic API.">driver_mpu6050_basic.h</a> │ │ ├── 📄 <a class="el" href="driver__mpu6050__interface_8h_source.html">driver_mpu6050_interface.h</a> │ │ ├── 📄 <a class="el" href="driver__mpu6050__code_8h.html" title="LibDriver MPU6050 algorithm code and definitions.">driver_mpu6050_code.h</a> │ │ ├── 📄 <a class="el" href="imu_8h.html" title="MPU6050 6-axis IMU (Accelerometer + Gyroscope) wrapper.">imu.h</a> # Sensor wrapper class (throttling &amp; averaging) │ │ └── 📄 <a class="el" href="_property_8h.html" title="C++ Property template for getter/setter access patterns.">Property.h</a> │ └── 📁 OLED/ # SSD1306 Display Driver │ └── 📄 <a class="el" href="oled_8h.html" title="SSD1306 OLED display driver (128x32, I2C).">oled.h</a> # Graphics primitives and formatting ├── 📁 src/ # Implementation Files (Source Code) │ ├── 📄 <a class="el" href="main_8cpp.html" title="Program entry point and main application loop.">main.cpp</a> # Setup, main loop, and sensor initialization │ ├── 📄 <a class="el" href="_sensor_utils_8cpp.html" title="Implementation of sensor data aggregation utility functions.">SensorUtils.cpp</a> # Sensor aggregation implementations │ └── 📁 Sensors/ # Sensor implementations mirroring include/ │ ├── 📁 MAX30105/ # <a class="el" href="class_m_a_x30105.html">MAX30105</a> (.cpp files) │ ├── 📁 MLX90614/ # MLX90614 (.cpp files) │ ├── 📁 MPU6050/ # MPU6050 (.c/.cpp files) │ └── 📁 OLED/ # <a class="el" href="class_o_l_e_d.html">OLED</a> (.cpp files) ├── 📁 lib/ # Local library dependencies ├── 📁 test/ # Unit testing files ├── 📄 Doxyfile # Doxygen configuration file ├── 📄 platformio.ini # PlatformIO configuration └── 📄 SmartAidKit.code-workspace # VS Code Workspace </p><div class="fragment"><div class="line">###  File &amp; Folder Details</div>
+<div class="line"> </div>
+<div class="line">####  Core System (`Core/`)</div>
+<div class="line">- **`Config.h`**: Central configuration hub with all global constants. Update here to change sensor behavior globally (e.g. I2C pins, sensor settings, timing intervals).</div>
+<div class="line">- **`Types.h`**: Shared data structures (`SensorReadings`, `IMUData`, `BiometricData`) for passing sensor data between modules.</div>
+<div class="line">- **`SensorUtils.h` / `.cpp`**: Helper functions (`gatherSensorReadings()`, `gatherIMUData()`) for aggregating data from multiple sensors.</div>
+<div class="line"> </div>
+<div class="line">####  Pulse Oximeter &amp; Heart Rate (`Sensors/MAX30105/`)</div>
+<div class="line">- **@ref MAX30105**: Sensor driver for handling I2C communication and register operations.</div>
+<div class="line">- **@ref Oximeter**: SpO2 calculation with a state machine (NoFinger → Filling → Streaming).</div>
+<div class="line">- **@ref HeartBeat**: Heart rate detection using an advanced FFT (Fast Fourier Transform) algorithm.</div>
+<div class="line">- **`heartRate`**: Low-level beat detection algorithm.</div>
+<div class="line">- **`spo2_algorithm`**: SpO2 calculation math (Maxim&#39;s reference algorithm).</div>
+<div class="line"> </div>
+<div class="line">####  Non-Contact Thermometer (`Sensors/MLX90614/`)</div>
+<div class="line">- **@ref TempSensor**: Wrapper class handling proper I2C clock switching (requires 50kHz, unlike other 400kHz sensors).</div>
+<div class="line"> </div>
+<div class="line">####  6-Axis IMU (`Sensors/MPU6050/`)</div>
+<div class="line">- **@ref IMU**: Wrapper class providing motion and orientation tracking with built-in averaging and throttling.</div>
+<div class="line"> </div>
+<div class="line">#### Display Driver (`Sensors/OLED/`)</div>
+<div class="line">- **@ref OLED**: SSD1306 display driver for formatting and printing data (`printText()`, `printSensorDataStruct()`).</div>
+<div class="line"> </div>
+<div class="line">####  Configuration Files</div>
+<div class="line">- **`Doxyfile`**: Configuration for generating Doxygen documentation.</div>
+<div class="line">- **`platformio.ini`**: PlatformIO build configuration for ESP32-C3.</div>
+<div class="line">- **`SmartAidKit.code-workspace`**: VS Code workspace settings.</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 🔌 Hardware Connections (ESP32-C3)</div>
+<div class="line"> </div>
+<div class="line">| Component | Function | GPIO Pin |</div>
+<div class="line">|-----------|----------|----------|</div>
+<div class="line">| SDA (I2C) | Data line | GPIO 8 |</div>
+<div class="line">| SCL (I2C) | Clock line | GPIO 9 |</div>
+<div class="line">| GND | Ground | GND |</div>
+<div class="line">| 3.3V | Power | 3.3V |</div>
+<div class="line"> </div>
+<div class="line">### Sensors on I2C Bus</div>
+<div class="line"> </div>
+<div class="line">| Sensor | I2C Address | Requires |</div>
+<div class="line">|--------|-------------|----------|</div>
+<div class="line">| MAX30105 (Oximeter) | 0x57 | 400kHz |</div>
+<div class="line">| MLX90614 (Thermometer) | 0x5A | 50kHz |</div>
+<div class="line">| MPU6050 (IMU) | 0x68 | 400kHz |</div>
+<div class="line">| SSD1306 (OLED Display) | 0x3C | 400kHz |</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  How to Use</div>
+<div class="line"> </div>
+<div class="line">### 1. Include All Sensors</div>
+</div><!-- fragment --><p> cpp #include "Sensors.h" // Single include point </p><div class="fragment"><div class="line">### 2. Declare Global Instances</div>
+</div><!-- fragment --><p> cpp <a class="el" href="class_m_a_x30105.html">MAX30105</a> sensor; <a class="el" href="class_temp_sensor.html">TempSensor</a> temp; <a class="el" href="class_oximeter.html">Oximeter</a> oxygen; <a class="el" href="class_heart_beat.html">HeartBeat</a> heartbeat; <a class="el" href="class_i_m_u.html">IMU</a> imu; <a class="el" href="class_o_l_e_d.html">OLED</a> display; </p><div class="fragment"><div class="line">### 3. Initialize in Setup</div>
+</div><!-- fragment --><p> cpp void setup() { Serial.begin(115200); Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN);</p>
+<p>imu.begin(); oxygen.begin(sensor); temp.begin(); display.begin(); } </p><div class="fragment"><div class="line">### 4. Update in Loop</div>
+</div><!-- fragment --><p> cpp void loop() { // Read sensors imu.update(); temp.update();</p>
+<p>// Drain <a class="el" href="class_m_a_x30105.html">MAX30105</a> FIFO sensor.check(); while (sensor.available()) { oxygen.process(sensor.getFIFOIR(), sensor.getFIFORed()); heartbeat.process(sensor.getFIFOIR()); sensor.nextSample(); }</p>
+<p>// Display data <a class="el" href="struct_sensor_readings.html">SensorReadings</a> readings = gatherSensorReadings(); display.printSensorDataStruct(readings); } </p><div class="fragment"><div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## Configuration Guide</div>
+<div class="line"> </div>
+<div class="line">### Change Global Constants</div>
+<div class="line">Edit `include/Core/Config.h`:</div>
+</div><!-- fragment --><p> cpp // I2C Pins constexpr uint8_t I2C_SDA_PIN = 8; constexpr uint8_t I2C_SCL_PIN = 9;</p>
+<p>// Sampling Intervals constexpr uint32_t TEMP_INTERVAL_MS = 2000; // Temperature read every 2 seconds constexpr uint32_t IMU_INTERVAL_MS = 20; // <a class="el" href="class_i_m_u.html">IMU</a> read every 20ms (50Hz)</p>
+<p>// Sensor Settings constexpr byte MAX30105_LED_BRIGHTNESS = 60; // 0-255 (brightness) constexpr int MAX30105_RATE_HZ = 100; // 100 samples/second </p><div class="fragment"><div class="line">### Access Sensor Data</div>
+</div><!-- fragment --><p> cpp // Option 1: Get all data at once <a class="el" href="struct_sensor_readings.html">SensorReadings</a> all = gatherSensorReadings(); int hr = all.heartRate; int spo2 = all.spo2; float temp = all.objectTemp;</p>
+<p>// Option 2: Get specific data types <a class="el" href="struct_i_m_u_data.html">IMUData</a> motion = gatherIMUData(); float ax = motion.accelX; float gx = motion.gyroX;</p>
+<p>// Option 3: Access sensors directly int beatAvg = heartbeat.beatAvg(); float objectTemp = temp.objectTemp(); float ax = imu.accelX(); </p><div class="fragment"><div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  Sensor Specifications</div>
+<div class="line"> </div>
+<div class="line">### MAX30105 (Pulse Oximeter)</div>
+<div class="line">- **Measurement Range**: SpO2 (50-100%), Heart Rate (40-200 bpm)</div>
+<div class="line">- **Sampling Rate**: 100 Hz</div>
+<div class="line">- **LED Brightness**: 60mA max</div>
+<div class="line">- **Output**: IR + Red LEDs for optical sensing</div>
+<div class="line">- **Algorithm**: Rolling 100-sample window for SpO2, and a 512-sample sliding window FFT with parabolic interpolation and median filtering for Heart Rate</div>
+<div class="line"> </div>
+<div class="line">### MLX90614 (Thermometer)</div>
+<div class="line">- **Measurement Range**: -40°C to 125°C (object)</div>
+<div class="line">- **Accuracy**: ±0.5°C</div>
+<div class="line">- **I2C Speed**: 50kHz (lower than other sensors)</div>
+<div class="line">- **Output**: Object temperature + ambient temperature</div>
+<div class="line">- **Update Rate**: 2 seconds (throttled in software)</div>
+<div class="line"> </div>
+<div class="line">### MPU6050 (IMU)</div>
+<div class="line">- **Accelerometer Range**: ±2g to ±16g</div>
+<div class="line">- **Gyroscope Range**: ±250 to ±2000 dps</div>
+<div class="line">- **Sampling**: 50Hz (20ms interval)</div>
+<div class="line">- **Averaging**: 4 samples per output</div>
+<div class="line">- **Output**: Ax, Ay, Az (g), Gx, Gy, Gz (dps)</div>
+<div class="line"> </div>
+<div class="line">### SSD1306 (OLED)</div>
+<div class="line">- **Resolution**: 128×32 pixels</div>
+<div class="line">- **Color**: Monochrome (white on black)</div>
+<div class="line">- **I2C Address**: 0x3C</div>
+<div class="line">- **Update Rate**: 500ms (throttled)</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  Troubleshooting</div>
+<div class="line"> </div>
+<div class="line">### Sensor Not Found</div>
+<div class="line">1. Check wiring (SDA, SCL, GND, 3.3V)</div>
+<div class="line">2. Verify I2C addresses in datasheet</div>
+<div class="line">3. Check Serial output for initialization messages</div>
+<div class="line">4. Confirm I2C clock speeds (50kHz for temp, 400kHz for others)</div>
+<div class="line"> </div>
+<div class="line">### High Heart Rate / SpO2 Values</div>
+<div class="line">- Check finger placement on MAX30105 sensor</div>
+<div class="line">- Ensure good optical contact (no air gaps)</div>
+<div class="line">- Wait for buffer to fill (first 4 seconds)</div>
+<div class="line"> </div>
+<div class="line">### OLED Display Blank</div>
+<div class="line">- Check I2C address (0x3C default)</div>
+<div class="line">- Verify power and ground connections</div>
+<div class="line">- Check contrast setting in initialization</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  Code Organization</div>
+<div class="line"> </div>
+<div class="line">**Philosophy**: Each sensor is self-contained and independently testable.</div>
+<div class="line"> </div>
+<div class="line">- **Core System** (`include/Core/`): Shared types, config, utilities</div>
+<div class="line">- **Sensor Modules** (`include/Sensors/{name}/`): All code for one sensor</div>
+<div class="line">- **Single Entry Point** (`include/Sensors.h`): Simplifies main.cpp</div>
+<div class="line">- **No Circular Dependencies**: Clean dependency graph</div>
+<div class="line">- **I2C Bus Managed**: Proper clock switching between sensors</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 🛠️ API Reference</div>
+<div class="line"> </div>
+<div class="line">### 💓 MAX30105 Pulse Oximeter &amp; Heart Rate</div>
+<div class="line">- **`HeartBeat`**: Detects heart rate using FFT.</div>
+<div class="line">    - `begin()`: Initialize algorithm.</div>
+<div class="line">    - `process(long irValue)`: Feed IR samples.</div>
+<div class="line">    - `beatAvg()`: Get smoothed BPM.</div>
+<div class="line">- **`Oximeter`**: Manages SpO2 state machine.</div>
+<div class="line">    - `begin(MAX30105&amp;)`: Initialize hardware.</div>
+<div class="line">    - `process(uint32_t ir, uint32_t red)`: Update samples.</div>
+<div class="line">    - `spo2Avg()`: Get average SpO2 percentage.</div>
+<div class="line"> </div>
+<div class="line">### 🌡️ MLX90614 Temperature</div>
+<div class="line">- **`TempSensor`**: Non-contact IR thermometer.</div>
+<div class="line">    - `begin()`: Configures I2C to 50kHz.</div>
+<div class="line">    - `update()`: Throttled data collection.</div>
+<div class="line">    - `objectTemp()`: Get target temperature (°C).</div>
+<div class="line"> </div>
+<div class="line">### 🏃 MPU6050 Motion Tracking</div>
+<div class="line">- **`IMU`**: 6-axis motion tracking.</div>
+<div class="line">    - `begin()`: Initialize sensor.</div>
+<div class="line">    - `update()`: Throttled sampling with averaging.</div>
+<div class="line">    - `accelX/Y/Z()`: Get acceleration (g).</div>
+<div class="line">    - `gyroX/Y/Z()`: Get rotation (dps).</div>
+<div class="line"> </div>
+<div class="line">### 📺 SSD1306 OLED Display</div>
+<div class="line">- **`OLED`**: Visual interface.</div>
+<div class="line">    - `begin()`: Hardware init.</div>
+<div class="line">    - `clear()`: Wipe screen buffer.</div>
+<div class="line">    - `printText(text, x, y)`: Render string.</div>
+<div class="line">    - `display()`: Push buffer to hardware.</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  Building &amp; Uploading</div>
+<div class="line"> </div>
+<div class="line">### Build</div>
+</div><!-- fragment --><p> bash pio run </p><div class="fragment"><div class="line">### Build &amp; Upload to Board</div>
+</div><!-- fragment --><p> bash pio run &ndash;target upload </p><div class="fragment"><div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 📖 Documentation</div>
+<div class="line"> </div>
+<div class="line">Detailed API documentation is generated using **Doxygen**.</div>
+<div class="line"> </div>
+<div class="line">### Generating Documentation</div>
+<div class="line"> </div>
+<div class="line">To generate the HTML documentation locally:</div>
+</div><!-- fragment --><p> bash doxygen Doxyfile </p><div class="fragment"><div class="line">After generation, open `html/index.html` in your browser.</div>
+<div class="line"> </div>
+<div class="line">### Documentation Features</div>
+<div class="line">- **Class Hierarchy**: Visual representation of sensor classes.</div>
+<div class="line">- **Module Grouping**: Sensors are grouped by manufacturer and function.</div>
+<div class="line">- **Call Graphs**: Automated visualization of function dependencies.</div>
+<div class="line">- **Search**: Real-time search for API members.</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  Serial Monitor</div>
+</div><!-- fragment --><p> bash pio device monitor </p><div class="fragment"><div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  Dependencies</div>
+<div class="line"> </div>
+<div class="line">- **Arduino Framework**: Core API and Wire library</div>
+<div class="line">- **Adafruit MLX90614**: Thermometer library</div>
+<div class="line">- **MAX30105**: SparkFun reference driver</div>
+<div class="line">- **MPU6050 LibDriver**: Professional multi-platform driver</div>
+<div class="line">- **SSD1306**: Display driver</div>
+<div class="line"> </div>
+<div class="line">All dependencies are included in the project.</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  License</div>
+<div class="line"> </div>
+<div class="line">See individual file headers for licensing information. Most code is:</div>
+<div class="line">- **SparkFun**: BSD License (MAX30105, heartbeat, heart rate)</div>
+<div class="line">- **Maxim Integrated**: MIT License (SpO2 algorithm)</div>
+<div class="line">- **Adafruit**: MIT License (MLX90614)</div>
+<div class="line">- **LibDriver**: MIT License (MPU6050)</div>
+<div class="line">- **Custom Code**: Project-specific</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">##  Quick Reference</div>
+<div class="line"> </div>
+<div class="line">### Include Patterns</div>
+</div><!-- fragment --><p> cpp // Use this in any file #include "Sensors.h" // All sensors at once #include "Core/Config.h" // Global constants #include "Core/Types.h" // Data structures #include "Sensors/MAX30105/..." // Specific sensor </p><div class="fragment"><div class="line">### Global Objects (declared in main.cpp)</div>
+</div><!-- fragment --><p> cpp <a class="el" href="class_m_a_x30105.html">MAX30105</a> sensor; // Sensor hardware <a class="el" href="class_temp_sensor.html">TempSensor</a> temp; // Temperature wrapper <a class="el" href="class_oximeter.html">Oximeter</a> oxygen; // SpO2 calculation <a class="el" href="class_heart_beat.html">HeartBeat</a> heartbeat; // Heart rate detection <a class="el" href="class_i_m_u.html">IMU</a> imu; // Motion tracking <a class="el" href="class_o_l_e_d.html">OLED</a> display; // Display output </p><div class="fragment"><div class="line">### Update Sequence (in loop())</div>
+</div><!-- fragment --><p> cpp imu.update(); // Motion sensors (fast) temp.update(); // Temperature (throttled) sensor.check(); // <a class="el" href="class_m_a_x30105.html">MAX30105</a> FIFO while (sensor.available()) { // Process new samples oxygen.process(...); heartbeat.process(...); sensor.nextSample(); } display.update(...); // Visual feedback (throttled) ```</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Support</h1>
+<p>For issues or questions:</p><ol type="1">
+<li>Check Serial output messages (all modules print status)</li>
+<li>Review <a class="el" href="_config_8h.html" title="Global system configuration constants.">Config.h</a> settings</li>
+<li>Verify sensor wiring and I2C addresses</li>
+<li>Check power supply (3.3V, adequate current)</li>
+</ol>
+<hr  />
+<p><b>Project</b>: SmartAidKit - Multi-Sensor Health Monitoring <br  />
+ <b>Platform</b>: ESP32-C3 <br  />
+ <b>Build System</b>: PlatformIO <br  />
+ <b>Architecture</b>: Modular, self-contained sensor modules </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

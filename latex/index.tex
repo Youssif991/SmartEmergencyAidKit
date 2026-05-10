@@ -4,7 +4,313 @@
 \Hypertarget{index_md__r_e_a_d_m_e}%
 
 
-/\+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
-\begin{DoxyItemize}
-\item 
-\end{DoxyItemize}
+Advanced multi-\/sensor health monitoring system for ESP32-\/\+C3 with real-\/time biometric data collection and display.\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Project Structure}{Project Structure}}\label{index_autotoc_md1}
+This project uses {\bfseries{Doxygen}} to automatically generate detailed code documentation from source comments. You can generate HTML docs by running {\ttfamily doxygen Doxyfile} and opening {\ttfamily html/\+index.\+html}.
+
+Below is a visual overview of the project architecture and file structure.\hypertarget{index_autotoc_md2}{}\doxysubsection{\texorpdfstring{🏗️ Architecture}{🏗️ Architecture}}\label{index_autotoc_md2}
+
+\begin{DoxyImageNoCaption}%
+  \doxymbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{inline_mermaid_1.pdf}}%
+\end{DoxyImageNoCaption}
+\hypertarget{index_autotoc_md3}{}\doxysubsection{\texorpdfstring{📁 File Structure}{📁 File Structure}}\label{index_autotoc_md3}
+📁 Smart\+Aid\+Kit ├── 📁 include/\+ \# Header Files (Declarations) │ ├── 📄 \doxylink{_sensors_8h}{Sensors.\+h} \# Entry point for all sensor modules │ ├── 📁 Core/\+ \# Shared system-\/wide infrastructure │ │ ├── 📄 \doxylink{_config_8h}{Config.\+h} \# Global constants, I2C pins, sampling intervals │ │ ├── 📄 \doxylink{_types_8h}{Types.\+h} \# Shared data structures for sensor data │ │ └── 📄 \doxylink{_sensor_utils_8h}{Sensor\+Utils.\+h} \# Helper functions for data aggregation │ └── 📁 Sensors/\+ \# Sensor-\/\+Specific Headers │ ├── 📁 MAX30105/\+ \# Pulse \doxylink{class_oximeter}{Oximeter} \& Heart Rate │ │ ├── 📄 \doxylink{_m_a_x30105_8h}{MAX30105.\+h} \# Sensor driver \& I2C communication │ │ ├── 📄 \doxylink{heartbeat_8h}{heartbeat.\+h} \# FFT-\/based heart rate algorithm │ │ ├── 📄 \doxylink{heart_rate_8h}{heart\+Rate.\+h} \# Low-\/level beat detection │ │ ├── 📄 \doxylink{oximeter_8h}{oximeter.\+h} \# Sp\+O2 calculation \& state machine │ │ └── 📄 \doxylink{spo2__algorithm_8h}{spo2\+\_\+algorithm.\+h} \# Maxim\textquotesingle{}s Sp\+O2 math reference │ ├── 📁 MLX90614/\+ \# Non-\/\+Contact Thermometer │ │ ├── 📄 \doxylink{_adafruit___m_l_x90614_8h}{Adafruit\+\_\+\+MLX90614.\+h} │ │ └── 📄 \doxylink{temperature_8h}{temperature.\+h}\# Wrapper class managing 50k\+Hz I2C clock │ ├── 📁 MPU6050/\+ \# 6-\/Axis \doxylink{class_i_m_u}{IMU} (Motion Tracking) │ │ ├── 📄 \doxylink{driver__mpu6050_8h}{driver\+\_\+mpu6050.\+h} │ │ ├── 📄 \doxylink{driver__mpu6050__basic_8h}{driver\+\_\+mpu6050\+\_\+basic.\+h} │ │ ├── 📄 \doxylink{driver__mpu6050__interface_8h_source}{driver\+\_\+mpu6050\+\_\+interface.\+h} │ │ ├── 📄 \doxylink{driver__mpu6050__code_8h}{driver\+\_\+mpu6050\+\_\+code.\+h} │ │ ├── 📄 \doxylink{imu_8h}{imu.\+h} \# Sensor wrapper class (throttling \& averaging) │ │ └── 📄 \doxylink{_property_8h}{Property.\+h} │ └── 📁 OLED/\+ \# SSD1306 Display Driver │ └── 📄 \doxylink{oled_8h}{oled.\+h} \# Graphics primitives and formatting ├── 📁 src/\+ \# Implementation Files (Source Code) │ ├── 📄 \doxylink{main_8cpp}{main.\+cpp} \# Setup, main loop, and sensor initialization │ ├── 📄 \doxylink{_sensor_utils_8cpp}{Sensor\+Utils.\+cpp} \# Sensor aggregation implementations │ └── 📁 Sensors/\+ \# Sensor implementations mirroring include/\+ │ ├── 📁 MAX30105/\+ \# \doxylink{class_m_a_x30105}{MAX30105} (.cpp files) │ ├── 📁 MLX90614/\+ \# MLX90614 (.cpp files) │ ├── 📁 MPU6050/\+ \# MPU6050 (.c/\+.cpp files) │ └── 📁 OLED/\+ \# \doxylink{class_o_l_e_d}{OLED} (.cpp files) ├── 📁 lib/\+ \# Local library dependencies ├── 📁 test/\+ \# Unit testing files ├── 📄 Doxyfile \# Doxygen configuration file ├── 📄 platformio.\+ini \# Platform\+IO configuration └── 📄 Smart\+Aid\+Kit.\+code-\/workspace \# VS Code Workspace 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ \ File\ \&\ Folder\ Details}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ \ Core\ System\ (`Core/`)}
+\DoxyCodeLine{-\/\ **`Config.h`**:\ Central\ configuration\ hub\ with\ all\ global\ constants.\ Update\ here\ to\ change\ sensor\ behavior\ globally\ (e.g.\ I2C\ pins,\ sensor\ settings,\ timing\ intervals).}
+\DoxyCodeLine{-\/\ **`Types.h`**:\ Shared\ data\ structures\ (`SensorReadings`,\ \`{}IMUData`,\ \`{}BiometricData`)\ for\ passing\ sensor\ data\ between\ modules.}
+\DoxyCodeLine{-\/\ **`SensorUtils.h`\ /\ \`{}.cpp`**:\ Helper\ functions\ (`gatherSensorReadings()`,\ \`{}gatherIMUData()`)\ for\ aggregating\ data\ from\ multiple\ sensors.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ \ Pulse\ Oximeter\ \&\ Heart\ Rate\ (`Sensors/MAX30105/`)}
+\DoxyCodeLine{-\/\ **@ref\ MAX30105**:\ Sensor\ driver\ for\ handling\ I2C\ communication\ and\ register\ operations.}
+\DoxyCodeLine{-\/\ **@ref\ Oximeter**:\ SpO2\ calculation\ with\ a\ state\ machine\ (NoFinger\ →\ Filling\ →\ Streaming).}
+\DoxyCodeLine{-\/\ **@ref\ HeartBeat**:\ Heart\ rate\ detection\ using\ an\ advanced\ FFT\ (Fast\ Fourier\ Transform)\ algorithm.}
+\DoxyCodeLine{-\/\ **`heartRate`**:\ Low-\/level\ beat\ detection\ algorithm.}
+\DoxyCodeLine{-\/\ **`spo2\_algorithm`**:\ SpO2\ calculation\ math\ (Maxim's\ reference\ algorithm).}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ \ Non-\/Contact\ Thermometer\ (`Sensors/MLX90614/`)}
+\DoxyCodeLine{-\/\ **@ref\ TempSensor**:\ Wrapper\ class\ handling\ proper\ I2C\ clock\ switching\ (requires\ 50kHz,\ unlike\ other\ 400kHz\ sensors).}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ \ 6-\/Axis\ IMU\ (`Sensors/MPU6050/`)}
+\DoxyCodeLine{-\/\ **@ref\ IMU**:\ Wrapper\ class\ providing\ motion\ and\ orientation\ tracking\ with\ built-\/in\ averaging\ and\ throttling.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ Display\ Driver\ (`Sensors/OLED/`)}
+\DoxyCodeLine{-\/\ **@ref\ OLED**:\ SSD1306\ display\ driver\ for\ formatting\ and\ printing\ data\ (`printText()`,\ \`{}printSensorDataStruct()`).}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ \ Configuration\ Files}
+\DoxyCodeLine{-\/\ **`Doxyfile`**:\ Configuration\ for\ generating\ Doxygen\ documentation.}
+\DoxyCodeLine{-\/\ **`platformio.ini`**:\ PlatformIO\ build\ configuration\ for\ ESP32-\/C3.}
+\DoxyCodeLine{-\/\ **`SmartAidKit.code-\/workspace`**:\ VS\ Code\ workspace\ settings.}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ 🔌\ Hardware\ Connections\ (ESP32-\/C3)}
+\DoxyCodeLine{}
+\DoxyCodeLine{|\ Component\ |\ Function\ |\ GPIO\ Pin\ |}
+\DoxyCodeLine{|-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|}
+\DoxyCodeLine{|\ SDA\ (I2C)\ |\ Data\ line\ |\ GPIO\ 8\ |}
+\DoxyCodeLine{|\ SCL\ (I2C)\ |\ Clock\ line\ |\ GPIO\ 9\ |}
+\DoxyCodeLine{|\ GND\ |\ Ground\ |\ GND\ |}
+\DoxyCodeLine{|\ 3.3V\ |\ Power\ |\ 3.3V\ |}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ Sensors\ on\ I2C\ Bus}
+\DoxyCodeLine{}
+\DoxyCodeLine{|\ Sensor\ |\ I2C\ Address\ |\ Requires\ |}
+\DoxyCodeLine{|-\/-\/-\/-\/-\/-\/-\/-\/|-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|}
+\DoxyCodeLine{|\ MAX30105\ (Oximeter)\ |\ 0x57\ |\ 400kHz\ |}
+\DoxyCodeLine{|\ MLX90614\ (Thermometer)\ |\ 0x5A\ |\ 50kHz\ |}
+\DoxyCodeLine{|\ MPU6050\ (IMU)\ |\ 0x68\ |\ 400kHz\ |}
+\DoxyCodeLine{|\ SSD1306\ (OLED\ Display)\ |\ 0x3C\ |\ 400kHz\ |}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ How\ to\ Use}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ 1.\ Include\ All\ Sensors}
+
+\end{DoxyCode}
+ cpp \+\#include "{}\+Sensors.\+h"{} /\+/\+ Single include point 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ 2.\ Declare\ Global\ Instances}
+
+\end{DoxyCode}
+ cpp \doxylink{class_m_a_x30105}{MAX30105} sensor; \doxylink{class_temp_sensor}{Temp\+Sensor} temp; \doxylink{class_oximeter}{Oximeter} oxygen; \doxylink{class_heart_beat}{Heart\+Beat} heartbeat; \doxylink{class_i_m_u}{IMU} imu; \doxylink{class_o_l_e_d}{OLED} display; 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ 3.\ Initialize\ in\ Setup}
+
+\end{DoxyCode}
+ cpp void setup() \{ Serial.\+begin(115200); Wire.\+begin(\+I2\+C\+\_\+\+SDA\+\_\+\+PIN, I2\+C\+\_\+\+SCL\+\_\+\+PIN);
+
+imu.\+begin(); oxygen.\+begin(sensor); temp.\+begin(); display.\+begin(); \} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ 4.\ Update\ in\ Loop}
+
+\end{DoxyCode}
+ cpp void loop() \{ /\+/\+ Read sensors imu.\+update(); temp.\+update();
+
+/\+/\+ Drain \doxylink{class_m_a_x30105}{MAX30105} FIFO sensor.\+check(); while (sensor.\+available()) \{ oxygen.\+process(sensor.\+get\+FIFOIR(), sensor.\+get\+FIFORed()); heartbeat.\+process(sensor.\+get\+FIFOIR()); sensor.\+next\+Sample(); \}
+
+/\+/\+ Display data \doxylink{struct_sensor_readings}{Sensor\+Readings} readings = gather\+Sensor\+Readings(); display.\+print\+Sensor\+Data\+Struct(readings); \} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ Configuration\ Guide}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ Change\ Global\ Constants}
+\DoxyCodeLine{Edit\ \`{}include/Core/Config.h`:}
+
+\end{DoxyCode}
+ cpp /\+/\+ I2C Pins constexpr uint8\+\_\+t I2\+C\+\_\+\+SDA\+\_\+\+PIN = 8; constexpr uint8\+\_\+t I2\+C\+\_\+\+SCL\+\_\+\+PIN = 9;
+
+/\+/\+ Sampling Intervals constexpr uint32\+\_\+t TEMP\+\_\+\+INTERVAL\+\_\+\+MS = 2000; /\+/\+ Temperature read every 2 seconds constexpr uint32\+\_\+t IMU\+\_\+\+INTERVAL\+\_\+\+MS = 20; /\+/\+ \doxylink{class_i_m_u}{IMU} read every 20ms (50Hz)
+
+/\+/\+ Sensor Settings constexpr byte MAX30105\+\_\+\+LED\+\_\+\+BRIGHTNESS = 60; /\+/\+ 0-\/255 (brightness) constexpr int MAX30105\+\_\+\+RATE\+\_\+\+HZ = 100; /\+/\+ 100 samples/\+second 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ Access\ Sensor\ Data}
+
+\end{DoxyCode}
+ cpp /\+/\+ Option 1:\+ Get all data at once \doxylink{struct_sensor_readings}{Sensor\+Readings} all = gather\+Sensor\+Readings(); int hr = all.\+heart\+Rate; int spo2 = all.\+spo2; float temp = all.\+object\+Temp;
+
+/\+/\+ Option 2:\+ Get specific data types \doxylink{struct_i_m_u_data}{IMUData} motion = gather\+IMUData(); float ax = motion.\+accelX; float gx = motion.\+gyroX;
+
+/\+/\+ Option 3:\+ Access sensors directly int beat\+Avg = heartbeat.\+beat\+Avg(); float object\+Temp = temp.\+object\+Temp(); float ax = imu.\+accel\+X(); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ Sensor\ Specifications}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ MAX30105\ (Pulse\ Oximeter)}
+\DoxyCodeLine{-\/\ **Measurement\ Range**:\ SpO2\ (50-\/100\%),\ Heart\ Rate\ (40-\/200\ bpm)}
+\DoxyCodeLine{-\/\ **Sampling\ Rate**:\ 100\ Hz}
+\DoxyCodeLine{-\/\ **LED\ Brightness**:\ 60mA\ max}
+\DoxyCodeLine{-\/\ **Output**:\ IR\ +\ Red\ LEDs\ for\ optical\ sensing}
+\DoxyCodeLine{-\/\ **Algorithm**:\ Rolling\ 100-\/sample\ window\ for\ SpO2,\ and\ a\ 512-\/sample\ sliding\ window\ FFT\ with\ parabolic\ interpolation\ and\ median\ filtering\ for\ Heart\ Rate}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ MLX90614\ (Thermometer)}
+\DoxyCodeLine{-\/\ **Measurement\ Range**:\ -\/40°C\ to\ 125°C\ (object)}
+\DoxyCodeLine{-\/\ **Accuracy**:\ ±0.5°C}
+\DoxyCodeLine{-\/\ **I2C\ Speed**:\ 50kHz\ (lower\ than\ other\ sensors)}
+\DoxyCodeLine{-\/\ **Output**:\ Object\ temperature\ +\ ambient\ temperature}
+\DoxyCodeLine{-\/\ **Update\ Rate**:\ 2\ seconds\ (throttled\ in\ software)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ MPU6050\ (IMU)}
+\DoxyCodeLine{-\/\ **Accelerometer\ Range**:\ ±2g\ to\ ±16g}
+\DoxyCodeLine{-\/\ **Gyroscope\ Range**:\ ±250\ to\ ±2000\ dps}
+\DoxyCodeLine{-\/\ **Sampling**:\ 50Hz\ (20ms\ interval)}
+\DoxyCodeLine{-\/\ **Averaging**:\ 4\ samples\ per\ output}
+\DoxyCodeLine{-\/\ **Output**:\ Ax,\ Ay,\ Az\ (g),\ Gx,\ Gy,\ Gz\ (dps)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ SSD1306\ (OLED)}
+\DoxyCodeLine{-\/\ **Resolution**:\ 128×32\ pixels}
+\DoxyCodeLine{-\/\ **Color**:\ Monochrome\ (white\ on\ black)}
+\DoxyCodeLine{-\/\ **I2C\ Address**:\ 0x3C}
+\DoxyCodeLine{-\/\ **Update\ Rate**:\ 500ms\ (throttled)}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ Troubleshooting}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ Sensor\ Not\ Found}
+\DoxyCodeLine{1.\ Check\ wiring\ (SDA,\ SCL,\ GND,\ 3.3V)}
+\DoxyCodeLine{2.\ Verify\ I2C\ addresses\ in\ datasheet}
+\DoxyCodeLine{3.\ Check\ Serial\ output\ for\ initialization\ messages}
+\DoxyCodeLine{4.\ Confirm\ I2C\ clock\ speeds\ (50kHz\ for\ temp,\ 400kHz\ for\ others)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ High\ Heart\ Rate\ /\ SpO2\ Values}
+\DoxyCodeLine{-\/\ Check\ finger\ placement\ on\ MAX30105\ sensor}
+\DoxyCodeLine{-\/\ Ensure\ good\ optical\ contact\ (no\ air\ gaps)}
+\DoxyCodeLine{-\/\ Wait\ for\ buffer\ to\ fill\ (first\ 4\ seconds)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ OLED\ Display\ Blank}
+\DoxyCodeLine{-\/\ Check\ I2C\ address\ (0x3C\ default)}
+\DoxyCodeLine{-\/\ Verify\ power\ and\ ground\ connections}
+\DoxyCodeLine{-\/\ Check\ contrast\ setting\ in\ initialization}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ Code\ Organization}
+\DoxyCodeLine{}
+\DoxyCodeLine{**Philosophy**:\ Each\ sensor\ is\ self-\/contained\ and\ independently\ testable.}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/\ **Core\ System**\ (`include/Core/`):\ Shared\ types,\ config,\ utilities}
+\DoxyCodeLine{-\/\ **Sensor\ Modules**\ (`include/Sensors/\{name\}/`):\ All\ code\ for\ one\ sensor}
+\DoxyCodeLine{-\/\ **Single\ Entry\ Point**\ (`include/Sensors.h`):\ Simplifies\ main.cpp}
+\DoxyCodeLine{-\/\ **No\ Circular\ Dependencies**:\ Clean\ dependency\ graph}
+\DoxyCodeLine{-\/\ **I2C\ Bus\ Managed**:\ Proper\ clock\ switching\ between\ sensors}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ 🛠️\ API\ Reference}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ 💓\ MAX30105\ Pulse\ Oximeter\ \&\ Heart\ Rate}
+\DoxyCodeLine{-\/\ **`HeartBeat`**:\ Detects\ heart\ rate\ using\ FFT.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}begin()`:\ Initialize\ algorithm.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}process(long\ irValue)`:\ Feed\ IR\ samples.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}beatAvg()`:\ Get\ smoothed\ BPM.}
+\DoxyCodeLine{-\/\ **`Oximeter`**:\ Manages\ SpO2\ state\ machine.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}begin(MAX30105\&)`:\ Initialize\ hardware.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}process(uint32\_t\ ir,\ uint32\_t\ red)`:\ Update\ samples.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}spo2Avg()`:\ Get\ average\ SpO2\ percentage.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ 🌡️\ MLX90614\ Temperature}
+\DoxyCodeLine{-\/\ **`TempSensor`**:\ Non-\/contact\ IR\ thermometer.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}begin()`:\ Configures\ I2C\ to\ 50kHz.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}update()`:\ Throttled\ data\ collection.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}objectTemp()`:\ Get\ target\ temperature\ (°C).}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ 🏃\ MPU6050\ Motion\ Tracking}
+\DoxyCodeLine{-\/\ **`IMU`**:\ 6-\/axis\ motion\ tracking.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}begin()`:\ Initialize\ sensor.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}update()`:\ Throttled\ sampling\ with\ averaging.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}accelX/Y/Z()`:\ Get\ acceleration\ (g).}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}gyroX/Y/Z()`:\ Get\ rotation\ (dps).}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ 📺\ SSD1306\ OLED\ Display}
+\DoxyCodeLine{-\/\ **`OLED`**:\ Visual\ interface.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}begin()`:\ Hardware\ init.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}clear()`:\ Wipe\ screen\ buffer.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}printText(text,\ x,\ y)`:\ Render\ string.}
+\DoxyCodeLine{\ \ \ \ -\/\ \`{}display()`:\ Push\ buffer\ to\ hardware.}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ Building\ \&\ Uploading}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ Build}
+
+\end{DoxyCode}
+ bash pio run 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ Build\ \&\ Upload\ to\ Board}
+
+\end{DoxyCode}
+ bash pio run --target upload 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ 📖\ Documentation}
+\DoxyCodeLine{}
+\DoxyCodeLine{Detailed\ API\ documentation\ is\ generated\ using\ **Doxygen**.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ Generating\ Documentation}
+\DoxyCodeLine{}
+\DoxyCodeLine{To\ generate\ the\ HTML\ documentation\ locally:}
+
+\end{DoxyCode}
+ bash doxygen Doxyfile 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{After\ generation,\ open\ \`{}html/index.html`\ in\ your\ browser.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ Documentation\ Features}
+\DoxyCodeLine{-\/\ **Class\ Hierarchy**:\ Visual\ representation\ of\ sensor\ classes.}
+\DoxyCodeLine{-\/\ **Module\ Grouping**:\ Sensors\ are\ grouped\ by\ manufacturer\ and\ function.}
+\DoxyCodeLine{-\/\ **Call\ Graphs**:\ Automated\ visualization\ of\ function\ dependencies.}
+\DoxyCodeLine{-\/\ **Search**:\ Real-\/time\ search\ for\ API\ members.}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ Serial\ Monitor}
+
+\end{DoxyCode}
+ bash pio device monitor 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ Dependencies}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/\ **Arduino\ Framework**:\ Core\ API\ and\ Wire\ library}
+\DoxyCodeLine{-\/\ **Adafruit\ MLX90614**:\ Thermometer\ library}
+\DoxyCodeLine{-\/\ **MAX30105**:\ SparkFun\ reference\ driver}
+\DoxyCodeLine{-\/\ **MPU6050\ LibDriver**:\ Professional\ multi-\/platform\ driver}
+\DoxyCodeLine{-\/\ **SSD1306**:\ Display\ driver}
+\DoxyCodeLine{}
+\DoxyCodeLine{All\ dependencies\ are\ included\ in\ the\ project.}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ License}
+\DoxyCodeLine{}
+\DoxyCodeLine{See\ individual\ file\ headers\ for\ licensing\ information.\ Most\ code\ is:}
+\DoxyCodeLine{-\/\ **SparkFun**:\ BSD\ License\ (MAX30105,\ heartbeat,\ heart\ rate)}
+\DoxyCodeLine{-\/\ **Maxim\ Integrated**:\ MIT\ License\ (SpO2\ algorithm)}
+\DoxyCodeLine{-\/\ **Adafruit**:\ MIT\ License\ (MLX90614)}
+\DoxyCodeLine{-\/\ **LibDriver**:\ MIT\ License\ (MPU6050)}
+\DoxyCodeLine{-\/\ **Custom\ Code**:\ Project-\/specific}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ \ Quick\ Reference}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ Include\ Patterns}
+
+\end{DoxyCode}
+ cpp /\+/\+ Use this in any file \+\#include "{}\+Sensors.\+h"{} /\+/\+ All sensors at once \+\#include "{}\+Core/\+\+Config.\+h"{} /\+/\+ Global constants \+\#include "{}\+Core/\+\+Types.\+h"{} /\+/\+ Data structures \+\#include "{}\+Sensors/\+\+MAX30105/\+..."{} /\+/\+ Specific sensor 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ Global\ Objects\ (declared\ in\ main.cpp)}
+
+\end{DoxyCode}
+ cpp \doxylink{class_m_a_x30105}{MAX30105} sensor; /\+/\+ Sensor hardware \doxylink{class_temp_sensor}{Temp\+Sensor} temp; /\+/\+ Temperature wrapper \doxylink{class_oximeter}{Oximeter} oxygen; /\+/\+ Sp\+O2 calculation \doxylink{class_heart_beat}{Heart\+Beat} heartbeat; /\+/\+ Heart rate detection \doxylink{class_i_m_u}{IMU} imu; /\+/\+ Motion tracking \doxylink{class_o_l_e_d}{OLED} display; /\+/\+ Display output 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ Update\ Sequence\ (in\ loop())}
+
+\end{DoxyCode}
+ cpp imu.\+update(); /\+/\+ Motion sensors (fast) temp.\+update(); /\+/\+ Temperature (throttled) sensor.\+check(); /\+/\+ \doxylink{class_m_a_x30105}{MAX30105} FIFO while (sensor.\+available()) \{ /\+/\+ Process new samples oxygen.\+process(...); heartbeat.\+process(...); sensor.\+next\+Sample(); \} display.\+update(...); /\+/\+ Visual feedback (throttled) \`{}\`{}\`{}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{Support}{Support}}\label{index_autotoc_md5}
+For issues or questions:\+
+\begin{DoxyEnumerate}
+\item Check Serial output messages (all modules print status)
+\item Review \doxylink{_config_8h}{Config.\+h} settings
+\item Verify sensor wiring and I2C addresses
+\item Check power supply (3.\+3V, adequate current)
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+
+
+{\bfseries{Project}}:\+ Smart\+Aid\+Kit -\/ Multi-\/\+Sensor Health Monitoring ~\newline
+ {\bfseries{Platform}}:\+ ESP32-\/\+C3 ~\newline
+ {\bfseries{Build System}}:\+ Platform\+IO ~\newline
+ {\bfseries{Architecture}}:\+ Modular, self-\/contained sensor modules 

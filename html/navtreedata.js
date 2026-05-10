@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "SmartAidKit", "index.html", [
-    [ "SmartAidKit - Embedded Health Monitoring System", "index.html", null ],
+    [ "SmartAidKit - Embedded Health Monitoring System", "index.html", "index" ],
     [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

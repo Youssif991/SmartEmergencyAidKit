@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['features_0',['Documentation Features',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md42',1,'']]],
-  ['file_20folder_20details_1',['File &amp;amp; Folder Details',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md2',1,'']]],
-  ['files_2',['Configuration Files',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md8',1,'']]],
-  ['folder_20details_3',['File &amp;amp; Folder Details',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md2',1,'']]],
-  ['found_4',['Sensor Not Found',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md30',1,'']]],
-  ['function_5',['function',['../group__mpu6050__basic__driver.html',1,'mpu6050 basic driver function'],['../group__mpu6050__dmp__driver.html',1,'mpu6050 dmp driver function'],['../group__mpu6050__driver.html',1,'mpu6050 driver function'],['../group__mpu6050__example__driver.html',1,'mpu6050 example driver function'],['../group__mpu6050__extern__driver.html',1,'mpu6050 extern driver function'],['../group__mpu6050__link__driver.html',1,'mpu6050 link driver function']]]
+  ['oled_0',['OLED',['../class_o_l_e_d.html',1,'']]],
+  ['oled_20display_1',['SSD1306 OLED Display',['../group___o_l_e_d___group.html',1,'']]],
+  ['oled_2ecpp_2',['oled.cpp',['../oled_8cpp.html',1,'']]],
+  ['oled_2eh_3',['oled.h',['../oled_8h.html',1,'']]],
+  ['orient_4',['orient',['../structmpu6050__handle__s.html#ab36bba9969c899d00a8291d1bb419b65',1,'mpu6050_handle_s']]],
+  ['oximeter_5',['Oximeter',['../class_oximeter.html',1,'']]],
+  ['oximeter_20heart_20rate_6',['MAX30105 Pulse Oximeter &amp;amp; Heart Rate',['../group___m_a_x30105___group.html',1,'']]],
+  ['oximeter_2ecpp_7',['oximeter.cpp',['../oximeter_8cpp.html',1,'']]],
+  ['oximeter_2eh_8',['oximeter.h',['../oximeter_8h.html',1,'']]]
 ];

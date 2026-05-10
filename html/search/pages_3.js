@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['4_20update_20in_20loop_0',['4. Update in Loop',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md17',1,'']]]
+  ['health_20monitoring_20system_0',['SmartAidKit - Embedded Health Monitoring System',['../index.html',1,'']]]
 ];

@@ -1,15 +1,11 @@
 var searchData=
 [
-  ['hardware_20connections_20esp32_20c3_0',['🔌 Hardware Connections (ESP32-C3)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md10',1,'']]],
-  ['health_20monitoring_20system_1',['SmartAidKit - Embedded Health Monitoring System',['../index.html',1,'']]],
-  ['heart_20rate_2',['MAX30105 Pulse Oximeter &amp;amp; Heart Rate',['../group___m_a_x30105___group.html',1,'']]],
-  ['heart_20rate_20sensors_20max30105_3',['Pulse Oximeter &amp;amp; Heart Rate (&lt;span class=&quot;tt&quot;&gt;Sensors/MAX30105/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md4',1,'']]],
-  ['heart_20rate_20spo2_20values_4',['High Heart Rate / SpO2 Values',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md31',1,'']]],
-  ['heartbeat_5',['HeartBeat',['../class_heart_beat.html',1,'']]],
-  ['heartbeat_2ecpp_6',['heartbeat.cpp',['../heartbeat_8cpp.html',1,'']]],
-  ['heartbeat_2eh_7',['heartbeat.h',['../heartbeat_8h.html',1,'']]],
-  ['heartrate_2ecpp_8',['heartRate.cpp',['../heart_rate_8cpp.html',1,'']]],
-  ['heartrate_2eh_9',['heartRate.h',['../heart_rate_8h.html',1,'']]],
-  ['high_20heart_20rate_20spo2_20values_10',['High Heart Rate / SpO2 Values',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md31',1,'']]],
-  ['how_20to_20use_11',['How to Use',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md13',1,'']]]
+  ['rate_0',['MAX30105 Pulse Oximeter &amp;amp; Heart Rate',['../group___m_a_x30105___group.html',1,'']]],
+  ['readambienttempc_1',['readAmbientTempC',['../class_adafruit___m_l_x90614.html#acc004633ba206263e66f6f689986d61e',1,'Adafruit_MLX90614']]],
+  ['readambienttempf_2',['readAmbientTempF',['../class_adafruit___m_l_x90614.html#aac358f34bc9351ef7562fe0d4f0a7d17',1,'Adafruit_MLX90614']]],
+  ['reademissivity_3',['readEmissivity',['../class_adafruit___m_l_x90614.html#ab261e8d7caeb72a419524cee1a7641b3',1,'Adafruit_MLX90614']]],
+  ['reademissivityreg_4',['readEmissivityReg',['../class_adafruit___m_l_x90614.html#a4b069e64968d91c24043319439f14d47',1,'Adafruit_MLX90614']]],
+  ['readobjecttempc_5',['readObjectTempC',['../class_adafruit___m_l_x90614.html#afc052bc94f74a74da6a811aa031fe567',1,'Adafruit_MLX90614']]],
+  ['readobjecttempf_6',['readObjectTempF',['../class_adafruit___m_l_x90614.html#a355efb07f803d48d740ed06cd0f145e2',1,'Adafruit_MLX90614']]],
+  ['receive_5fcallback_7',['receive_callback',['../structmpu6050__handle__s.html#a93d5bc86e1b4fd11125c21c38502730f',1,'mpu6050_handle_s']]]
 ];

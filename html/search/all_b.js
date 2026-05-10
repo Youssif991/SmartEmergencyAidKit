@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['generating_20documentation_0',['Generating Documentation',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md41',1,'']]],
-  ['global_20constants_1',['Change Global Constants',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md20',1,'']]],
-  ['global_20instances_2',['2. Declare Global Instances',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md15',1,'']]],
-  ['global_20objects_20declared_20in_20main_20cpp_3',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md52',1,'']]],
-  ['guide_4',['Configuration Guide',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md19',1,'']]]
+  ['project_20structure_0',['Project Structure',['../index.html#autotoc_md1',1,'']]],
+  ['property_1',['Property',['../class_property.html',1,'']]],
+  ['property_2eh_2',['Property.h',['../_property_8h.html',1,'']]],
+  ['pulse_20oximeter_20heart_20rate_3',['MAX30105 Pulse Oximeter &amp;amp; Heart Rate',['../group___m_a_x30105___group.html',1,'']]]
 ];
