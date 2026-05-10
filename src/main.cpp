@@ -9,7 +9,7 @@
  */
 
 #include "Sensors.h"
-
+#include "app.h"
 // ── Module instances ──────────────────────────────────────────────────────────
 MAX30105 sensor;
 TempSensor temp;
@@ -64,6 +64,9 @@ void setup()
     display.display();
     delay(1000);
   }
+
+  bleInit();
+
 }
 // ─────────────────────────────────────────────────────────────────────────────
 void loop()
@@ -140,6 +143,15 @@ void loop()
                   imu.accelX(), imu.accelY(), imu.accelZ(),
                   imu.gyroX(), imu.gyroY(), imu.gyroZ());
   }
+
+
+      sendBLE(
+  imu.accelX(), imu.accelY(), imu.accelZ(),
+  imu.gyroX(),  imu.gyroY(),  imu.gyroZ(),
+  heartbeat.beatAvg(), oxygen.spo2Avg(),
+  temp.objectTemp(), temp.ambientTemp());
+
+
 
   yield();
 }
