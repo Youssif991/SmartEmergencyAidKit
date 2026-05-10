@@ -30,6 +30,7 @@ graph TD
 📁 SmartAidKit
 ├── 📁 include/                 # Header Files (Declarations)
 │   ├── 📄 Sensors.h            # Entry point for all sensor modules
+│   ├── 📄 app.h                # Main application class & logic
 │   ├── 📁 Core/                # Shared system-wide infrastructure
 │   │   ├── 📄 Config.h         # Global constants, I2C pins, sampling intervals
 │   │   ├── 📄 Types.h          # Shared data structures for sensor data
@@ -55,6 +56,7 @@ graph TD
 │           └── 📄 oled.h       # Graphics primitives and formatting
 ├── 📁 src/                     # Implementation Files (Source Code)
 │   ├── 📄 main.cpp             # Setup, main loop, and sensor initialization
+│   ├── 📄 app.cpp              # Application logic implementation
 │   ├── 📄 SensorUtils.cpp      # Sensor aggregation implementations
 │   └── 📁 Sensors/             # Sensor implementations mirroring include/
 │       ├── 📁 MAX30105/        # MAX30105 (.cpp files)
