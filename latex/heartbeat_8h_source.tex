@@ -1,0 +1,120 @@
+\doxysection{heartbeat.\+h}
+\hypertarget{heartbeat_8h_source}{}\label{heartbeat_8h_source}\index{include/Sensors/MAX30105/heartbeat.h@{include/Sensors/MAX30105/heartbeat.h}}
+\doxymbox{\hyperlink{heartbeat_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ 28:\ }
+\DoxyCodeLine{00030\ 29:\ \#pragma\ once}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ ──\ FFT\ Parameters\ ─────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ HR\_FFT\_SAMPLES\ must\ be\ a\ power\ of\ 2.}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ At\ HR\_SAMPLE\_RATE\ =\ 100\ Hz\ →\ 512\ samples\ =\ 5.12\ s\ window.}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Frequency\ resolution\ =\ HR\_SAMPLE\_RATE\ /\ HR\_FFT\_SAMPLES\ =\ 0.195\ Hz\ ≈\ 11.7\ BPM/bin.}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ Parabolic\ interpolation\ refines\ this\ to\ <\ 3\ BPM\ accuracy\ in\ practice.}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{constexpr}\ uint16\_t\ HR\_FFT\_SAMPLES\ \ =\ 512;}
+\DoxyCodeLine{00040\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \ \ \ HR\_SAMPLE\_RATE\ \ =\ 100.0f;\ \ \textcolor{comment}{//\ Hz\ —\ must\ match\ MAX30105\_RATE\_HZ}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{constexpr}\ uint16\_t\ HR\_FFT\_UPDATE\ \ \ =\ 64;\ \ \ \ \ \ \textcolor{comment}{//\ Recompute\ every\ N\ new\ samples}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (=\ 0.64\ s\ sliding\ step\ at\ 100\ Hz)}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ ──\ Detection\ Range\ ────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HR\_MIN\_BPM\ =\ 40.0f;}
+\DoxyCodeLine{00046\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HR\_MAX\_BPM\ =\ 200.0f;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ ──\ Finger\ Detection\ Threshold\ ─────────────────────────────────────────────────}}
+\DoxyCodeLine{00049\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{long}\ HR\_FINGER\_THRESHOLD\ =\ 50000;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ ──\ Bandpass\ IIR\ Filter\ Coefficients\ ──────────────────────────────────────────}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ Cascaded\ 1st-\/order\ high-\/pass\ (0.5\ Hz)\ +\ 1st-\/order\ low-\/pass\ (4\ Hz)\ at\ 100\ Hz.}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ High-\/pass:\ \ α\_hp\ =\ RC/(RC+dt),\ \ RC\ =\ 1/(2π·0.5)\ =\ 0.31831\ s,\ \ dt\ =\ 0.01\ s}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ α\_hp\ =\ 0.31831\ /\ (0.31831\ +\ 0.01)\ =\ 0.96952}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ Low-\/pass:\ \ \ α\_lp\ =\ dt/(RC+dt),\ \ RC\ =\ 1/(2π·4.0)\ =\ 0.03979\ s,\ \ dt\ =\ 0.01\ s}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ α\_lp\ =\ 0.01\ /\ (0.03979\ +\ 0.01)\ =\ 0.20083}}
+\DoxyCodeLine{00059\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HR\_IIR\_HP\_ALPHA\ =\ 0.96952f;\ \ \textcolor{comment}{//\ high-\/pass\ pole\ (removes\ DC\ /\ <0.5\ Hz)}}
+\DoxyCodeLine{00060\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HR\_IIR\_LP\_ALPHA\ =\ 0.20083f;\ \ \textcolor{comment}{//\ low-\/pass\ pole\ (removes\ >4\ Hz\ noise)}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ ──\ SNR\ Quality\ Gate\ ───────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ Minimum\ ratio\ of\ peak-\/bin\ magnitude\ to\ average\ noise-\/floor\ magnitude.}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ Results\ that\ fall\ below\ this\ threshold\ are\ discarded\ as\ unreliable.}}
+\DoxyCodeLine{00065\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HR\_SNR\_MIN\_RATIO\ =\ 2.5f;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ ──\ Median\ Filter\ ──────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ The\ last\ HR\_MEDIAN\_SIZE\ valid\ FFT\ BPM\ readings\ are\ stored\ in\ a\ ring\ buffer.}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ Their\ median\ is\ computed\ and\ fed\ into\ the\ EMA,\ making\ the\ output\ immune\ to}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ bin-\/hopping\ outliers\ (even\ if\ 2\ of\ 5\ readings\ land\ on\ the\ wrong\ bin,\ the}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ median\ still\ selects\ the\ correct\ one).}}
+\DoxyCodeLine{00072\ \textcolor{keyword}{constexpr}\ uint8\_t\ HR\_MEDIAN\_SIZE\ =\ 5;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ ──\ EMA\ Smoothing\ ──────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ Exponential\ moving\ average\ weight\ applied\ to\ each\ new\ FFT\ BPM\ estimate.}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ Lower\ α\ →\ smoother\ (slower\ to\ track\ changes);\ higher\ α\ →\ more\ responsive.}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ 0.15\ gives\ good\ stability\ at\ the\ \string~0.64\ s\ update\ rate\ on\ top\ of\ the\ median\ filter.}}
+\DoxyCodeLine{00078\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HR\_EMA\_ALPHA\ =\ 0.15f;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_heart_beat}{HeartBeat}}\ \{}
+\DoxyCodeLine{00081\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ ──\ Lifecycle\ ──────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Call\ once\ from\ setup()\ after\ Serial\ and\ Wire\ are\ ready.}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ Sensor\ hardware\ is\ NOT\ touched\ here\ —\ the\ caller\ owns\ the\ sensor.}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ begin();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Feed\ one\ IR\ sample\ (call\ for\ every\ sample\ drained\ from\ the\ sensor\ FIFO).}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ The\ sample\ is\ bandpass-\/filtered\ before\ being\ stored\ in\ the\ circular\ buffer.}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ An\ FFT\ is\ triggered\ whenever\ HR\_FFT\_UPDATE\ new\ samples\ have\ arrived\ and}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ the\ buffer\ holds\ at\ least\ HR\_FFT\_SAMPLES\ valid\ entries.}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ process(\textcolor{keywordtype}{long}\ irValue);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ ──\ Results\ ────────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ EMA-\/smoothed\ BPM\ derived\ from\ the\ dominant\ FFT\ frequency.}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//\ Returns\ 0\ until\ at\ least\ HR\_FFT\_SAMPLES\ samples\ have\ been\ collected}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ and\ at\ least\ one\ FFT\ result\ passes\ the\ SNR\ quality\ gate.}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ beatAvg()\textcolor{keyword}{\ \ \ \ \ \ \ const\ }\{\ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})roundf(\_bpmEMA);\ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ Same\ value\ as\ beatAvg(),\ returned\ as\ float\ for\ API\ compatibility.}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{float}\ bpm()\textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ const\ }\{\ \textcolor{keywordflow}{return}\ \_bpmEMA;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ True\ when\ the\ IR\ signal\ indicates\ a\ finger\ is\ present.}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ fingerPresent()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_fingerPresent;\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ Raw\ IR\ value\ from\ the\ most\ recent\ process()\ call\ (useful\ for\ diagnostics).}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{long}\ \ irValue()\textcolor{keyword}{\ \ \ \ \ \ \ const\ }\{\ \textcolor{keywordflow}{return}\ \_irValue;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ ──\ Circular\ sample\ buffer\ ────────────────────────────────────────────────}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \_circBuf[HR\_FFT\_SAMPLES]\ =\ \{\};\ \ \textcolor{comment}{//\ ring\ buffer\ of\ bandpass-\/filtered\ samples}}
+\DoxyCodeLine{00113\ \ \ \ \ uint16\_t\ \_circHead\ \ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ index\ of\ the\ next\ write\ position}}
+\DoxyCodeLine{00114\ \ \ \ \ uint32\_t\ \_totalSamp\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ total\ samples\ since\ begin()/reset()}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ ──\ FFT\ working\ arrays\ (reused\ every\ computation)\ ─────────────────────────}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{float}\ \_vReal[HR\_FFT\_SAMPLES]\ =\ \{\};\ \ \textcolor{comment}{//\ real\ part\ (receives\ windowed\ signal)}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{float}\ \_vImag[HR\_FFT\_SAMPLES]\ =\ \{\};\ \ \textcolor{comment}{//\ imaginary\ part\ (zeroed\ before\ each\ FFT)}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ ──\ Bandpass\ IIR\ filter\ state\ ─────────────────────────────────────────────}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{float}\ \_hp\_xPrev\ =\ 0.0f;\ \ \textcolor{comment}{//\ high-\/pass:\ previous\ raw\ input\ sample}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{float}\ \_hp\_yPrev\ =\ 0.0f;\ \ \textcolor{comment}{//\ high-\/pass:\ previous\ filtered\ output}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{float}\ \_lp\_yPrev\ =\ 0.0f;\ \ \textcolor{comment}{//\ low-\/pass:\ \ previous\ filtered\ output}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ ──\ Median\ filter\ ring\ buffer\ ─────────────────────────────────────────────}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \_medianBuf[HR\_MEDIAN\_SIZE]\ =\ \{\};\ \ \textcolor{comment}{//\ last\ N\ valid\ FFT\ BPM\ readings}}
+\DoxyCodeLine{00127\ \ \ \ \ uint8\_t\ \_medianIdx\ \ \ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ next\ write\ position\ (ring)}}
+\DoxyCodeLine{00128\ \ \ \ \ uint8\_t\ \_medianCount\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ readings\ collected\ (saturates\ at\ HR\_MEDIAN\_SIZE)}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ ──\ Output\ ────────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{float}\ \_bpmEMA\ \ \ \ \ \ \ =\ 0.0f;\ \ \textcolor{comment}{//\ EMA-\/smoothed\ BPM\ (float\ for\ precision)}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \_fingerPresent\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{long}\ \ \_irValue\ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ ──\ Internal\ helpers\ ──────────────────────────────────────────────────────}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ computeFFT();\ \ \textcolor{comment}{//\ run\ FFT\ on\ current\ buffer,\ apply\ SNR\ gate\ +\ EMA}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ reset();\ \ \ \ \ \ \ \textcolor{comment}{//\ clear\ all\ state\ (finger\ removal\ /\ begin)}}
+\DoxyCodeLine{00138\ \};}
+\DoxyCodeLine{00139\ 134:\ }
+\DoxyCodeLine{00140\ 135:\ }
+
+\end{DoxyCode}

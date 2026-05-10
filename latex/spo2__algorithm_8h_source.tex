@@ -1,0 +1,81 @@
+\doxysection{spo2\+\_\+algorithm.\+h}
+\hypertarget{spo2__algorithm_8h_source}{}\label{spo2__algorithm_8h_source}\index{include/Sensors/MAX30105/spo2\_algorithm.h@{include/Sensors/MAX30105/spo2\_algorithm.h}}
+\doxymbox{\hyperlink{spo2__algorithm_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{/*******************************************************************************}}
+\DoxyCodeLine{00041\ \textcolor{comment}{*\ Copyright\ (C)\ 2015\ Maxim\ Integrated\ Products,\ Inc.,\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00042\ \textcolor{comment}{*}}
+\DoxyCodeLine{00043\ \textcolor{comment}{*\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a}}
+\DoxyCodeLine{00044\ \textcolor{comment}{*\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00045\ \textcolor{comment}{*\ to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation}}
+\DoxyCodeLine{00046\ \textcolor{comment}{*\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00047\ \textcolor{comment}{*\ and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the}}
+\DoxyCodeLine{00048\ \textcolor{comment}{*\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00049\ \textcolor{comment}{*}}
+\DoxyCodeLine{00050\ \textcolor{comment}{*\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included}}
+\DoxyCodeLine{00051\ \textcolor{comment}{*\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00052\ \textcolor{comment}{*}}
+\DoxyCodeLine{00053\ \textcolor{comment}{*\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS}}
+\DoxyCodeLine{00054\ \textcolor{comment}{*\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF}}
+\DoxyCodeLine{00055\ \textcolor{comment}{*\ MERCHANTABILITY,\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.}}
+\DoxyCodeLine{00056\ \textcolor{comment}{*\ IN\ NO\ EVENT\ SHALL\ MAXIM\ INTEGRATED\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES}}
+\DoxyCodeLine{00057\ \textcolor{comment}{*\ OR\ OTHER\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,}}
+\DoxyCodeLine{00058\ \textcolor{comment}{*\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR}}
+\DoxyCodeLine{00059\ \textcolor{comment}{*\ OTHER\ DEALINGS\ IN\ THE\ SOFTWARE.}}
+\DoxyCodeLine{00060\ \textcolor{comment}{*}}
+\DoxyCodeLine{00061\ \textcolor{comment}{*\ Except\ as\ contained\ in\ this\ notice,\ the\ name\ of\ Maxim\ Integrated}}
+\DoxyCodeLine{00062\ \textcolor{comment}{*\ Products,\ Inc.\ shall\ not\ be\ used\ except\ as\ stated\ in\ the\ Maxim\ Integrated}}
+\DoxyCodeLine{00063\ \textcolor{comment}{*\ Products,\ Inc.\ Branding\ Policy.}}
+\DoxyCodeLine{00064\ \textcolor{comment}{*}}
+\DoxyCodeLine{00065\ \textcolor{comment}{*\ The\ mere\ transfer\ of\ this\ software\ does\ not\ imply\ any\ licenses}}
+\DoxyCodeLine{00066\ \textcolor{comment}{*\ of\ trade\ secrets,\ proprietary\ technology,\ copyrights,\ patents,}}
+\DoxyCodeLine{00067\ \textcolor{comment}{*\ trademarks,\ maskwork\ rights,\ or\ any\ other\ form\ of\ intellectual}}
+\DoxyCodeLine{00068\ \textcolor{comment}{*\ property\ whatsoever.\ Maxim\ Integrated\ Products,\ Inc.\ retains\ all}}
+\DoxyCodeLine{00069\ \textcolor{comment}{*\ ownership\ rights.}}
+\DoxyCodeLine{00070\ \textcolor{comment}{*******************************************************************************}}
+\DoxyCodeLine{00071\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#ifndef\ SPO2\_ALGORITHM\_H\_}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ SPO2\_ALGORITHM\_H\_}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ FreqS\ 25\ \ \ \ }\textcolor{comment}{//sampling\ frequency}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ BUFFER\_SIZE\ (FreqS\ *\ 4)\ }}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ MA4\_SIZE\ 4\ }\textcolor{comment}{//\ DONOT\ CHANGE}}
+\DoxyCodeLine{00080\ \textcolor{comment}{//\#define\ min(x,y)\ ((x)\ <\ (y)\ ?\ (x)\ :\ (y))\ //Defined\ in\ Arduino.h}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{comment}{//uch\_spo2\_table\ is\ approximated\ as\ \ -\/45.060*ratioAverage*\ ratioAverage\ +\ 30.354\ *ratioAverage\ +\ 94.845\ ;}}
+\DoxyCodeLine{00083\ \textcolor{keyword}{const}\ uint8\_t\ uch\_spo2\_table[184]=\{\ 95,\ 95,\ 95,\ 96,\ 96,\ 96,\ 97,\ 97,\ 97,\ 97,\ 97,\ 98,\ 98,\ 98,\ 98,\ 98,\ 99,\ 99,\ 99,\ 99,\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 99,\ 99,\ 99,\ 99,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100,\ 100,\ 100,\ 100,\ 99,\ 99,\ 99,\ 99,\ 99,\ 99,\ 99,\ 99,\ 98,\ 98,\ 98,\ 98,\ 98,\ 98,\ 97,\ 97,\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 97,\ 97,\ 96,\ 96,\ 96,\ 96,\ 95,\ 95,\ 95,\ 94,\ 94,\ 94,\ 93,\ 93,\ 93,\ 92,\ 92,\ 92,\ 91,\ 91,\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 90,\ 90,\ 89,\ 89,\ 89,\ 88,\ 88,\ 87,\ 87,\ 86,\ 86,\ 85,\ 85,\ 84,\ 84,\ 83,\ 82,\ 82,\ 81,\ 81,\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 80,\ 80,\ 79,\ 78,\ 78,\ 77,\ 76,\ 76,\ 75,\ 74,\ 74,\ 73,\ 72,\ 72,\ 71,\ 70,\ 69,\ 69,\ 68,\ 67,\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 66,\ 66,\ 65,\ 64,\ 63,\ 62,\ 62,\ 61,\ 60,\ 59,\ 58,\ 57,\ 56,\ 56,\ 55,\ 54,\ 53,\ 52,\ 51,\ 50,\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 49,\ 48,\ 47,\ 46,\ 45,\ 44,\ 43,\ 42,\ 41,\ 40,\ 39,\ 38,\ 37,\ 36,\ 35,\ 34,\ 33,\ 31,\ 30,\ 29,\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 28,\ 27,\ 26,\ 25,\ 23,\ 22,\ 21,\ 20,\ 19,\ 17,\ 16,\ 15,\ 14,\ 12,\ 11,\ 10,\ 9,\ 7,\ 6,\ 5,\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3,\ 2,\ 1\ \}\ ;}
+\DoxyCodeLine{00093\ \textcolor{keyword}{static}\ \ int32\_t\ an\_x[\ BUFFER\_SIZE];\ \textcolor{comment}{//ir}}
+\DoxyCodeLine{00094\ \textcolor{keyword}{static}\ \ int32\_t\ an\_y[\ BUFFER\_SIZE];\ \textcolor{comment}{//red}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#if\ defined(\_\_AVR\_ATmega328P\_\_)\ ||\ defined(\_\_AVR\_ATmega168\_\_)}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//Arduino\ Uno\ doesn't\ have\ enough\ SRAM\ to\ store\ 100\ samples\ of\ IR\ led\ data\ and\ red\ led\ data\ in\ 32-\/bit\ format}}
+\DoxyCodeLine{00099\ \textcolor{comment}{//To\ solve\ this\ problem,\ 16-\/bit\ MSB\ of\ the\ sampled\ data\ will\ be\ truncated.\ \ Samples\ become\ 16-\/bit\ data.}}
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{spo2__algorithm_8h_a62050365673e666cd0d661a3664c26e6}{maxim\_heart\_rate\_and\_oxygen\_saturation}}(uint16\_t\ *pun\_ir\_buffer,\ int32\_t\ n\_ir\_buffer\_length,\ uint16\_t\ *pun\_red\_buffer,\ int32\_t\ *pn\_spo2,\ int8\_t\ *pch\_spo2\_valid,\ int32\_t\ *pn\_heart\_rate,\ int8\_t\ *pch\_hr\_valid);}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{spo2__algorithm_8h_a62050365673e666cd0d661a3664c26e6}{maxim\_heart\_rate\_and\_oxygen\_saturation}}(uint32\_t\ *pun\_ir\_buffer,\ int32\_t\ n\_ir\_buffer\_length,\ uint32\_t\ *pun\_red\_buffer,\ int32\_t\ *pn\_spo2,\ int8\_t\ *pch\_spo2\_valid,\ int32\_t\ *pn\_heart\_rate,\ int8\_t\ *pch\_hr\_valid);}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{spo2__algorithm_8h_ab0180596dbe4f711c2e5b6c637ca3549}{maxim\_find\_peaks}}(int32\_t\ *pn\_locs,\ int32\_t\ *n\_npks,\ \ int32\_t\ \ *pn\_x,\ int32\_t\ n\_size,\ int32\_t\ n\_min\_height,\ int32\_t\ n\_min\_distance,\ int32\_t\ n\_max\_num);}
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{spo2__algorithm_8h_a1c5af43429e2848c106cb3080b72e837}{maxim\_peaks\_above\_min\_height}}(int32\_t\ *pn\_locs,\ int32\_t\ *n\_npks,\ \ int32\_t\ \ *pn\_x,\ int32\_t\ n\_size,\ int32\_t\ n\_min\_height);}
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{spo2__algorithm_8h_adc6be68be81530d67a25c1a9905bec3a}{maxim\_remove\_close\_peaks}}(int32\_t\ *pn\_locs,\ int32\_t\ *pn\_npks,\ int32\_t\ *pn\_x,\ int32\_t\ n\_min\_distance);}
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{spo2__algorithm_8h_a6cae46e51640b712afc2ebeefd2d51ff}{maxim\_sort\_ascend}}(int32\_t\ \ *pn\_x,\ int32\_t\ n\_size);}
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{spo2__algorithm_8h_a44b6312f81810d4deb64071d12ab0060}{maxim\_sort\_indices\_descend}}(int32\_t\ \ *pn\_x,\ int32\_t\ *pn\_indx,\ int32\_t\ n\_size);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ALGORITHM\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00112\ }
+
+\end{DoxyCode}

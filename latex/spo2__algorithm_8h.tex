@@ -1,0 +1,209 @@
+\doxysection{include/\+\+Sensors/\+\+MAX30105/\+spo2\+\_\+algorithm.h File Reference}
+\hypertarget{spo2__algorithm_8h}{}\label{spo2__algorithm_8h}\index{include/Sensors/MAX30105/spo2\_algorithm.h@{include/Sensors/MAX30105/spo2\_algorithm.h}}
+
+
+Sp\+O2 calculation algorithm declarations.  
+
+
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{spo2__algorithm_8h_adca2cb1d26de5624064c8906226413b0}\label{spo2__algorithm_8h_adca2cb1d26de5624064c8906226413b0} 
+\+\#define {\bfseries FreqS}~25
+\item 
+\Hypertarget{spo2__algorithm_8h_a6b20d41d6252e9871430c242cb1a56e7}\label{spo2__algorithm_8h_a6b20d41d6252e9871430c242cb1a56e7} 
+\+\#define {\bfseries BUFFER\+\_\+\+SIZE}~(FreqS \texorpdfstring{$\ast$}{*} 4)
+\item 
+\Hypertarget{spo2__algorithm_8h_af8c3cbac49a22022b17cc7b34d42cbae}\label{spo2__algorithm_8h_af8c3cbac49a22022b17cc7b34d42cbae} 
+\+\#define {\bfseries MA4\+\_\+\+SIZE}~4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{spo2__algorithm_8h_a62050365673e666cd0d661a3664c26e6}{maxim\+\_\+heart\+\_\+rate\+\_\+and\+\_\+oxygen\+\_\+saturation}} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}pun\+\_\+ir\+\_\+buffer, int32\+\_\+t n\+\_\+ir\+\_\+buffer\+\_\+length, uint32\+\_\+t \texorpdfstring{$\ast$}{*}pun\+\_\+red\+\_\+buffer, int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+spo2, int8\+\_\+t \texorpdfstring{$\ast$}{*}pch\+\_\+spo2\+\_\+valid, int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+heart\+\_\+rate, int8\+\_\+t \texorpdfstring{$\ast$}{*}pch\+\_\+hr\+\_\+valid)
+\begin{DoxyCompactList}\small\item\em Calculate the heart rate and Sp\+O2 level. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{spo2__algorithm_8h_ab0180596dbe4f711c2e5b6c637ca3549}{maxim\+\_\+find\+\_\+peaks}} (int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+locs, int32\+\_\+t \texorpdfstring{$\ast$}{*}n\+\_\+npks, int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+x, int32\+\_\+t n\+\_\+size, int32\+\_\+t n\+\_\+min\+\_\+height, int32\+\_\+t n\+\_\+min\+\_\+distance, int32\+\_\+t n\+\_\+max\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Find peaks. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{spo2__algorithm_8h_a1c5af43429e2848c106cb3080b72e837}{maxim\+\_\+peaks\+\_\+above\+\_\+min\+\_\+height}} (int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+locs, int32\+\_\+t \texorpdfstring{$\ast$}{*}n\+\_\+npks, int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+x, int32\+\_\+t n\+\_\+size, int32\+\_\+t n\+\_\+min\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Find peaks above n\+\_\+min\+\_\+height. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{spo2__algorithm_8h_adc6be68be81530d67a25c1a9905bec3a}{maxim\+\_\+remove\+\_\+close\+\_\+peaks}} (int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+locs, int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+npks, int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+x, int32\+\_\+t n\+\_\+min\+\_\+distance)
+\begin{DoxyCompactList}\small\item\em Remove peaks. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{spo2__algorithm_8h_a6cae46e51640b712afc2ebeefd2d51ff}{maxim\+\_\+sort\+\_\+ascend}} (int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+x, int32\+\_\+t n\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Sort array. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{spo2__algorithm_8h_a44b6312f81810d4deb64071d12ab0060}{maxim\+\_\+sort\+\_\+indices\+\_\+descend}} (int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+x, int32\+\_\+t \texorpdfstring{$\ast$}{*}pn\+\_\+indx, int32\+\_\+t n\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Sort indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{spo2__algorithm_8h_adfeeb6b08271807492803acc50347108}{uch\+\_\+spo2\+\_\+table}} \+[184]\+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sp\+O2 calculation algorithm declarations. 
+
+\begin{DoxyAuthor}{Author}
+Maxim Integrated Products, Inc. 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Maxim\textquotesingle{}s reference algorithm for Sp\+O2 (blood oxygen saturation) calculation. Includes lookup table and helper functions 
+
+\label{spo2__algorithm_8h_doc-func-members}
+\Hypertarget{spo2__algorithm_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{spo2__algorithm_8h_ab0180596dbe4f711c2e5b6c637ca3549}\index{spo2\_algorithm.h@{spo2\_algorithm.h}!maxim\_find\_peaks@{maxim\_find\_peaks}}
+\index{maxim\_find\_peaks@{maxim\_find\_peaks}!spo2\_algorithm.h@{spo2\_algorithm.h}}
+\doxysubsubsection{\texorpdfstring{maxim\_find\_peaks()}{maxim\_find\_peaks()}}
+{\footnotesize\ttfamily \label{spo2__algorithm_8h_ab0180596dbe4f711c2e5b6c637ca3549} 
+void maxim\+\_\+find\+\_\+peaks (\begin{DoxyParamCaption}\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+locs}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{n\+\_\+npks}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+x}{, }\item[{int32\+\_\+t}]{n\+\_\+size}{, }\item[{int32\+\_\+t}]{n\+\_\+min\+\_\+height}{, }\item[{int32\+\_\+t}]{n\+\_\+min\+\_\+distance}{, }\item[{int32\+\_\+t}]{n\+\_\+max\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+Find peaks. 
+
+\begin{DoxyParagraph}{Details}
+Find at most MAX\+\_\+\+NUM peaks above MIN\+\_\+\+HEIGHT separated by at least MIN\+\_\+\+DISTANCE
+\end{DoxyParagraph}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{spo2__algorithm_8h_a62050365673e666cd0d661a3664c26e6}\index{spo2\_algorithm.h@{spo2\_algorithm.h}!maxim\_heart\_rate\_and\_oxygen\_saturation@{maxim\_heart\_rate\_and\_oxygen\_saturation}}
+\index{maxim\_heart\_rate\_and\_oxygen\_saturation@{maxim\_heart\_rate\_and\_oxygen\_saturation}!spo2\_algorithm.h@{spo2\_algorithm.h}}
+\doxysubsubsection{\texorpdfstring{maxim\_heart\_rate\_and\_oxygen\_saturation()}{maxim\_heart\_rate\_and\_oxygen\_saturation()}}
+{\footnotesize\ttfamily \label{spo2__algorithm_8h_a62050365673e666cd0d661a3664c26e6} 
+void maxim\+\_\+heart\+\_\+rate\+\_\+and\+\_\+oxygen\+\_\+saturation (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pun\+\_\+ir\+\_\+buffer}{, }\item[{int32\+\_\+t}]{n\+\_\+ir\+\_\+buffer\+\_\+length}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pun\+\_\+red\+\_\+buffer}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+spo2}{, }\item[{int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pch\+\_\+spo2\+\_\+valid}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+heart\+\_\+rate}{, }\item[{int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pch\+\_\+hr\+\_\+valid}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the heart rate and Sp\+O2 level. 
+
+\begin{DoxyParagraph}{Details}
+By detecting peaks of PPG cycle and corresponding AC/\+\+DC of red/\+infra-\/red signal, the an\+\_\+ratio for the SPO2 is computed. Since this algorithm is aiming for Arm M0/\+\+M3. formaula for SPO2 did not achieve the accuracy due to register overflow. Thus, accurate SPO2 is precalculated and save longo uch\+\_\+spo2\+\_\+table\+[]\+ per each an\+\_\+ratio.
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em \texorpdfstring{$\ast$}{*}pun\+\_\+ir\+\_\+buffer} & -\/ IR sensor data buffer \\
+\hline
+\doxymbox{\texttt{in}}  & {\em n\+\_\+ir\+\_\+buffer\+\_\+length} & -\/ IR sensor data buffer length \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \texorpdfstring{$\ast$}{*}pun\+\_\+red\+\_\+buffer} & -\/ Red sensor data buffer \\
+\hline
+\doxymbox{\texttt{out}}  & {\em \texorpdfstring{$\ast$}{*}pn\+\_\+spo2} & -\/ Calculated Sp\+O2 value \\
+\hline
+\doxymbox{\texttt{out}}  & {\em \texorpdfstring{$\ast$}{*}pch\+\_\+spo2\+\_\+valid} & -\/ 1 if the calculated Sp\+O2 value is valid \\
+\hline
+\doxymbox{\texttt{out}}  & {\em \texorpdfstring{$\ast$}{*}pn\+\_\+heart\+\_\+rate} & -\/ Calculated heart rate value \\
+\hline
+\doxymbox{\texttt{out}}  & {\em \texorpdfstring{$\ast$}{*}pch\+\_\+hr\+\_\+valid} & -\/ 1 if the calculated heart rate value is valid\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{spo2__algorithm_8h_a1c5af43429e2848c106cb3080b72e837}\index{spo2\_algorithm.h@{spo2\_algorithm.h}!maxim\_peaks\_above\_min\_height@{maxim\_peaks\_above\_min\_height}}
+\index{maxim\_peaks\_above\_min\_height@{maxim\_peaks\_above\_min\_height}!spo2\_algorithm.h@{spo2\_algorithm.h}}
+\doxysubsubsection{\texorpdfstring{maxim\_peaks\_above\_min\_height()}{maxim\_peaks\_above\_min\_height()}}
+{\footnotesize\ttfamily \label{spo2__algorithm_8h_a1c5af43429e2848c106cb3080b72e837} 
+void maxim\+\_\+peaks\+\_\+above\+\_\+min\+\_\+height (\begin{DoxyParamCaption}\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+locs}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{n\+\_\+npks}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+x}{, }\item[{int32\+\_\+t}]{n\+\_\+size}{, }\item[{int32\+\_\+t}]{n\+\_\+min\+\_\+height}{}\end{DoxyParamCaption})}
+
+
+
+Find peaks above n\+\_\+min\+\_\+height. 
+
+\begin{DoxyParagraph}{Details}
+Find all peaks above MIN\+\_\+\+HEIGHT
+\end{DoxyParagraph}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{spo2__algorithm_8h_adc6be68be81530d67a25c1a9905bec3a}\index{spo2\_algorithm.h@{spo2\_algorithm.h}!maxim\_remove\_close\_peaks@{maxim\_remove\_close\_peaks}}
+\index{maxim\_remove\_close\_peaks@{maxim\_remove\_close\_peaks}!spo2\_algorithm.h@{spo2\_algorithm.h}}
+\doxysubsubsection{\texorpdfstring{maxim\_remove\_close\_peaks()}{maxim\_remove\_close\_peaks()}}
+{\footnotesize\ttfamily \label{spo2__algorithm_8h_adc6be68be81530d67a25c1a9905bec3a} 
+void maxim\+\_\+remove\+\_\+close\+\_\+peaks (\begin{DoxyParamCaption}\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+locs}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+npks}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+x}{, }\item[{int32\+\_\+t}]{n\+\_\+min\+\_\+distance}{}\end{DoxyParamCaption})}
+
+
+
+Remove peaks. 
+
+\begin{DoxyParagraph}{Details}
+Remove peaks separated by less than MIN\+\_\+\+DISTANCE
+\end{DoxyParagraph}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{spo2__algorithm_8h_a6cae46e51640b712afc2ebeefd2d51ff}\index{spo2\_algorithm.h@{spo2\_algorithm.h}!maxim\_sort\_ascend@{maxim\_sort\_ascend}}
+\index{maxim\_sort\_ascend@{maxim\_sort\_ascend}!spo2\_algorithm.h@{spo2\_algorithm.h}}
+\doxysubsubsection{\texorpdfstring{maxim\_sort\_ascend()}{maxim\_sort\_ascend()}}
+{\footnotesize\ttfamily \label{spo2__algorithm_8h_a6cae46e51640b712afc2ebeefd2d51ff} 
+void maxim\+\_\+sort\+\_\+ascend (\begin{DoxyParamCaption}\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+x}{, }\item[{int32\+\_\+t}]{n\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Sort array. 
+
+\begin{DoxyParagraph}{Details}
+Sort array in ascending order (insertion sort algorithm)
+\end{DoxyParagraph}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{spo2__algorithm_8h_a44b6312f81810d4deb64071d12ab0060}\index{spo2\_algorithm.h@{spo2\_algorithm.h}!maxim\_sort\_indices\_descend@{maxim\_sort\_indices\_descend}}
+\index{maxim\_sort\_indices\_descend@{maxim\_sort\_indices\_descend}!spo2\_algorithm.h@{spo2\_algorithm.h}}
+\doxysubsubsection{\texorpdfstring{maxim\_sort\_indices\_descend()}{maxim\_sort\_indices\_descend()}}
+{\footnotesize\ttfamily \label{spo2__algorithm_8h_a44b6312f81810d4deb64071d12ab0060} 
+void maxim\+\_\+sort\+\_\+indices\+\_\+descend (\begin{DoxyParamCaption}\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+x}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{pn\+\_\+indx}{, }\item[{int32\+\_\+t}]{n\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Sort indices. 
+
+\begin{DoxyParagraph}{Details}
+Sort indices according to descending order (insertion sort algorithm)
+\end{DoxyParagraph}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+\label{spo2__algorithm_8h_doc-var-members}
+\Hypertarget{spo2__algorithm_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{spo2__algorithm_8h_adfeeb6b08271807492803acc50347108}\index{spo2\_algorithm.h@{spo2\_algorithm.h}!uch\_spo2\_table@{uch\_spo2\_table}}
+\index{uch\_spo2\_table@{uch\_spo2\_table}!spo2\_algorithm.h@{spo2\_algorithm.h}}
+\doxysubsubsection{\texorpdfstring{uch\_spo2\_table}{uch\_spo2\_table}}
+{\footnotesize\ttfamily \label{spo2__algorithm_8h_adfeeb6b08271807492803acc50347108} 
+const uint8\+\_\+t uch\+\_\+spo2\+\_\+table\+[184]\+}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\{\ 95,\ 95,\ 95,\ 96,\ 96,\ 96,\ 97,\ 97,\ 97,\ 97,\ 97,\ 98,\ 98,\ 98,\ 98,\ 98,\ 99,\ 99,\ 99,\ 99,\ }
+\DoxyCodeLine{99,\ 99,\ 99,\ 99,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ 100,\ }
+\DoxyCodeLine{100,\ 100,\ 100,\ 100,\ 99,\ 99,\ 99,\ 99,\ 99,\ 99,\ 99,\ 99,\ 98,\ 98,\ 98,\ 98,\ 98,\ 98,\ 97,\ 97,\ }
+\DoxyCodeLine{97,\ 97,\ 96,\ 96,\ 96,\ 96,\ 95,\ 95,\ 95,\ 94,\ 94,\ 94,\ 93,\ 93,\ 93,\ 92,\ 92,\ 92,\ 91,\ 91,\ }
+\DoxyCodeLine{90,\ 90,\ 89,\ 89,\ 89,\ 88,\ 88,\ 87,\ 87,\ 86,\ 86,\ 85,\ 85,\ 84,\ 84,\ 83,\ 82,\ 82,\ 81,\ 81,\ }
+\DoxyCodeLine{80,\ 80,\ 79,\ 78,\ 78,\ 77,\ 76,\ 76,\ 75,\ 74,\ 74,\ 73,\ 72,\ 72,\ 71,\ 70,\ 69,\ 69,\ 68,\ 67,\ }
+\DoxyCodeLine{66,\ 66,\ 65,\ 64,\ 63,\ 62,\ 62,\ 61,\ 60,\ 59,\ 58,\ 57,\ 56,\ 56,\ 55,\ 54,\ 53,\ 52,\ 51,\ 50,\ }
+\DoxyCodeLine{49,\ 48,\ 47,\ 46,\ 45,\ 44,\ 43,\ 42,\ 41,\ 40,\ 39,\ 38,\ 37,\ 36,\ 35,\ 34,\ 33,\ 31,\ 30,\ 29,\ }
+\DoxyCodeLine{28,\ 27,\ 26,\ 25,\ 23,\ 22,\ 21,\ 20,\ 19,\ 17,\ 16,\ 15,\ 14,\ 12,\ 11,\ 10,\ 9,\ 7,\ 6,\ 5,\ }
+\DoxyCodeLine{3,\ 2,\ 1\ \}}
+
+\end{DoxyCode}

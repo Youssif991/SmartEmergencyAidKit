@@ -1,0 +1,83 @@
+\doxysection{include/\+\+Sensors/\+\+MLX90614/\+\+Adafruit\+\_\+\+MLX90614.h File Reference}
+\hypertarget{_adafruit___m_l_x90614_8h}{}\label{_adafruit___m_l_x90614_8h}\index{include/Sensors/MLX90614/Adafruit\_MLX90614.h@{include/Sensors/MLX90614/Adafruit\_MLX90614.h}}
+
+
+Adafruit MLX90614 temperature sensor library.  
+
+
+{\ttfamily \+\#include $<$Adafruit\+\_\+\+I2\+CDevice.\+h$>$}\newline
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_adafruit___m_l_x90614}{Adafruit\+\_\+\+MLX90614}}
+\begin{DoxyCompactList}\small\item\em Class to read from and control a MLX90614 Temp Sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_abe545139438fe9eb7be3100e8935c4f7}\label{_adafruit___m_l_x90614_8h_abe545139438fe9eb7be3100e8935c4f7} 
+\+\#define {\bfseries MLX90614\+\_\+\+I2\+CADDR}~0x5A
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_ad4daa265652b71ebc0cd7ae384c65023}\label{_adafruit___m_l_x90614_8h_ad4daa265652b71ebc0cd7ae384c65023} 
+\+\#define {\bfseries MLX90614\+\_\+\+RAWIR1}~0x04
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a94a0e96818a3088dc493d5b16142f5be}\label{_adafruit___m_l_x90614_8h_a94a0e96818a3088dc493d5b16142f5be} 
+\+\#define {\bfseries MLX90614\+\_\+\+RAWIR2}~0x05
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a0f608580f8b2dd959d8bb0d86667c020}\label{_adafruit___m_l_x90614_8h_a0f608580f8b2dd959d8bb0d86667c020} 
+\+\#define {\bfseries MLX90614\+\_\+\+TA}~0x06
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a7587dcdf93ae7a9bf6eb19c614803bf1}\label{_adafruit___m_l_x90614_8h_a7587dcdf93ae7a9bf6eb19c614803bf1} 
+\+\#define {\bfseries MLX90614\+\_\+\+TOBJ1}~0x07
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_ac24503f3293ee99de008b77cd4f3ee8b}\label{_adafruit___m_l_x90614_8h_ac24503f3293ee99de008b77cd4f3ee8b} 
+\+\#define {\bfseries MLX90614\+\_\+\+TOBJ2}~0x08
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a19795df7252a8fca050c35230d4cd892}\label{_adafruit___m_l_x90614_8h_a19795df7252a8fca050c35230d4cd892} 
+\+\#define {\bfseries MLX90614\+\_\+\+TOMAX}~0x20
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a0b2c357b88f71301dd7813757d5620bd}\label{_adafruit___m_l_x90614_8h_a0b2c357b88f71301dd7813757d5620bd} 
+\+\#define {\bfseries MLX90614\+\_\+\+TOMIN}~0x21
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_ae2939d24d471b231e443ba49dd3abd09}\label{_adafruit___m_l_x90614_8h_ae2939d24d471b231e443ba49dd3abd09} 
+\+\#define {\bfseries MLX90614\+\_\+\+PWMCTRL}~0x22
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a72caf2736d9208fa5f9343bd6eb537f7}\label{_adafruit___m_l_x90614_8h_a72caf2736d9208fa5f9343bd6eb537f7} 
+\+\#define {\bfseries MLX90614\+\_\+\+TARANGE}~0x23
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a7b4d8132a55109992b0cd3a7ecd3923e}\label{_adafruit___m_l_x90614_8h_a7b4d8132a55109992b0cd3a7ecd3923e} 
+\+\#define {\bfseries MLX90614\+\_\+\+EMISS}~0x24
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a6ed9e9c217b391092fd5aa843688b6b8}\label{_adafruit___m_l_x90614_8h_a6ed9e9c217b391092fd5aa843688b6b8} 
+\+\#define {\bfseries MLX90614\+\_\+\+CONFIG}~0x25
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_af57cd108cf3cd4e21dc471263b2236ec}\label{_adafruit___m_l_x90614_8h_af57cd108cf3cd4e21dc471263b2236ec} 
+\+\#define {\bfseries MLX90614\+\_\+\+ADDR}~0x2E
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_ab9d92fa5fa4e1fd97640fbde9b3980e1}\label{_adafruit___m_l_x90614_8h_ab9d92fa5fa4e1fd97640fbde9b3980e1} 
+\+\#define {\bfseries MLX90614\+\_\+\+ID1}~0x3C
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_ae62eec269f911044a1f4c07d83b8e8a3}\label{_adafruit___m_l_x90614_8h_ae62eec269f911044a1f4c07d83b8e8a3} 
+\+\#define {\bfseries MLX90614\+\_\+\+ID2}~0x3D
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_acbb3fce06a09175246f8591c4749d2d6}\label{_adafruit___m_l_x90614_8h_acbb3fce06a09175246f8591c4749d2d6} 
+\+\#define {\bfseries MLX90614\+\_\+\+ID3}~0x3E
+\item 
+\Hypertarget{_adafruit___m_l_x90614_8h_a91fc995e03195b4f294172a05bcb134b}\label{_adafruit___m_l_x90614_8h_a91fc995e03195b4f294172a05bcb134b} 
+\+\#define {\bfseries MLX90614\+\_\+\+ID4}~0x3F
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Adafruit MLX90614 temperature sensor library. 
+
+\begin{DoxyAuthor}{Author}
+Adafruit Industries 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Library for Adafruit MLX90614 non-\/contact thermometer. Measures object temperature and ambient temperature via I2C 

@@ -1,0 +1,38 @@
+\doxysection{include/\+\+Sensors/\+\+MLX90614/\+temperature.h File Reference}
+\hypertarget{temperature_8h}{}\label{temperature_8h}\index{include/Sensors/MLX90614/temperature.h@{include/Sensors/MLX90614/temperature.h}}
+
+
+Non-\/contact infrared thermometer wrapper for MLX90614.  
+
+
+{\ttfamily \+\#include "{}Adafruit\+\_\+\+MLX90614.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+../\+\+Core/\+\+Config.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries update} ()
+\item 
+float {\bfseries object\+Temp} () const
+\item 
+float {\bfseries ambient\+Temp} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \+\_\+\+\_\+pad0\+\_\+\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Non-\/contact infrared thermometer wrapper for MLX90614. 
+
+\begin{DoxyAuthor}{Author}
+Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Wrapper class for MLX90614 sensor with I2C clock management. Provides throttled reading updates. Requires 50k\+Hz I2C speed 

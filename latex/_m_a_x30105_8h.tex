@@ -1,0 +1,47 @@
+\doxysection{include/\+\+Sensors/\+\+MAX30105/\+\+MAX30105.h File Reference}
+\hypertarget{_m_a_x30105_8h}{}\label{_m_a_x30105_8h}\index{include/Sensors/MAX30105/MAX30105.h@{include/Sensors/MAX30105/MAX30105.h}}
+
+
+\doxylink{class_m_a_x30105}{MAX30105} optical sensor driver for pulse oximetry.  
+
+
+{\ttfamily \+\#include "{}WProgram.\+h"{}}\newline
+{\ttfamily \+\#include $<$Wire.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_m_a_x30105}{MAX30105}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_m_a_x30105_8h_acb8783512e3bd21bdb6a294d026e6405}\label{_m_a_x30105_8h_acb8783512e3bd21bdb6a294d026e6405} 
+\+\#define {\bfseries MAX30105\+\_\+\+ADDRESS}~0x57
+\item 
+\Hypertarget{_m_a_x30105_8h_a5ca8c5fbb2caa99ab0b7007ce2c11633}\label{_m_a_x30105_8h_a5ca8c5fbb2caa99ab0b7007ce2c11633} 
+\+\#define {\bfseries I2\+C\+\_\+\+SPEED\+\_\+\+STANDARD}~100000
+\item 
+\Hypertarget{_m_a_x30105_8h_aef9d097ed2b58676498a33f3cf76f38d}\label{_m_a_x30105_8h_aef9d097ed2b58676498a33f3cf76f38d} 
+\+\#define {\bfseries I2\+C\+\_\+\+SPEED\+\_\+\+FAST}~400000
+\item 
+\Hypertarget{_m_a_x30105_8h_aab040ced3ff06bdd71655d55a5f8db14}\label{_m_a_x30105_8h_aab040ced3ff06bdd71655d55a5f8db14} 
+\+\#define {\bfseries I2\+C\+\_\+\+BUFFER\+\_\+\+LENGTH}~32
+\item 
+\Hypertarget{_m_a_x30105_8h_a8d6f782ffe53d87f0fd0327d4b09352c}\label{_m_a_x30105_8h_a8d6f782ffe53d87f0fd0327d4b09352c} 
+\+\#define {\bfseries STORAGE\+\_\+\+SIZE}~4
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_m_a_x30105}{MAX30105} optical sensor driver for pulse oximetry. 
+
+\begin{DoxyAuthor}{Author}
+Peter Jansen and Nathan Seidle (Spark\+Fun) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Driver for Maxim \doxylink{class_m_a_x30105}{MAX30105} optical smoke detector /\+ pulse oximeter sensor. Handles I2C communication, register operations, and FIFO management 

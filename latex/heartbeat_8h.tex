@@ -1,0 +1,57 @@
+\doxysection{include/\+\+Sensors/\+\+MAX30105/\+heartbeat.h File Reference}
+\hypertarget{heartbeat_8h}{}\label{heartbeat_8h}\index{include/Sensors/MAX30105/heartbeat.h@{include/Sensors/MAX30105/heartbeat.h}}
+
+
+Heart rate detection using FFT (Fast Fourier Transform) algorithm.  
+
+
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_heart_beat}{Heart\+Beat}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \+\_\+\+\_\+pad0\+\_\+\+\_\+}
+\item 
+constexpr float {\bfseries HR\+\_\+\+SAMPLE\+\_\+\+RATE} = 100.\+0f
+\item 
+constexpr uint16\+\_\+t {\bfseries HR\+\_\+\+FFT\+\_\+\+UPDATE} = 64
+\item 
+constexpr float {\bfseries HR\+\_\+\+MIN\+\_\+\+BPM} = 40.\+0f
+\item 
+constexpr float {\bfseries HR\+\_\+\+MAX\+\_\+\+BPM} = 200.\+0f
+\item 
+constexpr long {\bfseries HR\+\_\+\+FINGER\+\_\+\+THRESHOLD} = 50000
+\item 
+constexpr float {\bfseries HR\+\_\+\+IIR\+\_\+\+HP\+\_\+\+ALPHA} = 0.\+96952f
+\item 
+constexpr float {\bfseries HR\+\_\+\+IIR\+\_\+\+LP\+\_\+\+ALPHA} = 0.\+20083f
+\item 
+constexpr float {\bfseries HR\+\_\+\+SNR\+\_\+\+MIN\+\_\+\+RATIO} = 2.\+5f
+\item 
+constexpr uint8\+\_\+t {\bfseries HR\+\_\+\+MEDIAN\+\_\+\+SIZE} = 5
+\item 
+constexpr float {\bfseries HR\+\_\+\+EMA\+\_\+\+ALPHA} = 0.\+15f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Heart rate detection using FFT (Fast Fourier Transform) algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+3.\+0
+\end{DoxyVersion}
+Collects IR samples into a sliding circular buffer and applies a Cooley-\/\+Tukey radix-\/2 FFT to find the dominant frequency in the heart-\/rate band (HR\+\_\+\+MIN\+\_\+\+BPM -\/ HR\+\_\+\+MAX\+\_\+\+BPM). Parabolic interpolation refines the peak estimate to sub-\/bin accuracy.
+
+v3.\+0 additions:\+ • Bandpass IIR filter (0.\+5–4 Hz) applied per-\/sample before the FFT buffer to strip DC drift and high-\/frequency noise. • SNR quality gate — result is discarded when peak/\+noise \texorpdfstring{$<$}{<} threshold. • Exponential Moving Average (EMA) on the BPM output to prevent erratic display jumps between updates. • FFT window doubled to 512 samples, halving frequency resolution (≈11.7 BPM/\+bin) and improving parabolic interpolation accuracy.
+
+The public API (beat\+Avg /\+ bpm /\+ finger\+Present /\+ ir\+Value) is unchanged so no other files need modification. 

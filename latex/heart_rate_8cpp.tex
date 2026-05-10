@@ -1,0 +1,77 @@
+\doxysection{src/\+\+Sensors/\+\+MAX30105/\+heart\+Rate.cpp File Reference}
+\hypertarget{heart_rate_8cpp}{}\label{heart_rate_8cpp}\index{src/Sensors/MAX30105/heartRate.cpp@{src/Sensors/MAX30105/heartRate.cpp}}
+
+
+Implementation of beat detection algorithm functions.  
+
+
+{\ttfamily \+\#include "{}../\+../\+../\+include/\+\+Sensors/\+\+MAX30105/\+heart\+Rate.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{heart_rate_8cpp_a83abdb9881ef7887abffdbf639539572}\label{heart_rate_8cpp_a83abdb9881ef7887abffdbf639539572} 
+bool {\bfseries check\+For\+Beat} (int32\+\_\+t sample)
+\item 
+\Hypertarget{heart_rate_8cpp_af4f11545a05f97c55092e7f3f01b9f59}\label{heart_rate_8cpp_af4f11545a05f97c55092e7f3f01b9f59} 
+int16\+\_\+t {\bfseries average\+DCEstimator} (int32\+\_\+t \texorpdfstring{$\ast$}{*}p, uint16\+\_\+t x)
+\item 
+\Hypertarget{heart_rate_8cpp_a6cedece0bbb86fa19985f9ea4b3927f2}\label{heart_rate_8cpp_a6cedece0bbb86fa19985f9ea4b3927f2} 
+int16\+\_\+t {\bfseries low\+Pass\+FIRFilter} (int16\+\_\+t din)
+\item 
+\Hypertarget{heart_rate_8cpp_a8088186de4a3d9d5650a2f0f4684c237}\label{heart_rate_8cpp_a8088186de4a3d9d5650a2f0f4684c237} 
+int32\+\_\+t {\bfseries mul16} (int16\+\_\+t x, int16\+\_\+t y)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{heart_rate_8cpp_aadfffc9bb91c5f2212e1fe37fe176e31}\label{heart_rate_8cpp_aadfffc9bb91c5f2212e1fe37fe176e31} 
+int16\+\_\+t {\bfseries IR\+\_\+\+AC\+\_\+\+Max} = 20
+\item 
+\Hypertarget{heart_rate_8cpp_ac82d44e5573ead57b41d8e6925c56efb}\label{heart_rate_8cpp_ac82d44e5573ead57b41d8e6925c56efb} 
+int16\+\_\+t {\bfseries IR\+\_\+\+AC\+\_\+\+Min} = -\/20
+\item 
+\Hypertarget{heart_rate_8cpp_a5d860360023be3563f5f3ca35b67dbd6}\label{heart_rate_8cpp_a5d860360023be3563f5f3ca35b67dbd6} 
+int16\+\_\+t {\bfseries IR\+\_\+\+AC\+\_\+\+Signal\+\_\+\+Current} = 0
+\item 
+\Hypertarget{heart_rate_8cpp_af155356f274277a989217647a74de491}\label{heart_rate_8cpp_af155356f274277a989217647a74de491} 
+int16\+\_\+t {\bfseries IR\+\_\+\+AC\+\_\+\+Signal\+\_\+\+Previous}
+\item 
+\Hypertarget{heart_rate_8cpp_a029d86d9231d19e3575c594da4b8f3a6}\label{heart_rate_8cpp_a029d86d9231d19e3575c594da4b8f3a6} 
+int16\+\_\+t {\bfseries IR\+\_\+\+AC\+\_\+\+Signal\+\_\+min} = 0
+\item 
+\Hypertarget{heart_rate_8cpp_a1907ab3ae36a69998242237553c97c64}\label{heart_rate_8cpp_a1907ab3ae36a69998242237553c97c64} 
+int16\+\_\+t {\bfseries IR\+\_\+\+AC\+\_\+\+Signal\+\_\+max} = 0
+\item 
+\Hypertarget{heart_rate_8cpp_aac37ff5ca7f870dbbe1153bb79a9b10b}\label{heart_rate_8cpp_aac37ff5ca7f870dbbe1153bb79a9b10b} 
+int16\+\_\+t {\bfseries IR\+\_\+\+Average\+\_\+\+Estimated}
+\item 
+\Hypertarget{heart_rate_8cpp_a01ebe57fe63c9c91acb9a64a20c09317}\label{heart_rate_8cpp_a01ebe57fe63c9c91acb9a64a20c09317} 
+int16\+\_\+t {\bfseries positive\+Edge} = 0
+\item 
+\Hypertarget{heart_rate_8cpp_a41c4b2a190425db8fdf501a78224cb39}\label{heart_rate_8cpp_a41c4b2a190425db8fdf501a78224cb39} 
+int16\+\_\+t {\bfseries negative\+Edge} = 0
+\item 
+\Hypertarget{heart_rate_8cpp_a498ce9e787948fe7526ad99d76e5b76a}\label{heart_rate_8cpp_a498ce9e787948fe7526ad99d76e5b76a} 
+int32\+\_\+t {\bfseries ir\+\_\+avg\+\_\+reg} = 0
+\item 
+\Hypertarget{heart_rate_8cpp_afd2f4a77835e9d1548951ec6ba21c334}\label{heart_rate_8cpp_afd2f4a77835e9d1548951ec6ba21c334} 
+int16\+\_\+t {\bfseries cbuf} \+[32]\+
+\item 
+\Hypertarget{heart_rate_8cpp_aa9fff43968831437a312428836cab362}\label{heart_rate_8cpp_aa9fff43968831437a312428836cab362} 
+uint8\+\_\+t {\bfseries offset} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of beat detection algorithm functions. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Seidle (Spark\+Fun) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Low-\/level beat detection using DC estimator and FIR filtering. Implements Maxim\textquotesingle{}s PBA algorithm primitives 

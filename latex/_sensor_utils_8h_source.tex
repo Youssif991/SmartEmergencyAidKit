@@ -1,0 +1,35 @@
+\doxysection{Sensor\+Utils.\+h}
+\hypertarget{_sensor_utils_8h_source}{}\label{_sensor_utils_8h_source}\index{include/Core/SensorUtils.h@{include/Core/SensorUtils.h}}
+\doxymbox{\hyperlink{_sensor_utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ SensorUtils.h\ —\ Helper\ functions\ for\ aggregating\ and\ processing\ sensor\ data.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ Provides\ utility\ functions\ for\ gathering\ readings\ from\ all\ sensors\ into}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ structured\ formats,\ formatting\ data\ for\ output,\ and\ other\ sensor-\/related}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ helper\ operations.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_types_8h}{Types.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ ──\ Sensor\ Data\ Gathering\ ──────────────────────────────────────────────────────}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Gather\ all\ current\ sensor\ readings\ into\ a\ single\ SensorReadings\ struct.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Call\ this\ before\ updating\ displays\ or\ logging\ data.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ Requires\ all\ sensor\ modules\ to\ be\ initialized\ and\ updated\ first.}}
+\DoxyCodeLine{00028\ \doxymbox{\hyperlink{struct_sensor_readings}{SensorReadings}}\ gatherSensorReadings();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ Gather\ just\ IMU\ data\ into\ an\ IMUData\ struct.}}
+\DoxyCodeLine{00031\ \doxymbox{\hyperlink{struct_i_m_u_data}{IMUData}}\ gatherIMUData();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ Gather\ just\ biometric\ data\ (heart\ rate\ +\ SpO2)\ into\ a\ BiometricData\ struct.}}
+\DoxyCodeLine{00034\ \doxymbox{\hyperlink{struct_biometric_data}{BiometricData}}\ gatherBiometricData();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Gather\ just\ temperature\ data\ into\ a\ TemperatureData\ struct.}}
+\DoxyCodeLine{00037\ \doxymbox{\hyperlink{struct_temperature_data}{TemperatureData}}\ gatherTemperatureData();}
+
+\end{DoxyCode}

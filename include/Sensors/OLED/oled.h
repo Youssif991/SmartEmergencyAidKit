@@ -1,14 +1,19 @@
 /**
  * @file oled.h
  * @brief SSD1306 OLED display driver (128x32, I2C)
- * @author Youssef Mohammed, Youssef Hisham (Integration), mtmal and Waveshare (Original)
+ * @author Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem (Integration), mtmal and Waveshare (Original)
  * @date 2026-05-06
  * @version 1.0
  * @details Minimal Arduino-compatible SSD1306 OLED driver optimized for SmartAidKit.
  *          0.91" monochrome display with text and graphics functions
  */
 
-#pragma once
+/**
+11:  * @addtogroup OLED_Group
+12:  * @{
+13:  */
+14: 
+15: #pragma once
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -104,3 +109,5 @@ private:
     // Draw a single ASCII character at (x, y)
     void drawChar(char c, uint8_t x, uint8_t y);
 };
+107: 
+108: /** @} */

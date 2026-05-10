@@ -1,0 +1,54 @@
+\doxysection{src/\+main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+Program entry point and main application loop.  
+
+
+{\ttfamily \+\#include "{}Sensors.\+h"{}}\newline
+{\ttfamily \+\#include "{}app.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\label{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d} 
+void {\bfseries setup} ()
+\item 
+\Hypertarget{main_8cpp_afe461d27b9c48d5921c00d521181f12f}\label{main_8cpp_afe461d27b9c48d5921c00d521181f12f} 
+void {\bfseries loop} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_afed6167b1525bed1499ee97fff3090d3}\label{main_8cpp_afed6167b1525bed1499ee97fff3090d3} 
+\doxymbox{\hyperlink{class_m_a_x30105}{MAX30105}} {\bfseries sensor}
+\item 
+\Hypertarget{main_8cpp_a063f718269c350a4ae450ddb38b327e0}\label{main_8cpp_a063f718269c350a4ae450ddb38b327e0} 
+Temp\+Sensor {\bfseries temp}
+\item 
+\Hypertarget{main_8cpp_a2ed1ad7aaf2adb8214a589d9ba86800f}\label{main_8cpp_a2ed1ad7aaf2adb8214a589d9ba86800f} 
+\doxymbox{\hyperlink{class_oximeter}{Oximeter}} {\bfseries oxygen}
+\item 
+\Hypertarget{main_8cpp_a8b502832d7302de44fde055a44e2ab50}\label{main_8cpp_a8b502832d7302de44fde055a44e2ab50} 
+\doxymbox{\hyperlink{class_heart_beat}{Heart\+Beat}} {\bfseries heartbeat}
+\item 
+\Hypertarget{main_8cpp_a047a89b0208974c18d5c49656240616a}\label{main_8cpp_a047a89b0208974c18d5c49656240616a} 
+\doxymbox{\hyperlink{class_i_m_u}{IMU}} {\bfseries imu}
+\item 
+\Hypertarget{main_8cpp_a3e76f7a85576b8363f3711038abdeebb}\label{main_8cpp_a3e76f7a85576b8363f3711038abdeebb} 
+\doxymbox{\hyperlink{class_o_l_e_d}{OLED}} {\bfseries display}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Program entry point and main application loop. 
+
+\begin{DoxyAuthor}{Author}
+Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Initializes all sensors and runs the main event loop. Manages I2C clock switching, sensor polling, and display updates 

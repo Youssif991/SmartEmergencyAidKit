@@ -1,0 +1,164 @@
+\doxysection{MAX30105.\+h}
+\hypertarget{_m_a_x30105_8h_source}{}\label{_m_a_x30105_8h_source}\index{include/Sensors/MAX30105/MAX30105.h@{include/Sensors/MAX30105/MAX30105.h}}
+\doxymbox{\hyperlink{_m_a_x30105_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{/***************************************************\ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ This\ is\ a\ library\ written\ for\ the\ Maxim\ MAX30105\ Optical\ Smoke\ Detector}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ It\ should\ also\ work\ with\ the\ MAX30102.\ However,\ the\ MAX30102\ does\ not\ have\ a\ Green\ LED.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ These\ sensors\ use\ I2C\ to\ communicate,\ as\ well\ as\ a\ single\ (optional)}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ interrupt\ line\ that\ is\ not\ currently\ supported\ in\ this\ driver.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ Written\ by\ Peter\ Jansen\ and\ Nathan\ Seidle\ (SparkFun)}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ BSD\ license,\ all\ text\ above\ must\ be\ included\ in\ any\ redistribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *****************************************************/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#if\ (ARDUINO\ >=\ 100)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \#include\ "{}Arduino.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \#include\ "{}WProgram.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <Wire.h>}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ MAX30105\_ADDRESS\ \ \ \ \ \ \ \ \ \ 0x57\ }\textcolor{comment}{//7-\/bit\ I2C\ Address}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//Note\ that\ MAX30102\ has\ the\ same\ I2C\ address\ and\ Part\ ID}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ I2C\_SPEED\_STANDARD\ \ \ \ \ \ \ \ 100000}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ I2C\_SPEED\_FAST\ \ \ \ \ \ \ \ \ \ \ \ 400000}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//Define\ the\ size\ of\ the\ I2C\ buffer\ based\ on\ the\ platform\ the\ user\ has}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#if\ defined(\_\_AVR\_ATmega328P\_\_)\ ||\ defined(\_\_AVR\_ATmega168\_\_)}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{comment}{//I2C\_BUFFER\_LENGTH\ is\ defined\ in\ Wire.H}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \#define\ I2C\_BUFFER\_LENGTH\ BUFFER\_LENGTH}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#elif\ defined(\_\_SAMD21G18A\_\_)}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//SAMD21\ uses\ RingBuffer.h}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \#define\ I2C\_BUFFER\_LENGTH\ SERIAL\_BUFFER\_SIZE}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{comment}{//The\ catch-\/all\ default\ is\ 32}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \#define\ I2C\_BUFFER\_LENGTH\ 32}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{class\ }MAX30105\ \{}
+\DoxyCodeLine{00057\ \ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00058\ \ \ MAX30105(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{boolean}\ begin(TwoWire\ \&wirePort\ =\ Wire,\ uint32\_t\ i2cSpeed\ =\ I2C\_SPEED\_STANDARD,\ uint8\_t\ i2caddr\ =\ MAX30105\_ADDRESS);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ uint32\_t\ getRed(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Returns\ immediate\ red\ value}}
+\DoxyCodeLine{00063\ \ \ uint32\_t\ getIR(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Returns\ immediate\ IR\ value}}
+\DoxyCodeLine{00064\ \ \ uint32\_t\ getGreen(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Returns\ immediate\ green\ value}}
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{bool}\ safeCheck(uint8\_t\ maxTimeToCheck);\ \textcolor{comment}{//Given\ a\ max\ amount\ of\ time,\ check\ for\ new\ data}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{void}\ softReset();}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ shutDown();\ }
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{void}\ wakeUp();\ }
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{void}\ setLEDMode(uint8\_t\ mode);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{void}\ setADCRange(uint8\_t\ adcRange);}
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{void}\ setSampleRate(uint8\_t\ sampleRate);}
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{void}\ setPulseWidth(uint8\_t\ pulseWidth);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{void}\ setPulseAmplitudeRed(uint8\_t\ value);}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ setPulseAmplitudeIR(uint8\_t\ value);}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{void}\ setPulseAmplitudeGreen(uint8\_t\ value);}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{void}\ setPulseAmplitudeProximity(uint8\_t\ value);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{void}\ setProximityThreshold(uint8\_t\ threshMSB);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \textcolor{comment}{//Multi-\/led\ configuration\ mode\ (page\ 22)}}
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{void}\ enableSlot(uint8\_t\ slotNumber,\ uint8\_t\ device);\ \textcolor{comment}{//Given\ slot\ number,\ assign\ a\ device\ to\ slot}}
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{void}\ disableSlots(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00088\ \ \ }
+\DoxyCodeLine{00089\ \ \ \textcolor{comment}{//\ Data\ Collection}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//Interrupts\ (page\ 13,\ 14)}}
+\DoxyCodeLine{00092\ \ \ uint8\_t\ getINT1(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Returns\ the\ main\ interrupt\ group}}
+\DoxyCodeLine{00093\ \ \ uint8\_t\ getINT2(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Returns\ the\ temp\ ready\ interrupt}}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ enableAFULL(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Enable/disable\ individual\ interrupts}}
+\DoxyCodeLine{00095\ \ \ \textcolor{keywordtype}{void}\ disableAFULL(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{void}\ enableDATARDY(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{void}\ disableDATARDY(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ enableALCOVF(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{void}\ disableALCOVF(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ enablePROXINT(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ disablePROXINT(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{void}\ enableDIETEMPRDY(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{void}\ disableDIETEMPRDY(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \textcolor{comment}{//FIFO\ Configuration\ (page\ 18)}}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{void}\ setFIFOAverage(uint8\_t\ samples);}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{void}\ enableFIFORollover();}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ disableFIFORollover();}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{void}\ setFIFOAlmostFull(uint8\_t\ samples);}
+\DoxyCodeLine{00110\ \ \ }
+\DoxyCodeLine{00111\ \ \ \textcolor{comment}{//FIFO\ Reading}}
+\DoxyCodeLine{00112\ \ \ uint16\_t\ check(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Checks\ for\ new\ data\ and\ fills\ FIFO}}
+\DoxyCodeLine{00113\ \ \ uint8\_t\ available(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Tells\ caller\ how\ many\ new\ samples\ are\ available\ (head\ -\/\ tail)}}
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{void}\ nextSample(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Advances\ the\ tail\ of\ the\ sense\ array}}
+\DoxyCodeLine{00115\ \ \ uint32\_t\ getFIFORed(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Returns\ the\ FIFO\ sample\ pointed\ to\ by\ tail}}
+\DoxyCodeLine{00116\ \ \ uint32\_t\ getFIFOIR(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Returns\ the\ FIFO\ sample\ pointed\ to\ by\ tail}}
+\DoxyCodeLine{00117\ \ \ uint32\_t\ getFIFOGreen(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Returns\ the\ FIFO\ sample\ pointed\ to\ by\ tail}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ uint8\_t\ getWritePointer(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00120\ \ \ uint8\_t\ getReadPointer(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{void}\ clearFIFO(\textcolor{keywordtype}{void});\ \textcolor{comment}{//Sets\ the\ read/write\ pointers\ to\ zero}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{comment}{//Proximity\ Mode\ Interrupt\ Threshold}}
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{void}\ setPROXINTTHRESH(uint8\_t\ val);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \textcolor{comment}{//\ Die\ Temperature}}
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordtype}{float}\ readTemperature();}
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{float}\ readTemperatureF();}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \textcolor{comment}{//\ Detecting\ ID/Revision}}
+\DoxyCodeLine{00131\ \ \ uint8\_t\ getRevisionID();}
+\DoxyCodeLine{00132\ \ \ uint8\_t\ readPartID();\ \ }
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \textcolor{comment}{//\ Setup\ the\ IC\ with\ user\ selectable\ settings}}
+\DoxyCodeLine{00135\ \ \ \textcolor{keywordtype}{void}\ setup(\textcolor{keywordtype}{byte}\ powerLevel\ =\ 0x1F,\ \textcolor{keywordtype}{byte}\ sampleAverage\ =\ 4,\ \textcolor{keywordtype}{byte}\ ledMode\ =\ 3,\ \textcolor{keywordtype}{int}\ sampleRate\ =\ 400,\ \textcolor{keywordtype}{int}\ pulseWidth\ =\ 411,\ \textcolor{keywordtype}{int}\ adcRange\ =\ 4096);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \textcolor{comment}{//\ Low-\/level\ I2C\ communication}}
+\DoxyCodeLine{00138\ \ \ uint8\_t\ readRegister8(uint8\_t\ address,\ uint8\_t\ reg);}
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{void}\ writeRegister8(uint8\_t\ address,\ uint8\_t\ reg,\ uint8\_t\ value);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00142\ \ \ TwoWire\ *\_i2cPort;\ \textcolor{comment}{//The\ generic\ connection\ to\ user's\ chosen\ I2C\ hardware}}
+\DoxyCodeLine{00143\ \ \ uint8\_t\ \_i2caddr;}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \textcolor{comment}{//activeLEDs\ is\ the\ number\ of\ channels\ turned\ on,\ and\ can\ be\ 1\ to\ 3.\ 2\ is\ common\ for\ Red+IR.}}
+\DoxyCodeLine{00146\ \ \ \textcolor{keywordtype}{byte}\ activeLEDs;\ \textcolor{comment}{//Gets\ set\ during\ setup.\ Allows\ check()\ to\ calculate\ how\ many\ bytes\ to\ read\ from\ FIFO}}
+\DoxyCodeLine{00147\ \ \ }
+\DoxyCodeLine{00148\ \ \ uint8\_t\ revisionID;\ }
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \textcolor{keywordtype}{void}\ readRevisionID();}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \textcolor{keywordtype}{void}\ bitMask(uint8\_t\ reg,\ uint8\_t\ mask,\ uint8\_t\ thing);}
+\DoxyCodeLine{00153\ \ }
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\ \ \ \#define\ STORAGE\_SIZE\ 4\ }\textcolor{comment}{//Each\ long\ is\ 4\ bytes\ so\ limit\ this\ to\ fit\ on\ your\ micro}}
+\DoxyCodeLine{00155\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Record}
+\DoxyCodeLine{00156\ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ uint32\_t\ red[STORAGE\_SIZE];}
+\DoxyCodeLine{00158\ \ \ \ \ uint32\_t\ IR[STORAGE\_SIZE];}
+\DoxyCodeLine{00159\ \ \ \ \ uint32\_t\ green[STORAGE\_SIZE];}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{byte}\ head;}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{byte}\ tail;}
+\DoxyCodeLine{00162\ \ \ \}\ sense\_struct;\ \textcolor{comment}{//This\ is\ our\ circular\ buffer\ of\ readings\ from\ the\ sensor}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ sense\_struct\ sense;}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \};}
+
+\end{DoxyCode}

@@ -1,4 +1,12 @@
 # SmartAidKit - Embedded Health Monitoring System
+1: 
+2: /**
+3:  * @mainpage SmartAidKit Documentation
+4:  * 
+5:  * @section overview_sec Overview
+6:  * Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.
+7:  */
+8: 
 
 Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.
 
@@ -58,20 +66,20 @@ Below is a visual overview of the project structure.
 - **`SensorUtils.h` / `.cpp`**: Helper functions (`gatherSensorReadings()`, `gatherIMUData()`) for aggregating data from multiple sensors.
 
 ####  Pulse Oximeter & Heart Rate (`Sensors/MAX30105/`)
-- **`MAX30105`**: Sensor driver for handling I2C communication and register operations.
-- **`oximeter`**: SpO2 calculation with a state machine (NoFinger → Filling → Streaming).
-- **`heartbeat`**: Heart rate detection using an advanced FFT (Fast Fourier Transform) algorithm with IIR filtering, SNR gating, and EMA smoothing.
+- **@ref MAX30105**: Sensor driver for handling I2C communication and register operations.
+- **@ref Oximeter**: SpO2 calculation with a state machine (NoFinger → Filling → Streaming).
+- **@ref HeartBeat**: Heart rate detection using an advanced FFT (Fast Fourier Transform) algorithm.
 - **`heartRate`**: Low-level beat detection algorithm.
 - **`spo2_algorithm`**: SpO2 calculation math (Maxim's reference algorithm).
 
 ####  Non-Contact Thermometer (`Sensors/MLX90614/`)
-- **`temperature`**: Wrapper class handling proper I2C clock switching (requires 50kHz, unlike other 400kHz sensors).
+- **@ref TempSensor**: Wrapper class handling proper I2C clock switching (requires 50kHz, unlike other 400kHz sensors).
 
 ####  6-Axis IMU (`Sensors/MPU6050/`)
-- **`imu`**: Wrapper class providing motion and orientation tracking with built-in averaging and throttling, utilizing the `driver_mpu6050` implementation.
+- **@ref IMU**: Wrapper class providing motion and orientation tracking with built-in averaging and throttling.
 
 #### Display Driver (`Sensors/OLED/`)
-- **`oled`**: SSD1306 display driver for formatting and printing data (`printText()`, `printSensorDataStruct()`).
+- **@ref OLED**: SSD1306 display driver for formatting and printing data (`printText()`, `printSensorDataStruct()`).
 
 ####  Configuration Files
 - **`Doxyfile`**: Configuration for generating Doxygen documentation.
@@ -268,7 +276,31 @@ pio run
 pio run --target upload
 ```
 
-### Serial Monitor
+---
+275: 
+276: ## 📖 Documentation
+277: 
+278: Detailed API documentation is generated using **Doxygen**.
+279: 
+280: ### Generating Documentation
+281: 
+282: To generate the HTML documentation locally:
+283: 
+284: ```bash
+285: doxygen Doxyfile
+286: ```
+287: 
+288: After generation, open `html/index.html` in your browser.
+289: 
+290: ### Documentation Features
+291: - **Class Hierarchy**: Visual representation of sensor classes.
+292: - **Module Grouping**: Sensors are grouped by manufacturer and function.
+293: - **Call Graphs**: Automated visualization of function dependencies.
+294: - **Search**: Real-time search for API members.
+295: 
+296: ---
+297: 
+298: ##  Serial Monitor
 ```bash
 pio device monitor
 ```

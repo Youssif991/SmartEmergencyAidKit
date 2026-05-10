@@ -1,7 +1,7 @@
 /**
  * @file oximeter.h
  * @brief SpO2 (blood-oxygen saturation) calculation and state management
- * @author Youssef Mohammed, Youssef Hisham
+ * @author Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem
  * @date 2026-05-06
  * @version 1.0
  * @details Implements state machine for SpO2 measurement with rolling window algorithm.
@@ -70,3 +70,5 @@ private:
     void reset();
     static float ema(float current, float next);
 };
+73: 
+74: /** @} */

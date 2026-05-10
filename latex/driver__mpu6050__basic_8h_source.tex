@@ -1,0 +1,55 @@
+\doxysection{driver\+\_\+mpu6050\+\_\+basic.\+h}
+\hypertarget{driver__mpu6050__basic_8h_source}{}\label{driver__mpu6050__basic_8h_source}\index{include/Sensors/MPU6050/driver\_mpu6050\_basic.h@{include/Sensors/MPU6050/driver\_mpu6050\_basic.h}}
+\doxymbox{\hyperlink{driver__mpu6050__basic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#ifndef\ DRIVER\_MPU6050\_BASIC\_H}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ DRIVER\_MPU6050\_BASIC\_H}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}driver\_mpu6050\_interface.h"{}}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00053\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\{}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_CLOCK\_SOURCE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_CLOCK\_SOURCE\_PLL\_X\_GYRO\ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_RATE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 50\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_LOW\_PASS\_FILTER\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_LOW\_PASS\_FILTER\_3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_CYCLE\_WAKE\_UP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_WAKE\_UP\_FREQUENCY\ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_WAKE\_UP\_FREQUENCY\_1P25\_HZ\ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_PIN\_LEVEL\ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_PIN\_LEVEL\_LOW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_PIN\_TYPE\ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_PIN\_TYPE\_PUSH\_PULL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_ACCELEROMETER\_RANGE\ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_ACCELEROMETER\_RANGE\_2G\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_GYROSCOPE\_RANGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_GYROSCOPE\_RANGE\_2000DPS\ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_MOTION\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_FIFO\_OVERFLOW\ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_DMP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_I2C\_MAST\ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_DATA\_READY\ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_LATCH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_TRUE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_INTERRUPT\_READ\_CLEAR\ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_TRUE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_EXTERN\_SYNC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_EXTERN\_SYNC\_INPUT\_DISABLED\ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_FSYNC\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_FSYNC\_INTERRUPT\_LEVEL\ \ \ \ \ \ \ \ \ \ MPU6050\_PIN\_LEVEL\_LOW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_IIC\_MASTER\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ MPU6050\_BASIC\_DEFAULT\_IIC\_BYPASS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPU6050\_BOOL\_FALSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00096\ uint8\_t\ \doxymbox{\hyperlink{group__mpu6050__example__driver_ga25caa65e97f5d7469be240f207f888c2}{mpu6050\_basic\_init}}(\doxymbox{\hyperlink{group__mpu6050__basic__driver_ga47a9d14317022ff750450d300c1d48fb}{mpu6050\_address\_t}}\ addr\_pin);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00105\ uint8\_t\ \doxymbox{\hyperlink{group__mpu6050__example__driver_ga0ccf1034d23b54163b1ba7e349a9eb82}{mpu6050\_basic\_deinit}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00116\ uint8\_t\ \doxymbox{\hyperlink{group__mpu6050__example__driver_ga92b4964e6a8ef6b228c414e7f875ce2c}{mpu6050\_basic\_read}}(\textcolor{keywordtype}{float}\ g[3],\ \textcolor{keywordtype}{float}\ dps[3]);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00126\ uint8\_t\ \doxymbox{\hyperlink{group__mpu6050__example__driver_ga105b3437eaeddcdf860357a90dee59b5}{mpu6050\_basic\_read\_temperature}}(\textcolor{keywordtype}{float}\ *degrees);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00133\ \}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

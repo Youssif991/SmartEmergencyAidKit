@@ -1,0 +1,90 @@
+\doxysubsection{mpu6050 extern driver function }
+\hypertarget{group__mpu6050__extern__driver}{}\label{group__mpu6050__extern__driver}\index{mpu6050 extern driver function@{mpu6050 extern driver function}}
+
+
+mpu6050 extern driver modules  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__extern__driver_ga40023d18b00ff046ebd5accca0be8677}{mpu6050\+\_\+set\+\_\+reg}} (\doxymbox{\hyperlink{group__mpu6050__basic__driver_gab9152935d0f1c91a6183aa8f398b7045}{mpu6050\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}handle, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em set the chip register \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__extern__driver_ga3d573edea87552d3af6d4e60fd1d4475}{mpu6050\+\_\+get\+\_\+reg}} (\doxymbox{\hyperlink{group__mpu6050__basic__driver_gab9152935d0f1c91a6183aa8f398b7045}{mpu6050\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}handle, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em get the chip register \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+mpu6050 extern driver modules 
+
+
+
+\label{group__mpu6050__extern__driver_doc-func-members}
+\Hypertarget{group__mpu6050__extern__driver_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__mpu6050__extern__driver_ga3d573edea87552d3af6d4e60fd1d4475}\index{mpu6050 extern driver function@{mpu6050 extern driver function}!mpu6050\_get\_reg@{mpu6050\_get\_reg}}
+\index{mpu6050\_get\_reg@{mpu6050\_get\_reg}!mpu6050 extern driver function@{mpu6050 extern driver function}}
+\doxysubsubsubsection{\texorpdfstring{mpu6050\_get\_reg()}{mpu6050\_get\_reg()}}
+{\footnotesize\ttfamily \label{group__mpu6050__extern__driver_ga3d573edea87552d3af6d4e60fd1d4475} 
+uint8\+\_\+t mpu6050\+\_\+get\+\_\+reg (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group__mpu6050__basic__driver_gab9152935d0f1c91a6183aa8f398b7045}{mpu6050\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{handle}{, }\item[{uint8\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{uint16\+\_\+t}]{len}{}\end{DoxyParamCaption})}
+
+
+
+get the chip register 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em \texorpdfstring{$\ast$}{*}handle} & pointer to an mpu6050 handle structure \\
+\hline
+\doxymbox{\texttt{in}}  & {\em reg} & register address \\
+\hline
+\doxymbox{\texttt{out}}  & {\em \texorpdfstring{$\ast$}{*}buf} & pointer to a data buffer \\
+\hline
+\doxymbox{\texttt{in}}  & {\em len} & data buffer length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 read failed
+\item 2 handle is NULL
+\item 3 handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\Hypertarget{group__mpu6050__extern__driver_ga40023d18b00ff046ebd5accca0be8677}\index{mpu6050 extern driver function@{mpu6050 extern driver function}!mpu6050\_set\_reg@{mpu6050\_set\_reg}}
+\index{mpu6050\_set\_reg@{mpu6050\_set\_reg}!mpu6050 extern driver function@{mpu6050 extern driver function}}
+\doxysubsubsubsection{\texorpdfstring{mpu6050\_set\_reg()}{mpu6050\_set\_reg()}}
+{\footnotesize\ttfamily \label{group__mpu6050__extern__driver_ga40023d18b00ff046ebd5accca0be8677} 
+uint8\+\_\+t mpu6050\+\_\+set\+\_\+reg (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group__mpu6050__basic__driver_gab9152935d0f1c91a6183aa8f398b7045}{mpu6050\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{handle}{, }\item[{uint8\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{uint16\+\_\+t}]{len}{}\end{DoxyParamCaption})}
+
+
+
+set the chip register 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em \texorpdfstring{$\ast$}{*}handle} & pointer to an mpu6050 handle structure \\
+\hline
+\doxymbox{\texttt{in}}  & {\em reg} & register address \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \texorpdfstring{$\ast$}{*}buf} & pointer to a data buffer \\
+\hline
+\doxymbox{\texttt{in}}  & {\em len} & data buffer length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 write failed
+\item 2 handle is NULL
+\item 3 handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}

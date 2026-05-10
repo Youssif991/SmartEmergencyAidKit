@@ -1,0 +1,34 @@
+\doxysection{include/\+\+Sensors/\+\+MPU6050/\+imu.h File Reference}
+\hypertarget{imu_8h}{}\label{imu_8h}\index{include/Sensors/MPU6050/imu.h@{include/Sensors/MPU6050/imu.h}}
+
+
+MPU6050 6-\/axis \doxylink{class_i_m_u}{IMU} (Accelerometer + Gyroscope) wrapper.  
+
+
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \+\#include "{}../\+../\+\+Core/\+\+Config.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_i_m_u}{IMU}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \+\_\+\+\_\+pad0\+\_\+\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+MPU6050 6-\/axis \doxylink{class_i_m_u}{IMU} (Accelerometer + Gyroscope) wrapper. 
+
+\begin{DoxyAuthor}{Author}
+Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Wrapper class using libdriver/\+mpu6050 basic API. Provides throttled readings with averaging over 4 samples. Outputs acceleration in g and rotation in dps 

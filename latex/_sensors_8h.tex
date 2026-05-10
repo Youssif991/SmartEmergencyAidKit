@@ -1,0 +1,32 @@
+\doxysection{include/\+\+Sensors.h File Reference}
+\hypertarget{_sensors_8h}{}\label{_sensors_8h}\index{include/Sensors.h@{include/Sensors.h}}
+
+
+Central aggregator header for all sensor modules.  
+
+
+{\ttfamily \+\#include "{}Core/\+\+Config.\+h"{}}\newline
+{\ttfamily \+\#include "{}Core/\+\+Types.\+h"{}}\newline
+{\ttfamily \+\#include "{}Core/\+\+Sensor\+Utils.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sensors/\+\+MAX30105/\+\+MAX30105.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sensors/\+\+MAX30105/\+oximeter.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sensors/\+\+MAX30105/\+heartbeat.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sensors/\+\+MLX90614/\+temperature.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sensors/\+\+MPU6050/\+imu.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sensors/\+\+MPU6050/\+driver\+\_\+mpu6050.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sensors/\+\+OLED/\+oled.\+h"{}}\newline
+
+
+\doxysubsection{Detailed Description}
+Central aggregator header for all sensor modules. 
+
+\begin{DoxyAuthor}{Author}
+Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Single entry point that includes all sensor definitions and utilities. Include this file in \doxylink{main_8cpp}{main.\+cpp} to access all sensors. 

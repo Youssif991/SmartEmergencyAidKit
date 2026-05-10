@@ -1,0 +1,60 @@
+\doxysection{src/\+\+Sensor\+Utils.cpp File Reference}
+\hypertarget{_sensor_utils_8cpp}{}\label{_sensor_utils_8cpp}\index{src/SensorUtils.cpp@{src/SensorUtils.cpp}}
+
+
+Implementation of sensor data aggregation utility functions.  
+
+
+{\ttfamily \+\#include "{}../\+include/\+\+Core/\+\+Sensor\+Utils.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sensors.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_sensor_utils_8cpp_a1389566c88c468203e0be7d010528c88}\label{_sensor_utils_8cpp_a1389566c88c468203e0be7d010528c88} 
+\doxymbox{\hyperlink{struct_sensor_readings}{Sensor\+Readings}} {\bfseries gather\+Sensor\+Readings} ()
+\item 
+\Hypertarget{_sensor_utils_8cpp_ae48aaa42e20f8e2fa4cb79b00dd16271}\label{_sensor_utils_8cpp_ae48aaa42e20f8e2fa4cb79b00dd16271} 
+\doxymbox{\hyperlink{struct_i_m_u_data}{IMUData}} {\bfseries gather\+IMUData} ()
+\item 
+\Hypertarget{_sensor_utils_8cpp_aa4a0f7d03daa0545476b8ab6bf50a8d7}\label{_sensor_utils_8cpp_aa4a0f7d03daa0545476b8ab6bf50a8d7} 
+\doxymbox{\hyperlink{struct_biometric_data}{Biometric\+Data}} {\bfseries gather\+Biometric\+Data} ()
+\item 
+\Hypertarget{_sensor_utils_8cpp_a84ce60e64f643aca3f09bc355dbdb5f7}\label{_sensor_utils_8cpp_a84ce60e64f643aca3f09bc355dbdb5f7} 
+\doxymbox{\hyperlink{struct_temperature_data}{Temperature\+Data}} {\bfseries gather\+Temperature\+Data} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_sensor_utils_8cpp_afed6167b1525bed1499ee97fff3090d3}\label{_sensor_utils_8cpp_afed6167b1525bed1499ee97fff3090d3} 
+\doxymbox{\hyperlink{class_m_a_x30105}{MAX30105}} {\bfseries sensor}
+\item 
+\Hypertarget{_sensor_utils_8cpp_a063f718269c350a4ae450ddb38b327e0}\label{_sensor_utils_8cpp_a063f718269c350a4ae450ddb38b327e0} 
+Temp\+Sensor {\bfseries temp}
+\item 
+\Hypertarget{_sensor_utils_8cpp_a2ed1ad7aaf2adb8214a589d9ba86800f}\label{_sensor_utils_8cpp_a2ed1ad7aaf2adb8214a589d9ba86800f} 
+\doxymbox{\hyperlink{class_oximeter}{Oximeter}} {\bfseries oxygen}
+\item 
+\Hypertarget{_sensor_utils_8cpp_a8b502832d7302de44fde055a44e2ab50}\label{_sensor_utils_8cpp_a8b502832d7302de44fde055a44e2ab50} 
+\doxymbox{\hyperlink{class_heart_beat}{Heart\+Beat}} {\bfseries heartbeat}
+\item 
+\Hypertarget{_sensor_utils_8cpp_a047a89b0208974c18d5c49656240616a}\label{_sensor_utils_8cpp_a047a89b0208974c18d5c49656240616a} 
+\doxymbox{\hyperlink{class_i_m_u}{IMU}} {\bfseries imu}
+\item 
+\Hypertarget{_sensor_utils_8cpp_a3e76f7a85576b8363f3711038abdeebb}\label{_sensor_utils_8cpp_a3e76f7a85576b8363f3711038abdeebb} 
+\doxymbox{\hyperlink{class_o_l_e_d}{OLED}} {\bfseries display}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of sensor data aggregation utility functions. 
+
+\begin{DoxyAuthor}{Author}
+Youssef Mohammed, Youssef Hisham 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Implements functions to gather sensor readings into structured data types. Accesses global sensor objects and packages their data 

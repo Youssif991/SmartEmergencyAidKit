@@ -1,0 +1,45 @@
+\doxysection{driver\+\_\+mpu6050\+\_\+interface.\+h}
+\hypertarget{driver__mpu6050__interface_8h_source}{}\label{driver__mpu6050__interface_8h_source}\index{include/Sensors/MPU6050/driver\_mpu6050\_interface.h@{include/Sensors/MPU6050/driver\_mpu6050\_interface.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ driver\_mpu6050\_interface.h}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ This\ file\ is\ required\ by\ driver\_mpu6050\_basic.h\ (which\ does}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \#include\ "{}driver\_mpu6050\_interface.h"{}).}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ It\ declares\ the\ seven\ platform\ functions\ that\ the\ libdriver/mpu6050}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ driver\ calls\ for\ all\ hardware\ I/O.\ The\ implementations\ live\ in}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ driver\_mpu6050\_interface.cpp\ and\ use\ Arduino\ Wire.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ DRIVER\_MPU6050\_INTERFACE\_H}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ DRIVER\_MPU6050\_INTERFACE\_H}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{driver__mpu6050_8h}{driver\_mpu6050.h}}"{}}\ \ \ \textcolor{comment}{/*\ provides\ mpu6050\_address\_t,\ mpu6050\_handle\_t,\ etc.\ */}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ uint8\_t\ mpu6050\_interface\_iic\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00026\ uint8\_t\ mpu6050\_interface\_iic\_deinit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00027\ uint8\_t\ mpu6050\_interface\_iic\_read(uint8\_t\ addr,\ uint8\_t\ reg,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *buf,\ uint16\_t\ len);}
+\DoxyCodeLine{00029\ uint8\_t\ mpu6050\_interface\_iic\_write(uint8\_t\ addr,\ uint8\_t\ reg,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *buf,\ uint16\_t\ len);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \ \ \ mpu6050\_interface\_delay\_ms(uint32\_t\ ms);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \ \ \ mpu6050\_interface\_debug\_print(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\textcolor{keyword}{const}\ fmt,\ ...);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \ \ \ mpu6050\_interface\_receive\_callback(uint8\_t\ type);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

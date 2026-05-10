@@ -1,0 +1,48 @@
+\doxysection{include/\+\+Sensors/\+\+OLED/\+oled.h File Reference}
+\hypertarget{oled_8h}{}\label{oled_8h}\index{include/Sensors/OLED/oled.h@{include/Sensors/OLED/oled.h}}
+
+
+SSD1306 \doxylink{class_o_l_e_d}{OLED} display driver (128x32, I2C).  
+
+
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \+\#include $<$Wire.\+h$>$}\newline
+{\ttfamily \+\#include $<$cstring$>$}\newline
+{\ttfamily \+\#include "{}../\+../\+\+Core/\+\+Types.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_o_l_e_d}{OLED}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \+\_\+\+\_\+pad0\+\_\+\+\_\+}
+\item 
+constexpr uint8\+\_\+t {\bfseries OLED\+\_\+\+HEIGHT} = 32
+\item 
+constexpr uint8\+\_\+t {\bfseries OLED\+\_\+\+PAGES} = OLED\+\_\+\+HEIGHT /\+ 8
+\item 
+constexpr uint16\+\_\+t {\bfseries OLED\+\_\+\+BUFFER\+\_\+\+SIZE} = OLED\+\_\+\+WIDTH \texorpdfstring{$\ast$}{*} OLED\+\_\+\+PAGES
+\item 
+constexpr uint8\+\_\+t {\bfseries OLED\+\_\+\+ADDRESS} = 0x3C
+\item 
+constexpr uint8\+\_\+t {\bfseries SSD1306\+\_\+\+CMD\+\_\+\+MODE} = 0x00
+\item 
+constexpr uint8\+\_\+t {\bfseries SSD1306\+\_\+\+DATA\+\_\+\+MODE} = 0x40
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SSD1306 \doxylink{class_o_l_e_d}{OLED} display driver (128x32, I2C). 
+
+\begin{DoxyAuthor}{Author}
+Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem (Integration), mtmal and Waveshare (Original) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Minimal Arduino-\/compatible SSD1306 \doxylink{class_o_l_e_d}{OLED} driver optimized for Smart\+Aid\+Kit. 0.\+91"{} monochrome display with text and graphics functions 

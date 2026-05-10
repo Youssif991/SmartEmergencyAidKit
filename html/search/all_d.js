@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['i2c_20bus_0',['Sensors on I2C Bus',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md11',1,'']]],
+  ['iic_5faddr_1',['iic_addr',['../structmpu6050__handle__s.html#af5343496ce4dfec8dae116480909f77c',1,'mpu6050_handle_s']]],
+  ['iic_5fdeinit_2',['iic_deinit',['../structmpu6050__handle__s.html#a91500f89650813fb217fb930d517b8dc',1,'mpu6050_handle_s']]],
+  ['iic_5finit_3',['iic_init',['../structmpu6050__handle__s.html#af546f9e18941e68036d0d5af4b28baf7',1,'mpu6050_handle_s']]],
+  ['iic_5fread_4',['iic_read',['../structmpu6050__handle__s.html#a34903b151f42cc449d705d568211f197',1,'mpu6050_handle_s']]],
+  ['iic_5fwrite_5',['iic_write',['../structmpu6050__handle__s.html#a454040f9fe707dff5188e4c66636c3d2',1,'mpu6050_handle_s']]],
+  ['imu_6',['IMU',['../class_i_m_u.html',1,'IMU'],['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md26',1,'MPU6050 (IMU)']]],
+  ['imu_20sensors_20mpu6050_7',['6-Axis IMU (&lt;span class=&quot;tt&quot;&gt;Sensors/MPU6050/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md6',1,'']]],
+  ['imu_2ecpp_8',['imu.cpp',['../imu_8cpp.html',1,'']]],
+  ['imu_2eh_9',['imu.h',['../imu_8h.html',1,'']]],
+  ['imudata_10',['IMUData',['../struct_i_m_u_data.html',1,'']]],
+  ['in_20loop_11',['4. Update in Loop',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md17',1,'']]],
+  ['in_20loop_12',['Update Sequence (in loop())',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md48',1,'']]],
+  ['in_20main_20cpp_13',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md47',1,'']]],
+  ['in_20setup_14',['3. Initialize in Setup',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md16',1,'']]],
+  ['include_20all_20sensors_15',['1. Include All Sensors',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md14',1,'']]],
+  ['include_20patterns_16',['Include Patterns',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md46',1,'']]],
+  ['inited_17',['inited',['../structmpu6050__handle__s.html#aa80e001edb2f266968b28a9894556dbc',1,'mpu6050_handle_s']]],
+  ['initialize_20in_20setup_18',['3. Initialize in Setup',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md16',1,'']]],
+  ['instances_19',['2. Declare Global Instances',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md15',1,'']]],
+  ['interface_20',['interface',['../structmpu6050__info__s.html#a837dcb9195a5dc5eb19de343a0b0e4e1',1,'mpu6050_info_s']]]
+];

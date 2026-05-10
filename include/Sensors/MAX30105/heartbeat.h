@@ -1,7 +1,7 @@
 /**
  * @file heartbeat.h
  * @brief Heart rate detection using FFT (Fast Fourier Transform) algorithm
- * @author Youssef Mohammed, Youssef Hisham
+ * @author Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem
  * @date 2026-05-06
  * @version 3.0
  * @details Collects IR samples into a sliding circular buffer and applies a
@@ -22,7 +22,12 @@
  *          so no other files need modification.
  */
 
-#pragma once
+/**
+25:  * @addtogroup MAX30105_Group
+26:  * @{
+27:  */
+28: 
+29: #pragma once
 
 #include <Arduino.h>
 
@@ -131,3 +136,5 @@ private:
     void computeFFT();  // run FFT on current buffer, apply SNR gate + EMA
     void reset();       // clear all state (finger removal / begin)
 };
+134: 
+135: /** @} */

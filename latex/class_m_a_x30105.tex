@@ -1,0 +1,167 @@
+\doxysection{MAX30105 Class Reference}
+\hypertarget{class_m_a_x30105}{}\label{class_m_a_x30105}\index{MAX30105@{MAX30105}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_a_x30105_ac0c8b46b41bdd9b7833e2e0c00b1e0b9}\label{class_m_a_x30105_ac0c8b46b41bdd9b7833e2e0c00b1e0b9} 
+boolean {\bfseries begin} (Two\+Wire \&wire\+Port=Wire, uint32\+\_\+t i2c\+Speed=I2\+C\+\_\+\+SPEED\+\_\+\+STANDARD, uint8\+\_\+t i2caddr=MAX30105\+\_\+\+ADDRESS)
+\item 
+\Hypertarget{class_m_a_x30105_afafde6228c75a8f673776598404df088}\label{class_m_a_x30105_afafde6228c75a8f673776598404df088} 
+uint32\+\_\+t {\bfseries get\+Red} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a50f5a5bc027f69d783b191a948b407d0}\label{class_m_a_x30105_a50f5a5bc027f69d783b191a948b407d0} 
+uint32\+\_\+t {\bfseries get\+IR} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a50a1b3e4abf9953a81ad296a3cb30ea7}\label{class_m_a_x30105_a50a1b3e4abf9953a81ad296a3cb30ea7} 
+uint32\+\_\+t {\bfseries get\+Green} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a4dcba293a025f9b0ce7bac8baced69d3}\label{class_m_a_x30105_a4dcba293a025f9b0ce7bac8baced69d3} 
+bool {\bfseries safe\+Check} (uint8\+\_\+t max\+Time\+To\+Check)
+\item 
+\Hypertarget{class_m_a_x30105_a77dfec981cbfa9aa2d5045b6f77af133}\label{class_m_a_x30105_a77dfec981cbfa9aa2d5045b6f77af133} 
+void {\bfseries soft\+Reset} ()
+\item 
+\Hypertarget{class_m_a_x30105_aa75a581b9a0a815302e3b91f7d426a23}\label{class_m_a_x30105_aa75a581b9a0a815302e3b91f7d426a23} 
+void {\bfseries shut\+Down} ()
+\item 
+\Hypertarget{class_m_a_x30105_af2a68c4da7cb42f167233a7687718962}\label{class_m_a_x30105_af2a68c4da7cb42f167233a7687718962} 
+void {\bfseries wake\+Up} ()
+\item 
+\Hypertarget{class_m_a_x30105_a233e4e84201931f77bd90e383e4d8573}\label{class_m_a_x30105_a233e4e84201931f77bd90e383e4d8573} 
+void {\bfseries set\+LEDMode} (uint8\+\_\+t mode)
+\item 
+\Hypertarget{class_m_a_x30105_a9a157afdded5f59df6a59dd95627e3a5}\label{class_m_a_x30105_a9a157afdded5f59df6a59dd95627e3a5} 
+void {\bfseries set\+ADCRange} (uint8\+\_\+t adc\+Range)
+\item 
+\Hypertarget{class_m_a_x30105_a9d2b46a12907e95e0c0525c71779f804}\label{class_m_a_x30105_a9d2b46a12907e95e0c0525c71779f804} 
+void {\bfseries set\+Sample\+Rate} (uint8\+\_\+t sample\+Rate)
+\item 
+\Hypertarget{class_m_a_x30105_a296f20140e07c0b064e1a06b61988dc2}\label{class_m_a_x30105_a296f20140e07c0b064e1a06b61988dc2} 
+void {\bfseries set\+Pulse\+Width} (uint8\+\_\+t pulse\+Width)
+\item 
+\Hypertarget{class_m_a_x30105_a87e2524329ce8db857333bba81eb2c8e}\label{class_m_a_x30105_a87e2524329ce8db857333bba81eb2c8e} 
+void {\bfseries set\+Pulse\+Amplitude\+Red} (uint8\+\_\+t value)
+\item 
+\Hypertarget{class_m_a_x30105_adf456afddf9aca9cc2a978eadbd139aa}\label{class_m_a_x30105_adf456afddf9aca9cc2a978eadbd139aa} 
+void {\bfseries set\+Pulse\+Amplitude\+IR} (uint8\+\_\+t value)
+\item 
+\Hypertarget{class_m_a_x30105_ac7490be53c8b488b7ef7f90f4f0f48b1}\label{class_m_a_x30105_ac7490be53c8b488b7ef7f90f4f0f48b1} 
+void {\bfseries set\+Pulse\+Amplitude\+Green} (uint8\+\_\+t value)
+\item 
+\Hypertarget{class_m_a_x30105_a6f2cf6cb758d1d07fbab5eb59f34977c}\label{class_m_a_x30105_a6f2cf6cb758d1d07fbab5eb59f34977c} 
+void {\bfseries set\+Pulse\+Amplitude\+Proximity} (uint8\+\_\+t value)
+\item 
+\Hypertarget{class_m_a_x30105_a6ee74e7b1efbee5cd84e2b47c8c0f250}\label{class_m_a_x30105_a6ee74e7b1efbee5cd84e2b47c8c0f250} 
+void {\bfseries set\+Proximity\+Threshold} (uint8\+\_\+t thresh\+MSB)
+\item 
+\Hypertarget{class_m_a_x30105_a5e126efc4db9e518630c2988d2273524}\label{class_m_a_x30105_a5e126efc4db9e518630c2988d2273524} 
+void {\bfseries enable\+Slot} (uint8\+\_\+t slot\+Number, uint8\+\_\+t device)
+\item 
+\Hypertarget{class_m_a_x30105_a69dab5ecd8b11f0c9b4c0b810d88bafb}\label{class_m_a_x30105_a69dab5ecd8b11f0c9b4c0b810d88bafb} 
+void {\bfseries disable\+Slots} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a9c4e3157140579588c5240cd48482eea}\label{class_m_a_x30105_a9c4e3157140579588c5240cd48482eea} 
+uint8\+\_\+t {\bfseries get\+INT1} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a8a022bbc6d1fe5069819c13430e720ed}\label{class_m_a_x30105_a8a022bbc6d1fe5069819c13430e720ed} 
+uint8\+\_\+t {\bfseries get\+INT2} (void)
+\item 
+\Hypertarget{class_m_a_x30105_aa4f9a9b1659d20a5170185ae2378c0be}\label{class_m_a_x30105_aa4f9a9b1659d20a5170185ae2378c0be} 
+void {\bfseries enable\+AFULL} (void)
+\item 
+\Hypertarget{class_m_a_x30105_abca044de513ad2da5730b5eb2fc3c14d}\label{class_m_a_x30105_abca044de513ad2da5730b5eb2fc3c14d} 
+void {\bfseries disable\+AFULL} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a36ee165efc2717748f735bac94e2857c}\label{class_m_a_x30105_a36ee165efc2717748f735bac94e2857c} 
+void {\bfseries enable\+DATARDY} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a42024226d54a1860b5eba25a17f4f1ca}\label{class_m_a_x30105_a42024226d54a1860b5eba25a17f4f1ca} 
+void {\bfseries disable\+DATARDY} (void)
+\item 
+\Hypertarget{class_m_a_x30105_ae64be3962a622698f7cdd117a5624e6e}\label{class_m_a_x30105_ae64be3962a622698f7cdd117a5624e6e} 
+void {\bfseries enable\+ALCOVF} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a6bb5273dc70fc81f41eea9ee8f766bdb}\label{class_m_a_x30105_a6bb5273dc70fc81f41eea9ee8f766bdb} 
+void {\bfseries disable\+ALCOVF} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a61aebdeda2c57e0a98558bb0b49432dc}\label{class_m_a_x30105_a61aebdeda2c57e0a98558bb0b49432dc} 
+void {\bfseries enable\+PROXINT} (void)
+\item 
+\Hypertarget{class_m_a_x30105_ad34e2450fd68c05211c47d82e1e03ba3}\label{class_m_a_x30105_ad34e2450fd68c05211c47d82e1e03ba3} 
+void {\bfseries disable\+PROXINT} (void)
+\item 
+\Hypertarget{class_m_a_x30105_aa65a5d9a795d5e0b7a4a13b42fd52ad5}\label{class_m_a_x30105_aa65a5d9a795d5e0b7a4a13b42fd52ad5} 
+void {\bfseries enable\+DIETEMPRDY} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a7f3b0493cd3eca482769d22b69a99f43}\label{class_m_a_x30105_a7f3b0493cd3eca482769d22b69a99f43} 
+void {\bfseries disable\+DIETEMPRDY} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a92760f23c81befaad35a2dd9df502047}\label{class_m_a_x30105_a92760f23c81befaad35a2dd9df502047} 
+void {\bfseries set\+FIFOAverage} (uint8\+\_\+t samples)
+\item 
+\Hypertarget{class_m_a_x30105_a5f7fbd1ffc9580e9946ea73a67712d23}\label{class_m_a_x30105_a5f7fbd1ffc9580e9946ea73a67712d23} 
+void {\bfseries enable\+FIFORollover} ()
+\item 
+\Hypertarget{class_m_a_x30105_a2fdd0856a40356c004b4e3b86dcfb833}\label{class_m_a_x30105_a2fdd0856a40356c004b4e3b86dcfb833} 
+void {\bfseries disable\+FIFORollover} ()
+\item 
+\Hypertarget{class_m_a_x30105_a27ca2e16e633cd7406c49b58b8a37c37}\label{class_m_a_x30105_a27ca2e16e633cd7406c49b58b8a37c37} 
+void {\bfseries set\+FIFOAlmost\+Full} (uint8\+\_\+t samples)
+\item 
+\Hypertarget{class_m_a_x30105_ac21d3790ffc240609844363748de3df7}\label{class_m_a_x30105_ac21d3790ffc240609844363748de3df7} 
+uint16\+\_\+t {\bfseries check} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a6e4152b9461cae06782c49e9b026f6bb}\label{class_m_a_x30105_a6e4152b9461cae06782c49e9b026f6bb} 
+uint8\+\_\+t {\bfseries available} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a474c5691296017c9dfd4bd8379e61213}\label{class_m_a_x30105_a474c5691296017c9dfd4bd8379e61213} 
+void {\bfseries next\+Sample} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a42a05b2d0274df525400b3fa9823c2c1}\label{class_m_a_x30105_a42a05b2d0274df525400b3fa9823c2c1} 
+uint32\+\_\+t {\bfseries get\+FIFORed} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a19354577ca0bc74fe1367a9e219639d0}\label{class_m_a_x30105_a19354577ca0bc74fe1367a9e219639d0} 
+uint32\+\_\+t {\bfseries get\+FIFOIR} (void)
+\item 
+\Hypertarget{class_m_a_x30105_adb72653316b3de8f3566dc54d67a69bb}\label{class_m_a_x30105_adb72653316b3de8f3566dc54d67a69bb} 
+uint32\+\_\+t {\bfseries get\+FIFOGreen} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a5fe24149aac234e373b646e7f86f48cc}\label{class_m_a_x30105_a5fe24149aac234e373b646e7f86f48cc} 
+uint8\+\_\+t {\bfseries get\+Write\+Pointer} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a3c6e67fedda12c7d02c2ed6e6fb80830}\label{class_m_a_x30105_a3c6e67fedda12c7d02c2ed6e6fb80830} 
+uint8\+\_\+t {\bfseries get\+Read\+Pointer} (void)
+\item 
+\Hypertarget{class_m_a_x30105_a427b18d0aff0b869be5d6bd4769d80d5}\label{class_m_a_x30105_a427b18d0aff0b869be5d6bd4769d80d5} 
+void {\bfseries clear\+FIFO} (void)
+\item 
+\Hypertarget{class_m_a_x30105_aa90d2cf6235206150a12711c3bfc22cf}\label{class_m_a_x30105_aa90d2cf6235206150a12711c3bfc22cf} 
+void {\bfseries set\+PROXINTTHRESH} (uint8\+\_\+t val)
+\item 
+\Hypertarget{class_m_a_x30105_a244b8687036357813f0df90325b5fb83}\label{class_m_a_x30105_a244b8687036357813f0df90325b5fb83} 
+float {\bfseries read\+Temperature} ()
+\item 
+\Hypertarget{class_m_a_x30105_a8da9a41049a4cbd021470f459537fd09}\label{class_m_a_x30105_a8da9a41049a4cbd021470f459537fd09} 
+float {\bfseries read\+TemperatureF} ()
+\item 
+\Hypertarget{class_m_a_x30105_a2b446120206b314c2f7af8bbeb9ebc5e}\label{class_m_a_x30105_a2b446120206b314c2f7af8bbeb9ebc5e} 
+uint8\+\_\+t {\bfseries get\+Revision\+ID} ()
+\item 
+\Hypertarget{class_m_a_x30105_a770f931a80eac27a6051cbeabab81604}\label{class_m_a_x30105_a770f931a80eac27a6051cbeabab81604} 
+uint8\+\_\+t {\bfseries read\+Part\+ID} ()
+\item 
+\Hypertarget{class_m_a_x30105_a0d006f5053fcc99e2c7887c5558c759b}\label{class_m_a_x30105_a0d006f5053fcc99e2c7887c5558c759b} 
+void {\bfseries setup} (byte power\+Level=0x1F, byte sample\+Average=4, byte led\+Mode=3, int sample\+Rate=400, int pulse\+Width=411, int adc\+Range=4096)
+\item 
+\Hypertarget{class_m_a_x30105_ad6724d5ab9cb9e3d7667f4ceba9c73da}\label{class_m_a_x30105_ad6724d5ab9cb9e3d7667f4ceba9c73da} 
+uint8\+\_\+t {\bfseries read\+Register8} (uint8\+\_\+t address, uint8\+\_\+t reg)
+\item 
+\Hypertarget{class_m_a_x30105_ab39f4d7f1414f63fd6b8440b712fcabf}\label{class_m_a_x30105_ab39f4d7f1414f63fd6b8440b712fcabf} 
+void {\bfseries write\+Register8} (uint8\+\_\+t address, uint8\+\_\+t reg, uint8\+\_\+t value)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+\+Sensors/\+\+MAX30105/\+\doxymbox{\hyperlink{_m_a_x30105_8h}{MAX30105.\+h}}\item 
+src/\+\+Sensors/\+\+MAX30105/\+\doxymbox{\hyperlink{_m_a_x30105_8cpp}{MAX30105.\+cpp}}\end{DoxyCompactItemize}

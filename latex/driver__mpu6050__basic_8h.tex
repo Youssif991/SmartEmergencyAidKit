@@ -1,0 +1,108 @@
+\doxysection{include/\+\+Sensors/\+\+MPU6050/\+driver\+\_\+mpu6050\+\_\+basic.h File Reference}
+\hypertarget{driver__mpu6050__basic_8h}{}\label{driver__mpu6050__basic_8h}\index{include/Sensors/MPU6050/driver\_mpu6050\_basic.h@{include/Sensors/MPU6050/driver\_mpu6050\_basic.h}}
+
+
+Lib\+Driver MPU6050 simplified basic API.  
+
+
+{\ttfamily \+\#include "{}driver\+\_\+mpu6050\+\_\+interface.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga6013b421ee39944f0876bb7b8da6de7d}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+CLOCK\+\_\+\+SOURCE}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_gga74884d5b9f95c2b758d299bc28a65095a796540b1243fe91dec02a2d4e4e3f264}{MPU6050\+\_\+\+CLOCK\+\_\+\+SOURCE\+\_\+\+PLL\+\_\+\+X\+\_\+\+GYRO}}
+\begin{DoxyCompactList}\small\item\em mpu6050 basic example default definition \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_gafd56f0afabfa5e294d0841d339273402}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+RATE}}~50
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga744b78b1d14c9dccb05566c1877275b4}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+FILTER}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggad12172179ecd4f5cc01204041d70b54fa4cd5516d2a38bf83fd0aab9e87488007}{MPU6050\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+FILTER\+\_\+3}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_gac3e9203ba10231089f661b9e1be59fe5}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+CYCLE\+\_\+\+WAKE\+\_\+\+UP}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_gaec9ae23890263e1acf7a3cba515b1a9a}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+WAKE\+\_\+\+UP\+\_\+\+FREQUENCY}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_gga17d7c941660868be0ab4804ec2f89e68a0ec2d7232cefb18fa767166791937216}{MPU6050\+\_\+\+WAKE\+\_\+\+UP\+\_\+\+FREQUENCY\+\_\+1\+P25\+\_\+\+HZ}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga78e532145736b4ebf8c38df9c1bcf607}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+PIN\+\_\+\+LEVEL}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_gga82b756931c7d0c5f948e0f9ad8cb700fad0741891355aafff44d41bd77c25b72c}{MPU6050\+\_\+\+PIN\+\_\+\+LEVEL\+\_\+\+LOW}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_gae44cf52e7a8176e35e7c155e81d6ec57}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+PIN\+\_\+\+TYPE}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_gga10b85492273e69a281067454513f067da0d492c44744845083692f91cf03e0434}{MPU6050\+\_\+\+PIN\+\_\+\+TYPE\+\_\+\+PUSH\+\_\+\+PULL}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_gac21e0f6e3c0c821e5d067e1cd75dde3f}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+ACCELEROMETER\+\_\+\+RANGE}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggaaa9295dfae70a56066f5687bc85cdf6eadf861712710f18cf4913db8175cd084c}{MPU6050\+\_\+\+ACCELEROMETER\+\_\+\+RANGE\+\_\+2G}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga59f80efcf6401e65ed67051bde964573}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+GYROSCOPE\+\_\+\+RANGE}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_gga334608694ff39953897e2b6f008f15d0a4cd35dc28b0eb372c0eb62c07df98254}{MPU6050\+\_\+\+GYROSCOPE\+\_\+\+RANGE\+\_\+2000\+DPS}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga7706f4f8b5fe4bafbb6fc457cb55e5b3}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+MOTION}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_gac24598d1fadcb13ccd5ee3ebffffed03}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+FIFO\+\_\+\+OVERFLOW}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga523d35068f1af48dbd51d7c475530dc6}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+DMP}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_gac4408bed943151d5ada6b2b134f8d58d}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+I2\+C\+\_\+\+MAST}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga1e7c1ba41f1e037d5788bc369bf36574}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+DATA\+\_\+\+READY}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga03f062f08ec20bf2890735dbaf8250b5}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+LATCH}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9a264967f6b53b3ad74f586dc46c8ba18d}{MPU6050\+\_\+\+BOOL\+\_\+\+TRUE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga80acb52601d1ca35bcea49f8279bcece}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+INTERRUPT\+\_\+\+READ\+\_\+\+CLEAR}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9a264967f6b53b3ad74f586dc46c8ba18d}{MPU6050\+\_\+\+BOOL\+\_\+\+TRUE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga835062982b28575f665e33316c670048}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+EXTERN\+\_\+\+SYNC}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_gga43e667c1edd709208cb678c6a367f105aa21f5b59fd45369362695addf2730976}{MPU6050\+\_\+\+EXTERN\+\_\+\+SYNC\+\_\+\+INPUT\+\_\+\+DISABLED}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_gaf6919451fed1a1796b03cdf8d336d61f}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+FSYNC\+\_\+\+INTERRUPT}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga67dc8e9f5889f64ff28ad516cd1cf2b1}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+FSYNC\+\_\+\+INTERRUPT\+\_\+\+LEVEL}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_gga82b756931c7d0c5f948e0f9ad8cb700fad0741891355aafff44d41bd77c25b72c}{MPU6050\+\_\+\+PIN\+\_\+\+LEVEL\+\_\+\+LOW}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga6690b1327fed38143cb521dcb40ac424}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+IIC\+\_\+\+MASTER}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\item 
+\+\#define \doxymbox{\hyperlink{group__mpu6050__example__driver_ga0d4b93780e3e4a81356341bd0e6639fd}{MPU6050\+\_\+\+BASIC\+\_\+\+DEFAULT\+\_\+\+IIC\+\_\+\+BYPASS}}~\doxymbox{\hyperlink{group__mpu6050__basic__driver_ggabd66e87c6875710ce056b940d20f85c9adf5718be730ed258b366f21cf1fd61c2}{MPU6050\+\_\+\+BOOL\+\_\+\+FALSE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__example__driver_ga25caa65e97f5d7469be240f207f888c2}{mpu6050\+\_\+basic\+\_\+init}} (\doxymbox{\hyperlink{group__mpu6050__basic__driver_ga47a9d14317022ff750450d300c1d48fb}{mpu6050\+\_\+address\+\_\+t}} addr\+\_\+pin)
+\begin{DoxyCompactList}\small\item\em basic example init \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__example__driver_ga0ccf1034d23b54163b1ba7e349a9eb82}{mpu6050\+\_\+basic\+\_\+deinit}} (void)
+\begin{DoxyCompactList}\small\item\em basic example deinit \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__example__driver_ga92b4964e6a8ef6b228c414e7f875ce2c}{mpu6050\+\_\+basic\+\_\+read}} (float g\+[3]\+, float dps\+[3]\+)
+\begin{DoxyCompactList}\small\item\em basic example read \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__example__driver_ga105b3437eaeddcdf860357a90dee59b5}{mpu6050\+\_\+basic\+\_\+read\+\_\+temperature}} (float \texorpdfstring{$\ast$}{*}degrees)
+\begin{DoxyCompactList}\small\item\em basic example read temperature \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lib\+Driver MPU6050 simplified basic API. 
+
+driver mpu6050 basic header file
+
+\begin{DoxyAuthor}{Author}
+Shifeng Li (Lib\+Driver) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Simplified high-\/level API for MPU6050 basic operations. Makes driver easier to use for typical applications
+
+Copyright (c) 2015 -\/ present Lib\+Driver All rights reserved
+
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "{}\+Software"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/\+or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\+
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "{}\+AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+\begin{DoxyVersion}{Version}
+1.\+0.\+0 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Shifeng Li 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022-\/06-\/30
+\end{DoxyDate}
+\doxysubsubsubsection*{history}
+
+
+\begin{DoxyTable}{4}{}{}{1}
+\SetCell{bg=\tableheadbgcolor,font=\bfseries}Date &\SetCell{bg=\tableheadbgcolor,font=\bfseries}Version &\SetCell{bg=\tableheadbgcolor,font=\bfseries}Author &\SetCell{bg=\tableheadbgcolor,font=\bfseries}Description \\
+2022/\+06/\+30 &1.\+0 &Shifeng Li &first upload \\
+\end{DoxyTable}

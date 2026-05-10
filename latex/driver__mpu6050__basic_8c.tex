@@ -1,0 +1,64 @@
+\doxysection{src/\+\+Sensors/\+\+MPU6050/\+driver\+\_\+mpu6050\+\_\+basic.c File Reference}
+\hypertarget{driver__mpu6050__basic_8c}{}\label{driver__mpu6050__basic_8c}\index{src/Sensors/MPU6050/driver\_mpu6050\_basic.c@{src/Sensors/MPU6050/driver\_mpu6050\_basic.c}}
+
+
+driver mpu6050 basic source file  
+
+
+{\ttfamily \+\#include "{}../\+../\+../\+include/\+\+Sensors/\+\+MPU6050/\+driver\+\_\+mpu6050\+\_\+basic.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__example__driver_ga25caa65e97f5d7469be240f207f888c2}{mpu6050\+\_\+basic\+\_\+init}} (\doxymbox{\hyperlink{group__mpu6050__basic__driver_ga47a9d14317022ff750450d300c1d48fb}{mpu6050\+\_\+address\+\_\+t}} addr\+\_\+pin)
+\begin{DoxyCompactList}\small\item\em basic example init \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__example__driver_ga105b3437eaeddcdf860357a90dee59b5}{mpu6050\+\_\+basic\+\_\+read\+\_\+temperature}} (float \texorpdfstring{$\ast$}{*}degrees)
+\begin{DoxyCompactList}\small\item\em basic example read temperature \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__example__driver_ga92b4964e6a8ef6b228c414e7f875ce2c}{mpu6050\+\_\+basic\+\_\+read}} (float g\+[3]\+, float dps\+[3]\+)
+\begin{DoxyCompactList}\small\item\em basic example read \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{group__mpu6050__example__driver_ga0ccf1034d23b54163b1ba7e349a9eb82}{mpu6050\+\_\+basic\+\_\+deinit}} (void)
+\begin{DoxyCompactList}\small\item\em basic example deinit \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+driver mpu6050 basic source file 
+
+Lib\+Driver MPU6050 simplified basic API implementation.
+
+Copyright (c) 2015 -\/ present Lib\+Driver All rights reserved
+
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "{}\+Software"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/\+or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\+
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "{}\+AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+\begin{DoxyVersion}{Version}
+1.\+0.\+0 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Shifeng Li 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022-\/06-\/30
+\end{DoxyDate}
+\doxysubsubsubsection*{history}
+
+
+\begin{DoxyTable}{4}{}{}{1}
+\SetCell{bg=\tableheadbgcolor,font=\bfseries}Date &\SetCell{bg=\tableheadbgcolor,font=\bfseries}Version &\SetCell{bg=\tableheadbgcolor,font=\bfseries}Author &\SetCell{bg=\tableheadbgcolor,font=\bfseries}Description \\
+2022/\+06/\+30 &1.\+0 &Shifeng Li &first upload \\
+\end{DoxyTable}
+
+
+\begin{DoxyAuthor}{Author}
+Shifeng Li (Lib\+Driver) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Simplified high-\/level API for common MPU6050 operations. Makes driver easier to use for typical applications 

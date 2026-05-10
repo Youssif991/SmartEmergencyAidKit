@@ -1,0 +1,70 @@
+\doxysection{MAX30105\+\_\+\+Group }
+\hypertarget{group___m_a_x30105___group}{}\label{group___m_a_x30105___group}\index{MAX30105\_Group@{MAX30105\_Group}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_heart_beat}{Heart\+Beat}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___m_a_x30105___group_gaec81d2763875d3969f2bc59f5c003e4c}\label{group___m_a_x30105___group_gaec81d2763875d3969f2bc59f5c003e4c} 
+void {\bfseries Heart\+Beat::\+begin} ()
+\item 
+\Hypertarget{group___m_a_x30105___group_ga6c871ef695558163845990e15d788ca0}\label{group___m_a_x30105___group_ga6c871ef695558163845990e15d788ca0} 
+void {\bfseries Heart\+Beat::\+process} (long ir\+Value)
+\item 
+\Hypertarget{group___m_a_x30105___group_gaa30d1f768c9ed4ce49effa85dec595d1}\label{group___m_a_x30105___group_gaa30d1f768c9ed4ce49effa85dec595d1} 
+int {\bfseries Heart\+Beat::\+beat\+Avg} () const
+\item 
+\Hypertarget{group___m_a_x30105___group_ga7936fa02ae4f313d6743494c3eca90a5}\label{group___m_a_x30105___group_ga7936fa02ae4f313d6743494c3eca90a5} 
+float {\bfseries Heart\+Beat::\+bpm} () const
+\item 
+\Hypertarget{group___m_a_x30105___group_ga7d52c6ca9d05ba88a899980adc99bc4c}\label{group___m_a_x30105___group_ga7d52c6ca9d05ba88a899980adc99bc4c} 
+bool {\bfseries Heart\+Beat::\+finger\+Present} () const
+\item 
+\Hypertarget{group___m_a_x30105___group_gac4e91e2b25970cbf382a224da94d841c}\label{group___m_a_x30105___group_gac4e91e2b25970cbf382a224da94d841c} 
+long {\bfseries Heart\+Beat::\+ir\+Value} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___m_a_x30105___group_gab6f3c269fc46c9c1c0f81b3431240138}\label{group___m_a_x30105___group_gab6f3c269fc46c9c1c0f81b3431240138} 
+{\bfseries \+\_\+\+\_\+pad0\+\_\+\+\_\+}
+\item 
+\Hypertarget{group___m_a_x30105___group_ga2024d743327164e9c95750998ee9605b}\label{group___m_a_x30105___group_ga2024d743327164e9c95750998ee9605b} 
+constexpr float {\bfseries HR\+\_\+\+SAMPLE\+\_\+\+RATE} = 100.\+0f
+\item 
+\Hypertarget{group___m_a_x30105___group_gaf006f6d86a8bf27027b3e4ca0fced8ca}\label{group___m_a_x30105___group_gaf006f6d86a8bf27027b3e4ca0fced8ca} 
+constexpr uint16\+\_\+t {\bfseries HR\+\_\+\+FFT\+\_\+\+UPDATE} = 64
+\item 
+\Hypertarget{group___m_a_x30105___group_gaa61daf83d3c7a58dd4808c3c7ef36a17}\label{group___m_a_x30105___group_gaa61daf83d3c7a58dd4808c3c7ef36a17} 
+constexpr float {\bfseries HR\+\_\+\+MIN\+\_\+\+BPM} = 40.\+0f
+\item 
+\Hypertarget{group___m_a_x30105___group_ga4c29c70bf2ddde0b8f5036aee80b986e}\label{group___m_a_x30105___group_ga4c29c70bf2ddde0b8f5036aee80b986e} 
+constexpr float {\bfseries HR\+\_\+\+MAX\+\_\+\+BPM} = 200.\+0f
+\item 
+\Hypertarget{group___m_a_x30105___group_ga68814cc23c8029801f5fb795388ab102}\label{group___m_a_x30105___group_ga68814cc23c8029801f5fb795388ab102} 
+constexpr long {\bfseries HR\+\_\+\+FINGER\+\_\+\+THRESHOLD} = 50000
+\item 
+\Hypertarget{group___m_a_x30105___group_gad8270de79bda729eb5cfc25470dd530b}\label{group___m_a_x30105___group_gad8270de79bda729eb5cfc25470dd530b} 
+constexpr float {\bfseries HR\+\_\+\+IIR\+\_\+\+HP\+\_\+\+ALPHA} = 0.\+96952f
+\item 
+\Hypertarget{group___m_a_x30105___group_gaa6bf10b2f866e5a774387e12bcb1e3de}\label{group___m_a_x30105___group_gaa6bf10b2f866e5a774387e12bcb1e3de} 
+constexpr float {\bfseries HR\+\_\+\+IIR\+\_\+\+LP\+\_\+\+ALPHA} = 0.\+20083f
+\item 
+\Hypertarget{group___m_a_x30105___group_ga0035a20d4aab287059707a544c1a73fb}\label{group___m_a_x30105___group_ga0035a20d4aab287059707a544c1a73fb} 
+constexpr float {\bfseries HR\+\_\+\+SNR\+\_\+\+MIN\+\_\+\+RATIO} = 2.\+5f
+\item 
+\Hypertarget{group___m_a_x30105___group_ga63c198aa17682c37d7fa8a0a10964350}\label{group___m_a_x30105___group_ga63c198aa17682c37d7fa8a0a10964350} 
+constexpr uint8\+\_\+t {\bfseries HR\+\_\+\+MEDIAN\+\_\+\+SIZE} = 5
+\item 
+\Hypertarget{group___m_a_x30105___group_gaed8f5aa8526da245cc52ccbbb8c24e3e}\label{group___m_a_x30105___group_gaed8f5aa8526da245cc52ccbbb8c24e3e} 
+constexpr float {\bfseries HR\+\_\+\+EMA\+\_\+\+ALPHA} = 0.\+15f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+25:\+ \texorpdfstring{$\ast$}{*}  
+
+26:\+ \texorpdfstring{$\ast$}{*} 27:\+ 

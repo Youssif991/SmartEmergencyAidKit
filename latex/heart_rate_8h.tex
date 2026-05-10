@@ -1,0 +1,38 @@
+\doxysection{include/\+\+Sensors/\+\+MAX30105/\+heart\+Rate.h File Reference}
+\hypertarget{heart_rate_8h}{}\label{heart_rate_8h}\index{include/Sensors/MAX30105/heartRate.h@{include/Sensors/MAX30105/heartRate.h}}
+
+
+Low-\/level beat detection functions for heart rate calculation.  
+
+
+{\ttfamily \+\#include "{}WProgram.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{heart_rate_8h_a83abdb9881ef7887abffdbf639539572}\label{heart_rate_8h_a83abdb9881ef7887abffdbf639539572} 
+bool {\bfseries check\+For\+Beat} (int32\+\_\+t sample)
+\item 
+\Hypertarget{heart_rate_8h_af4f11545a05f97c55092e7f3f01b9f59}\label{heart_rate_8h_af4f11545a05f97c55092e7f3f01b9f59} 
+int16\+\_\+t {\bfseries average\+DCEstimator} (int32\+\_\+t \texorpdfstring{$\ast$}{*}p, uint16\+\_\+t x)
+\item 
+\Hypertarget{heart_rate_8h_a6cedece0bbb86fa19985f9ea4b3927f2}\label{heart_rate_8h_a6cedece0bbb86fa19985f9ea4b3927f2} 
+int16\+\_\+t {\bfseries low\+Pass\+FIRFilter} (int16\+\_\+t din)
+\item 
+\Hypertarget{heart_rate_8h_a8088186de4a3d9d5650a2f0f4684c237}\label{heart_rate_8h_a8088186de4a3d9d5650a2f0f4684c237} 
+int32\+\_\+t {\bfseries mul16} (int16\+\_\+t x, int16\+\_\+t y)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Low-\/level beat detection functions for heart rate calculation. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Seidle (Spark\+Fun Electronics) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2026-\/05-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Provides primitive beat detection algorithm functions:\+ check\+For\+Beat, filtering, DC estimation. October 2016 

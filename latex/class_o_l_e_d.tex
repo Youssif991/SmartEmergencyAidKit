@@ -1,0 +1,39 @@
+\doxysection{OLED Class Reference}
+\hypertarget{class_o_l_e_d}{}\label{class_o_l_e_d}\index{OLED@{OLED}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries begin} ()
+\item 
+void {\bfseries display\+On} ()
+\item 
+void {\bfseries display\+Off} ()
+\item 
+void {\bfseries clear} ()
+\item 
+void {\bfseries set\+Pixel} (uint8\+\_\+t x, uint8\+\_\+t y, bool on)
+\item 
+void {\bfseries draw\+HLine} (uint8\+\_\+t x, uint8\+\_\+t y, uint8\+\_\+t length)
+\item 
+void {\bfseries draw\+VLine} (uint8\+\_\+t x, uint8\+\_\+t y, uint8\+\_\+t length)
+\item 
+void {\bfseries draw\+Rect} (uint8\+\_\+t x, uint8\+\_\+t y, uint8\+\_\+t width, uint8\+\_\+t height)
+\item 
+void {\bfseries fill\+Rect} (uint8\+\_\+t x, uint8\+\_\+t y, uint8\+\_\+t width, uint8\+\_\+t height)
+\item 
+void {\bfseries print\+Text} (const char \texorpdfstring{$\ast$}{*}text, uint8\+\_\+t x, uint8\+\_\+t y)
+\item 
+void {\bfseries print\+Number} (int32\+\_\+t number, uint8\+\_\+t x, uint8\+\_\+t y)
+\item 
+void {\bfseries print\+Sensor\+Data} (float temp\+Obj, float temp\+Amb, int bpm, int spo2)
+\item 
+void {\bfseries print\+Sensor\+Data\+Struct} (const \doxymbox{\hyperlink{struct_sensor_readings}{Sensor\+Readings}} \&readings)
+\item 
+void {\bfseries display} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+\+Sensors/\+\+OLED/\+\doxymbox{\hyperlink{oled_8h}{oled.\+h}}\item 
+src/\+\+Sensors/\+\+OLED/\+\doxymbox{\hyperlink{oled_8cpp}{oled.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,70 @@
+\doxysection{Types.\+h}
+\hypertarget{_types_8h_source}{}\label{_types_8h_source}\index{include/Core/Types.h@{include/Core/Types.h}}
+\doxymbox{\hyperlink{_types_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ Types.h\ —\ Shared\ data\ structures\ for\ sensor\ readings\ and\ system\ state.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ These\ structs\ provide\ a\ clean\ interface\ for\ passing\ aggregated\ sensor\ data}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ between\ modules\ (e.g.,\ main.cpp\ →\ display,\ logging,\ etc.).}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ ──\ Sensor\ Readings\ (complete\ snapshot)\ ────────────────────────────────────────}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_sensor_readings}{SensorReadings}}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Temperature\ (MLX90614)}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ objectTemp;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ ambientTemp;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Heart\ rate\ (MAX30105\ +\ PBA\ algorithm)}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ heartRate;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ fingerPresent;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Blood\ oxygen\ (MAX30105\ +\ SpO2\ algorithm)}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ spo2;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Motion\ (MPU6050)}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{float}\ accelX,\ accelY,\ accelZ;\ \ \textcolor{comment}{//\ in\ g}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{float}\ gyroX,\ gyroY,\ gyroZ;\ \ \ \ \ \textcolor{comment}{//\ in\ degrees/second}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Timestamp}}
+\DoxyCodeLine{00042\ \ \ \ \ uint32\_t\ timestamp;}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ ──\ IMU\ Data\ (accelerometer\ +\ gyroscope)\ ───────────────────────────────────────}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_i_m_u_data}{IMUData}}}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ accelX,\ accelY,\ accelZ;\ \ \textcolor{comment}{//\ in\ g}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ gyroX,\ gyroY,\ gyroZ;\ \ \ \ \ \textcolor{comment}{//\ in\ degrees/second}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{float}\ temperature;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ MPU6050\ die\ temp\ in\ °C}}
+\DoxyCodeLine{00052\ \ \ \ \ uint32\_t\ timestamp;}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ ──\ Biometric\ Data\ (heart\ rate\ +\ SpO2)\ ─────────────────────────────────────────}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_biometric_data}{BiometricData}}}
+\DoxyCodeLine{00058\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ heartRate;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ spo2;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ fingerPresent;}
+\DoxyCodeLine{00062\ \ \ \ \ uint32\_t\ timestamp;}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ ──\ Temperature\ Data\ ───────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_temperature_data}{TemperatureData}}}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{float}\ objectTemp;}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{float}\ ambientTemp;}
+\DoxyCodeLine{00071\ \ \ \ \ uint32\_t\ timestamp;}
+\DoxyCodeLine{00072\ \};}
+
+\end{DoxyCode}
