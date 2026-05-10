@@ -9,11 +9,11 @@
  */
 
 /**
-11:  * @addtogroup MPU6050_Group
-12:  * @{
-13:  */
-14: 
-15: #pragma once
+ * @addtogroup MPU6050_Group
+ * @{
+ */
+
+#pragma once
 
 #include <Arduino.h>
 #include "../../Core/Config.h"   // IMU_INTERVAL_MS
@@ -67,5 +67,5 @@ private:
     float    _gxSum = 0, _gySum = 0, _gzSum = 0;
     uint8_t  _sampleCount = 0;
 };
-65: 
-66: /** @} */
+
+/** @} */

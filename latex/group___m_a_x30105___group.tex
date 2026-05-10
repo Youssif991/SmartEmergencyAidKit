@@ -1,36 +1,31 @@
-\doxysection{MAX30105\+\_\+\+Group }
-\hypertarget{group___m_a_x30105___group}{}\label{group___m_a_x30105___group}\index{MAX30105\_Group@{MAX30105\_Group}}
+\doxysection{MAX30105 Pulse Oximeter \& Heart Rate }
+\hypertarget{group___m_a_x30105___group}{}\label{group___m_a_x30105___group}\index{MAX30105 Pulse Oximeter \& Heart Rate@{MAX30105 Pulse Oximeter \& Heart Rate}}
+
+
+Modules related to the \doxylink{class_m_a_x30105}{MAX30105} sensor and biometric algorithms.  
+
+
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \doxymbox{\hyperlink{class_heart_beat}{Heart\+Beat}}
+\item 
+class \doxymbox{\hyperlink{class_oximeter}{Oximeter}}
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{group___m_a_x30105___group_gaec81d2763875d3969f2bc59f5c003e4c}\label{group___m_a_x30105___group_gaec81d2763875d3969f2bc59f5c003e4c} 
-void {\bfseries Heart\+Beat::\+begin} ()
-\item 
-\Hypertarget{group___m_a_x30105___group_ga6c871ef695558163845990e15d788ca0}\label{group___m_a_x30105___group_ga6c871ef695558163845990e15d788ca0} 
-void {\bfseries Heart\+Beat::\+process} (long ir\+Value)
-\item 
-\Hypertarget{group___m_a_x30105___group_gaa30d1f768c9ed4ce49effa85dec595d1}\label{group___m_a_x30105___group_gaa30d1f768c9ed4ce49effa85dec595d1} 
-int {\bfseries Heart\+Beat::\+beat\+Avg} () const
-\item 
-\Hypertarget{group___m_a_x30105___group_ga7936fa02ae4f313d6743494c3eca90a5}\label{group___m_a_x30105___group_ga7936fa02ae4f313d6743494c3eca90a5} 
-float {\bfseries Heart\+Beat::\+bpm} () const
-\item 
-\Hypertarget{group___m_a_x30105___group_ga7d52c6ca9d05ba88a899980adc99bc4c}\label{group___m_a_x30105___group_ga7d52c6ca9d05ba88a899980adc99bc4c} 
-bool {\bfseries Heart\+Beat::\+finger\+Present} () const
-\item 
-\Hypertarget{group___m_a_x30105___group_gac4e91e2b25970cbf382a224da94d841c}\label{group___m_a_x30105___group_gac4e91e2b25970cbf382a224da94d841c} 
-long {\bfseries Heart\+Beat::\+ir\+Value} () const
+\Hypertarget{group___m_a_x30105___group_gafedfcc7a420e17c227630e641a62a88d}\label{group___m_a_x30105___group_gafedfcc7a420e17c227630e641a62a88d} 
+enum class {\bfseries Oximeter\+State} \{ {\bfseries No\+Finger}
+, {\bfseries Filling}
+, {\bfseries Streaming}
+ \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{group___m_a_x30105___group_gab6f3c269fc46c9c1c0f81b3431240138}\label{group___m_a_x30105___group_gab6f3c269fc46c9c1c0f81b3431240138} 
-{\bfseries \+\_\+\+\_\+pad0\+\_\+\+\_\+}
+\Hypertarget{group___m_a_x30105___group_gabca7dfa857c4fcc4cf84c5267198bbea}\label{group___m_a_x30105___group_gabca7dfa857c4fcc4cf84c5267198bbea} 
+constexpr uint16\+\_\+t {\bfseries HR\+\_\+\+FFT\+\_\+\+SAMPLES} = 512
 \item 
 \Hypertarget{group___m_a_x30105___group_ga2024d743327164e9c95750998ee9605b}\label{group___m_a_x30105___group_ga2024d743327164e9c95750998ee9605b} 
 constexpr float {\bfseries HR\+\_\+\+SAMPLE\+\_\+\+RATE} = 100.\+0f
@@ -65,6 +60,5 @@ constexpr float {\bfseries HR\+\_\+\+EMA\+\_\+\+ALPHA} = 0.\+15f
 
 
 \doxysubsection{Detailed Description}
-25:\+ \texorpdfstring{$\ast$}{*}  
+Modules related to the \doxylink{class_m_a_x30105}{MAX30105} sensor and biometric algorithms. 
 
-26:\+ \texorpdfstring{$\ast$}{*} 27:\+ 

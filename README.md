@@ -1,12 +1,12 @@
 # SmartAidKit - Embedded Health Monitoring System
-1: 
-2: /**
-3:  * @mainpage SmartAidKit Documentation
-4:  * 
-5:  * @section overview_sec Overview
-6:  * Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.
-7:  */
-8: 
+
+/**
+ * @mainpage SmartAidKit Documentation
+ * 
+ * @section overview_sec Overview
+ * Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.
+ */
+
 
 Advanced multi-sensor health monitoring system for ESP32-C3 with real-time biometric data collection and display.
 
@@ -277,30 +277,30 @@ pio run --target upload
 ```
 
 ---
-275: 
-276: ## 📖 Documentation
-277: 
-278: Detailed API documentation is generated using **Doxygen**.
-279: 
-280: ### Generating Documentation
-281: 
-282: To generate the HTML documentation locally:
-283: 
-284: ```bash
-285: doxygen Doxyfile
-286: ```
-287: 
-288: After generation, open `html/index.html` in your browser.
-289: 
-290: ### Documentation Features
-291: - **Class Hierarchy**: Visual representation of sensor classes.
-292: - **Module Grouping**: Sensors are grouped by manufacturer and function.
-293: - **Call Graphs**: Automated visualization of function dependencies.
-294: - **Search**: Real-time search for API members.
-295: 
-296: ---
-297: 
-298: ##  Serial Monitor
+
+## 📖 Documentation
+
+Detailed API documentation is generated using **Doxygen**.
+
+### Generating Documentation
+
+To generate the HTML documentation locally:
+
+```bash
+doxygen Doxyfile
+```
+
+After generation, open `html/index.html` in your browser.
+
+### Documentation Features
+- **Class Hierarchy**: Visual representation of sensor classes.
+- **Module Grouping**: Sensors are grouped by manufacturer and function.
+- **Call Graphs**: Automated visualization of function dependencies.
+- **Search**: Real-time search for API members.
+
+---
+
+##  Serial Monitor
 ```bash
 pio device monitor
 ```

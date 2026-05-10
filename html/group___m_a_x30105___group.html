@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SmartAidKit: MAX30105_Group</title>
+<title>SmartAidKit: MAX30105 Pulse Oximeter &amp; Heart Rate</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -116,33 +116,29 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('group___m_a_x3
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">MAX30105_Group </div></div>
+  <div class="headertitle"><div class="title">MAX30105 Pulse Oximeter &amp; Heart Rate </div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Modules related to the <a class="el" href="class_m_a_x30105.html">MAX30105</a> sensor and biometric algorithms.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:HeartBeat" id="r_HeartBeat"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="class_heart_beat.html">HeartBeat</a></td></tr>
+<tr class="memitem:Oximeter" id="r_Oximeter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="class_oximeter.html">Oximeter</a></td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:gaec81d2763875d3969f2bc59f5c003e4c" id="r_gaec81d2763875d3969f2bc59f5c003e4c"><td class="memItemLeft"><a id="gaec81d2763875d3969f2bc59f5c003e4c" name="gaec81d2763875d3969f2bc59f5c003e4c"></a>
-void&#160;</td><td class="memItemRight"><b>HeartBeat::begin</b> ()</td></tr>
-<tr class="memitem:ga6c871ef695558163845990e15d788ca0" id="r_ga6c871ef695558163845990e15d788ca0"><td class="memItemLeft"><a id="ga6c871ef695558163845990e15d788ca0" name="ga6c871ef695558163845990e15d788ca0"></a>
-void&#160;</td><td class="memItemRight"><b>HeartBeat::process</b> (long irValue)</td></tr>
-<tr class="memitem:gaa30d1f768c9ed4ce49effa85dec595d1" id="r_gaa30d1f768c9ed4ce49effa85dec595d1"><td class="memItemLeft"><a id="gaa30d1f768c9ed4ce49effa85dec595d1" name="gaa30d1f768c9ed4ce49effa85dec595d1"></a>
-int&#160;</td><td class="memItemRight"><b>HeartBeat::beatAvg</b> () const</td></tr>
-<tr class="memitem:ga7936fa02ae4f313d6743494c3eca90a5" id="r_ga7936fa02ae4f313d6743494c3eca90a5"><td class="memItemLeft"><a id="ga7936fa02ae4f313d6743494c3eca90a5" name="ga7936fa02ae4f313d6743494c3eca90a5"></a>
-float&#160;</td><td class="memItemRight"><b>HeartBeat::bpm</b> () const</td></tr>
-<tr class="memitem:ga7d52c6ca9d05ba88a899980adc99bc4c" id="r_ga7d52c6ca9d05ba88a899980adc99bc4c"><td class="memItemLeft"><a id="ga7d52c6ca9d05ba88a899980adc99bc4c" name="ga7d52c6ca9d05ba88a899980adc99bc4c"></a>
-bool&#160;</td><td class="memItemRight"><b>HeartBeat::fingerPresent</b> () const</td></tr>
-<tr class="memitem:gac4e91e2b25970cbf382a224da94d841c" id="r_gac4e91e2b25970cbf382a224da94d841c"><td class="memItemLeft"><a id="gac4e91e2b25970cbf382a224da94d841c" name="gac4e91e2b25970cbf382a224da94d841c"></a>
-long&#160;</td><td class="memItemRight"><b>HeartBeat::irValue</b> () const</td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gafedfcc7a420e17c227630e641a62a88d" id="r_gafedfcc7a420e17c227630e641a62a88d"><td class="memItemLeft"><a id="gafedfcc7a420e17c227630e641a62a88d" name="gafedfcc7a420e17c227630e641a62a88d"></a>enum class &#160;</td><td class="memItemRight"><b>OximeterState</b> { <b>NoFinger</b>
+, <b>Filling</b>
+, <b>Streaming</b>
+ }</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:gab6f3c269fc46c9c1c0f81b3431240138" id="r_gab6f3c269fc46c9c1c0f81b3431240138"><td class="memItemLeft"><a id="gab6f3c269fc46c9c1c0f81b3431240138" name="gab6f3c269fc46c9c1c0f81b3431240138"></a>
-&#160;</td><td class="memItemRight"><b>__pad0__</b></td></tr>
+<tr class="memitem:gabca7dfa857c4fcc4cf84c5267198bbea" id="r_gabca7dfa857c4fcc4cf84c5267198bbea"><td class="memItemLeft"><a id="gabca7dfa857c4fcc4cf84c5267198bbea" name="gabca7dfa857c4fcc4cf84c5267198bbea"></a>
+constexpr uint16_t&#160;</td><td class="memItemRight"><b>HR_FFT_SAMPLES</b> = 512</td></tr>
 <tr class="memitem:ga2024d743327164e9c95750998ee9605b" id="r_ga2024d743327164e9c95750998ee9605b"><td class="memItemLeft"><a id="ga2024d743327164e9c95750998ee9605b" name="ga2024d743327164e9c95750998ee9605b"></a>
 constexpr float&#160;</td><td class="memItemRight"><b>HR_SAMPLE_RATE</b> = 100.0f</td></tr>
 <tr class="memitem:gaf006f6d86a8bf27027b3e4ca0fced8ca" id="r_gaf006f6d86a8bf27027b3e4ca0fced8ca"><td class="memItemLeft"><a id="gaf006f6d86a8bf27027b3e4ca0fced8ca" name="gaf006f6d86a8bf27027b3e4ca0fced8ca"></a>
@@ -165,8 +161,7 @@ constexpr uint8_t&#160;</td><td class="memItemRight"><b>HR_MEDIAN_SIZE</b> = 5</
 constexpr float&#160;</td><td class="memItemRight"><b>HR_EMA_ALPHA</b> = 0.15f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>25: *  </p>
-<p>26: * 27: </p>
+<div class="textblock"><p>Modules related to the <a class="el" href="class_m_a_x30105.html">MAX30105</a> sensor and biometric algorithms. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

@@ -15,5 +15,6 @@ var hierarchy =
     [ "Oximeter", "class_oximeter.html", null ],
     [ "Property&lt; Type, ClassHolder &gt;", "class_property.html", null ],
     [ "SensorReadings", "struct_sensor_readings.html", null ],
-    [ "TemperatureData", "struct_temperature_data.html", null ]
+    [ "TemperatureData", "struct_temperature_data.html", null ],
+    [ "TempSensor", "class_temp_sensor.html", null ]
 ];

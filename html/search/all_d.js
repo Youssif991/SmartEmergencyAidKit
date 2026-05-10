@@ -12,13 +12,14 @@ var searchData=
   ['imu_2eh_9',['imu.h',['../imu_8h.html',1,'']]],
   ['imudata_10',['IMUData',['../struct_i_m_u_data.html',1,'']]],
   ['in_20loop_11',['4. Update in Loop',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md17',1,'']]],
-  ['in_20loop_12',['Update Sequence (in loop())',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md48',1,'']]],
-  ['in_20main_20cpp_13',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md47',1,'']]],
+  ['in_20loop_12',['Update Sequence (in loop())',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md53',1,'']]],
+  ['in_20main_20cpp_13',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md52',1,'']]],
   ['in_20setup_14',['3. Initialize in Setup',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md16',1,'']]],
   ['include_20all_20sensors_15',['1. Include All Sensors',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md14',1,'']]],
-  ['include_20patterns_16',['Include Patterns',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md46',1,'']]],
-  ['inited_17',['inited',['../structmpu6050__handle__s.html#aa80e001edb2f266968b28a9894556dbc',1,'mpu6050_handle_s']]],
-  ['initialize_20in_20setup_18',['3. Initialize in Setup',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md16',1,'']]],
-  ['instances_19',['2. Declare Global Instances',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md15',1,'']]],
-  ['interface_20',['interface',['../structmpu6050__info__s.html#a837dcb9195a5dc5eb19de343a0b0e4e1',1,'mpu6050_info_s']]]
+  ['include_20patterns_16',['Include Patterns',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md51',1,'']]],
+  ['inertial_20measurement_20unit_17',['MPU6050 Inertial Measurement Unit',['../group___m_p_u6050___group.html',1,'']]],
+  ['inited_18',['inited',['../structmpu6050__handle__s.html#aa80e001edb2f266968b28a9894556dbc',1,'mpu6050_handle_s']]],
+  ['initialize_20in_20setup_19',['3. Initialize in Setup',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md16',1,'']]],
+  ['instances_20',['2. Declare Global Instances',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md15',1,'']]],
+  ['interface_21',['interface',['../structmpu6050__info__s.html#a837dcb9195a5dc5eb19de343a0b0e4e1',1,'mpu6050_info_s']]]
 ];

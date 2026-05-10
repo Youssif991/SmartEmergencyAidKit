@@ -10,5 +10,5 @@ var searchData=
   ['contact_20thermometer_20sensors_20mlx90614_7',['Non-Contact Thermometer (&lt;span class=&quot;tt&quot;&gt;Sensors/MLX90614/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md5',1,'']]],
   ['core_8',['Core System (&lt;span class=&quot;tt&quot;&gt;Core/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md3',1,'']]],
   ['core_20system_20core_9',['Core System (&lt;span class=&quot;tt&quot;&gt;Core/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md3',1,'']]],
-  ['cpp_10',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md47',1,'']]]
+  ['cpp_10',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md52',1,'']]]
 ];

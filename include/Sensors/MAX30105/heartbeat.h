@@ -23,11 +23,11 @@
  */
 
 /**
-25:  * @addtogroup MAX30105_Group
-26:  * @{
-27:  */
-28: 
-29: #pragma once
+ * @addtogroup MAX30105_Group
+ * @{
+ */
+
+#pragma once
 
 #include <Arduino.h>
 
@@ -136,5 +136,5 @@ private:
     void computeFFT();  // run FFT on current buffer, apply SNR gate + EMA
     void reset();       // clear all state (finger removal / begin)
 };
-134: 
-135: /** @} */
+
+/** @} */

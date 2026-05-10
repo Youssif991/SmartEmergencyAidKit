@@ -1,0 +1,586 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=latex 2026.3.7)  10 MAY 2026 11:01
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**"e:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/latex/refman.tex"
+(e:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/latex/refman.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(c:/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+) (c:/texlive/2026/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
+(c:/texlive/2026/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@chapter=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+) (c:/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+package info suppressed
+) (./doxygen.sty
+Package: doxygen 
+ (c:/texlive/2026/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 2024/07/07 v2.0g defines alltt environment
+) (c:/texlive/2026/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen149
+\ar@mcellbox=\box53
+\extrarowheight=\dimen150
+\NC@list=\toks17
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box54
+) (c:/texlive/2026/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count284
+\calc@Bcount=\count285
+\calc@Adimen=\dimen151
+\calc@Bdimen=\dimen152
+\calc@Askip=\skip53
+\calc@Bskip=\skip54
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count286
+\calc@Cskip=\skip55
+) (c:/texlive/2026/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count287
+\float@exts=\toks18
+\float@box=\box55
+\@float@everytoks=\toks19
+\@floatcapt=\box56
+) (c:/texlive/2026/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (c:/texlive/2026/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks20
+\verbatim@line=\toks21
+\verbatim@in@stream=\read2
+) (c:/texlive/2026/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box57
+\sift@deathcycles=\count288
+\@vwid@loff=\dimen153
+\@vwid@roff=\dimen154
+)
+==> First Aid for varwidth.sty applied!
+(c:/texlive/2026/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (c:/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: dvips.def on input line 274.
+ (c:/texlive/2026/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2025/01/21 v3.2a Graphics/color driver for dvips
+) (c:/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (c:/texlive/2026/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+\everycr=\toks22
+\minrowclearance=\skip56
+\rownum=\count289
+) (c:/texlive/2026/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
+\LTleft=\skip57
+\LTright=\skip58
+\LTpre=\skip59
+\LTpost=\skip60
+\LTchunksize=\count290
+\LTcapwidth=\dimen155
+\LT@head=\box58
+\LT@firsthead=\box59
+\LT@foot=\box60
+\LT@lastfoot=\box61
+\LT@gbox=\box62
+\LT@cols=\count291
+\LT@rows=\count292
+\c@LT@tables=\count293
+\c@LT@chunks=\count294
+\LT@p@ftn=\toks23
+) (c:/texlive/2026/texmf-dist/tex/latex/xltabular/xltabular.sty
+Package: xltabular 2025/02/28 v0.2i `xltabular' package (hv,RN)
+ (c:/texlive/2026/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+\TX@col@width=\dimen156
+\TX@old@table=\dimen157
+\TX@old@col=\dimen158
+\TX@target=\dimen159
+\TX@delta=\dimen160
+\TX@cols=\count295
+\TX@ftn=\toks24
+) (c:/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count296
+) (c:/texlive/2026/texmf-dist/tex/latex/ltablex/ltablex.sty
+Package: ltablex 2014/08/13 v1.1 Modified tabularx
+)) (c:/texlive/2026/texmf-dist/tex/latex/tabularray/tabularray.sty
+Package: tabularray 2025-11-27 v2025C Typeset tabulars and arrays with LaTeX3
+ (c:/texlive/2026/texmf-dist/tex/latex/ninecolors/ninecolors.sty
+Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
+ (c:/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (c:/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2026-01-19 L3 programming layer (loader) 
+ (c:/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+File: l3backend-dvips.def 2025-10-09 L3 backend support: dvips
+\l__pdfannot_backend_content_box=\box63
+\l__pdfannot_backend_model_box=\box64
+\g__pdfannot_backend_int=\count297
+\g__pdfannot_backend_link_int=\count298
+\g__pdfannot_backend_link_sf_int=\count299
+))
+Package: xparse 2025-10-09 L3 Experimental document command parser
+))
+\g__tblr_nohyper_int=\count300
+\l__tblr_a_int=\count301
+\l__tblr_c_int=\count302
+\l__tblr_r_int=\count303
+\l__tblr_d_dim=\dimen161
+\l__tblr_h_dim=\dimen162
+\l__tblr_o_dim=\dimen163
+\l__tblr_p_dim=\dimen164
+\l__tblr_q_dim=\dimen165
+\l__tblr_r_dim=\dimen166
+\l__tblr_s_dim=\dimen167
+\l__tblr_t_dim=\dimen168
+\l__tblr_v_dim=\dimen169
+\l__tblr_w_dim=\dimen170
+\l__tblr_a_box=\box65
+\l__tblr_b_box=\box66
+\l__tblr_c_box=\box67
+\l__tblr_d_box=\box68
+\c@tblrcount=\count304
+\c@colnum=\count305
+\c@rowcount=\count306
+\c@colcount=\count307
+\abovesep=\dimen171
+\belowsep=\dimen172
+\leftsep=\dimen173
+\rightsep=\dimen174
+\gTblrLevelInt=\count308
+\g__tblr_data_row_key_count_int=\count309
+\g__tblr_data_column_key_count_int=\count310
+\g__tblr_data_cell_key_count_int=\count311
+\g__tblr_array_int=\count312
+\l__tblr_key_count_int=\count313
+\l__tblr_key_quotient_int=\count314
+\l__tblr_key_quotient_two_int=\count315
+\l__tblr_key_remainder_int=\count316
+\g__tblr_data_str_value_count_int=\count317
+\lTblrChildTotalInt=\count318
+\lTblrChildHtotalInt=\count319
+\lTblrChildVtotalInt=\count320
+\l__child_diff_h_int=\count321
+\l__child_diff_v_int=\count322
+\l__child_sign_h_int=\count323
+\l__child_sign_v_int=\count324
+\l__child_step_int=\count325
+\lTblrDefaultHruleWidthDim=\dimen175
+\lTblrDefaultVruleWidthDim=\dimen176
+\l__tblr_split_balance_int=\count326
+\l__tblr_strut_dp_dim=\dimen177
+\l__tblr_strut_ht_dim=\dimen178
+\g__tblr_cell_wd_dim=\dimen179
+\g__tblr_cell_ht_dim=\dimen180
+\g__tblr_cell_head_dim=\dimen181
+\g__tblr_cell_foot_dim=\dimen182
+\l__tblr_measured_cell_box=\box69
+\g__tblr_last_box=\box70
+\l__tblr_temp_box=\box71
+\l__tblr_column_target_dim=\dimen183
+\l__tblr_hfuzz_dim=\dimen184
+\l__tblr_caption_box=\box72
+\l__tblr_caption_left_box=\box73
+\lTblrRowHeadInt=\count327
+\lTblrRowFootInt=\count328
+\l__tblr_row_head_box=\box74
+\l__tblr_row_foot_box=\box75
+\l__tblr_row_head_foot_dim=\dimen185
+\lTblrTableWidthDim=\dimen186
+\l__tblr_table_firsthead_box=\box76
+\l__tblr_table_middlehead_box=\box77
+\l__tblr_table_lasthead_box=\box78
+\l__tblr_table_firstfoot_box=\box79
+\l__tblr_table_middlefoot_box=\box80
+\l__tblr_table_lastfoot_box=\box81
+\l__tblr_remain_height_dim=\dimen187
+\l__tblr_next_rows_dim=\dimen188
+\l__tblr_page_overfill_dim=\dimen189
+\l__tblr_long_from_int=\count329
+\l__tblr_long_to_int=\count330
+\l__tblr_curr_i_int=\count331
+\l__tblr_prev_i_int=\count332
+\lTblrTablePageInt=\count333
+\l__tblr_table_head_box=\box82
+\l__tblr_table_foot_box=\box83
+\l__tblr_table_head_foot_dim=\dimen190
+\l__tblr_table_head_body_foot_dim=\dimen191
+\l__tblr_table_box=\box84
+\lTblrRowFirstInt=\count334
+\lTblrRowLastInt=\count335
+\l__tblr_cover_box_a_dim=\dimen192
+\l__tblr_cover_box_b_dim=\dimen193
+\l__tblr_table_hlines_box=\box85
+\l__tblr_hline_box=\box86
+\l__tblr_row_box=\box87
+\l__tblr_col_o_wd_dim=\dimen194
+\l__tblr_col_b_wd_dim=\dimen195
+\l__tblr_hline_leftskip_dim=\dimen196
+\l__tblr_hline_rightskip_dim=\dimen197
+\l__tblr_row_ht_dim=\dimen198
+\l__tblr_row_dp_dim=\dimen199
+\l__tblr_row_abovesep_dim=\dimen256
+\l__tblr_row_belowsep_dim=\dimen257
+\l__tblr_row_vlines_box=\box88
+\l__tblr_vline_box=\box89
+\l__tblr_cell_box=\box90
+\l__tblr_row_upper_dim=\dimen258
+\l__tblr_row_lower_dim=\dimen259
+\l__tblr_row_vpace_dim=\dimen260
+\l__tblr_vline_aboveskip_dim=\dimen261
+\l__tblr_vline_belowskip_dim=\dimen262
+\lTblrCellRowSpanInt=\count336
+\lTblrCellColSpanInt=\count337
+\l__tblr_cell_wd_dim=\dimen263
+\l__tblr_cell_ht_dim=\dimen264
+\lTblrCellAboveBorderWidthDim=\dimen265
+\lTblrCellBelowBorderWidthDim=\dimen266
+\lTblrCellLeftBorderWidthDim=\dimen267
+\lTblrCellRightBorderWidthDim=\dimen268
+\l__tblr_diag_box=\box91
+\l__tblr_cell_inner_wd_dim=\dimen269
+\l__tblr_cell_inner_dp_dim=\dimen270
+\l__tblr_cell_hanchor_dim=\dimen271
+\l__tblr_last_cell_table_ht_dim=\dimen272
+\l__tblr_last_cell_table_dp_dim=\dimen273
+\l__tblr_last_vline_wd_dim=\dimen274
+\l__tblr_tikz_node_box=\box92
+)
+\g__doxy_nohyper_int=\count338
+\doxytablewidth=\dimen275
+ (c:/texlive/2026/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2025/07/28 4.6 verbatim text (tvz,hv)
+ (c:/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+)
+\FV@CodeLineNo=\count339
+\FV@InFile=\read3
+\FV@TabBox=\box93
+\c@FancyVerbLine=\count340
+\FV@StepNumber=\count341
+\FV@OutFile=\write3
+) (c:/texlive/2026/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
+\c@tracingmulticols=\count342
+\mult@box=\box94
+\multicol@leftmargin=\dimen276
+\c@unbalance=\count343
+\c@collectmore=\count344
+\doublecol@number=\count345
+\multicoltolerance=\count346
+\multicolpretolerance=\count347
+\full@width=\dimen277
+\page@free=\dimen278
+\premulticols=\dimen279
+\postmulticols=\dimen280
+\multicolsep=\skip61
+\multicolbaselineskip=\skip62
+\partial@page=\box95
+\last@line=\box96
+\mc@boxedresult=\box97
+\maxbalancingoverflow=\dimen281
+\mult@rightbox=\box98
+\mult@grightbox=\box99
+\mult@firstbox=\box100
+\mult@gfirstbox=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\@tempa=\box105
+\@tempa=\box106
+\@tempa=\box107
+\@tempa=\box108
+\@tempa=\box109
+\@tempa=\box110
+\@tempa=\box111
+\@tempa=\box112
+\@tempa=\box113
+\@tempa=\box114
+\@tempa=\box115
+\@tempa=\box116
+\@tempa=\box117
+\@tempa=\box118
+\@tempa=\box119
+\@tempa=\box120
+\@tempa=\box121
+\@tempa=\box122
+\@tempa=\box123
+\@tempa=\box124
+\@tempa=\box125
+\@tempa=\box126
+\@tempa=\box127
+\@tempa=\box128
+\@tempa=\box129
+\@tempa=\box130
+\@tempa=\box131
+\@tempa=\box132
+\@tempa=\box133
+\@tempa=\box134
+\@tempa=\box135
+\@tempa=\box136
+\@tempa=\box137
+\c@minrows=\count348
+\c@columnbadness=\count349
+\c@finalcolumnbadness=\count350
+\last@try=\dimen282
+\multicolovershoot=\dimen283
+\multicolundershoot=\dimen284
+\mult@nat@firstbox=\box138
+\colbreak@box=\box139
+\mc@col@check@num=\count351
+\g__mc_curr_col_int=\count352
+) (c:/texlive/2026/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip63
+\multirow@cntb=\count353
+\multirow@dima=\skip64
+\bigstrutjot=\dimen285
+) (c:/texlive/2026/texmf-dist/tex/latex/hanging/hanging.sty
+Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
+\h@ngcommawd=\skip65
+\h@ngfstopwd=\skip66
+\h@ngquotewd=\skip67
+\h@ngdquotewd=\skip68
+\h@ngquerywd=\skip69
+\h@ngexclwd=\skip70
+\h@ngcolonwd=\skip71
+\h@ngscolonwd=\skip72
+) (c:/texlive/2026/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+) (c:/texlive/2026/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
+ (c:/texlive/2026/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2025/11/04 v2.10 package option processing (HA)
+ (c:/texlive/2026/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/texlive/2026/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks26
+\XKV@tempa@toks=\toks27
+\XKV@tempb@toks=\toks28
+)
+\XKV@depth=\count354
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (c:/texlive/2026/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (c:/texlive/2026/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
+ (c:/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (c:/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 106.
+)
+\Gin@req@height=\dimen286
+\Gin@req@width=\dimen287
+) (c:/texlive/2026/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
+\collectedbox=\box140
+)
+\tc@llx=\dimen288
+\tc@lly=\dimen289
+\tc@urx=\dimen290
+\tc@ury=\dimen291
+Package trimclip Info: Using driver 'tc-dvips.def'.
+ (c:/texlive/2026/texmf-dist/tex/latex/adjustbox/tc-dvips.def
+File: tc-dvips.def 2019/01/04 v2.2 Clipping driver for dvips
+))
+\adjbox@Width=\dimen292
+\adjbox@Height=\dimen293
+\adjbox@Depth=\dimen294
+\adjbox@Totalheight=\dimen295
+\adjbox@pwidth=\dimen296
+\adjbox@pheight=\dimen297
+\adjbox@pdepth=\dimen298
+\adjbox@ptotalheight=\dimen299
+ (c:/texlive/2026/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count355
+)) (c:/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (c:/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks29
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (c:/texlive/2026/texmf-dist/tex/latex/stackengine/stackengine.sty
+Package: stackengine 2021/07/22 v4.11\ Stacking text and objects in convenient ways
+ (c:/texlive/2026/texmf-dist/tex/generic/listofitems/listofitems.sty (c:/texlive/2026/texmf-dist/tex/generic/listofitems/listofitems.tex
+\loi_cnt_foreach_nest=\count356
+\loi_nestcnt=\count357
+)
+Package: listofitems 2024/03/09 v1.65 Grab items in lists using user-specified sep char (CT)
+)
+\c@@stackindex=\count358
+\@boxshift=\skip73
+\stack@tmplength=\skip74
+\temp@stkl=\skip75
+\@stackedboxwidth=\skip76
+\@addedbox=\box141
+\@anchorbox=\box142
+\@insetbox=\box143
+\se@backgroundbox=\box144
+\stackedbox=\box145
+\@centerbox=\box146
+\c@ROWcellindex@=\count359
+) (c:/texlive/2026/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip77
+\enit@outerparindent=\dimen300
+\enit@toks=\toks30
+\enit@inbox=\box147
+\enit@count@id=\count360
+\enitdp@description=\count361
+) (c:/texlive/2026/texmf-dist/tex/generic/alphalph/alphalph.sty
+Package: alphalph 2019/12/09 v2.6 Convert numbers to letters (HO)
+ (c:/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)) (c:/texlive/2026/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box148
+\UL@hyphenbox=\box149
+\UL@skip=\skip78
+\UL@hook=\toks31
+\UL@height=\dimen301
+\UL@pe=\count362
+\UL@pixel=\dimen302
+\ULC@box=\box150
+Package: ulem 2019/11/18
+\ULdepth=\dimen303
+)
+\xrefbox=\box151
+\xreflength=\skip79
+\CodeWidthChar=\skip80
+\CodeHeightChar=\skip81
+\DoxyCodeWidth=\skip82
+\ttcharwidth=\skip83
+\c@DoxyEnumeratei=\count363
+\c@DoxyEnumerateii=\count364
+\c@DoxyEnumerateiii=\count365
+\c@DoxyEnumerateiv=\count366
+\c@DoxyEnumeratev=\count367
+\c@DoxyEnumeratevi=\count368
+\c@DoxyEnumeratevii=\count369
+\c@DoxyEnumerateviii=\count370
+\c@DoxyEnumerateix=\count371
+\c@DoxyEnumeratex=\count372
+\c@DoxyEnumeratexi=\count373
+\c@DoxyEnumeratexii=\count374
+\enitdp@DoxyEnumerate=\count375
+\enitdp@DoxyItemize=\count376
+\doxymboxbox=\box152
+\doxymboxlength=\skip84
+\c@subsubsubsection=\count377
+\c@subsubsubsubsection=\count378
+\c@subsubsubsubsubsection=\count379
+\c@subsubsubsubsubsubsection=\count380
+) (c:/texlive/2026/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks32
+\inpenc@posthook=\toks33
+) (c:/texlive/2026/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
+) (c:/texlive/2026/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+) (c:/texlive/2026/texmf-dist/tex/latex/wasysym/wasysym.sty
+Package: wasysym 2020/01/19 v2.4 Wasy-2 symbol support package
+\symwasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 93.
+) (c:/texlive/2026/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+) (c:/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+) (c:/texlive/2026/texmf-dist/tex/latex/psnfss/helvet.sty
+Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
+) (c:/texlive/2026/texmf-dist/tex/latex/psnfss/courier.sty
+Package: courier 2020/03/25 PSNFSS-v9.3 (WaS) 
+) (c:/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (c:/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count381
+\Gm@cntv=\count382
+\c@Gm@tempcnt=\count383
+\Gm@bindingoffset=\dimen304
+\Gm@wd@mp=\dimen305
+\Gm@odd@mp=\dimen306
+\Gm@even@mp=\dimen307
+\Gm@layoutwidth=\dimen308
+\Gm@layoutheight=\dimen309
+\Gm@layouthoffset=\dimen310
+\Gm@layoutvoffset=\dimen311
+\Gm@dimlist=\toks34
+) (c:/texlive/2026/texmf-dist/tex/latex/changepage/changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count384
+\cp@tempcnt=\count385
+LaTeX Info: Redefining \checkoddpage on input line 59.
+) (c:/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+\f@nch@headwidth=\skip85
+\f@nch@offset@elh=\skip86
+\f@nch@offset@erh=\skip87
+\f@nch@offset@olh=\skip88
+\f@nch@offset@orh=\skip89
+\f@nch@offset@elf=\skip90
+\f@nch@offset@erf=\skip91
+\f@nch@offset@olf=\skip92
+\f@nch@offset@orf=\skip93
+\f@nch@height=\skip94
+\f@nch@footalignment=\skip95
+\f@nch@widthL=\skip96
+\f@nch@widthC=\skip97
+\f@nch@widthR=\skip98
+\@temptokenb=\toks35
+) (c:/texlive/2026/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip99
+\bibsep=\skip100
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count386
+) (c:/texlive/2026/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip101
+\cftbeforetoctitleskip=\skip102
+\cftaftertoctitleskip=\skip103
+\cftbeforepartskip=\skip104
+\cftpartnumwidth=\skip105
+\cftpartindent=\skip106
+\cftbeforechapskip=\skip107
+\cftchapindent=\skip108
+\cftchapnumwidth=\skip109
+\cftbeforesecskip=\skip110
+\cftsecindent=\s

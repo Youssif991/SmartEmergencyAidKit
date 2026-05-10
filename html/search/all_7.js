@@ -11,7 +11,8 @@ var searchData=
   ['connections_20esp32_20c3_8',['🔌 Hardware Connections (ESP32-C3)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md10',1,'']]],
   ['constants_9',['Change Global Constants',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md20',1,'']]],
   ['contact_20thermometer_20sensors_20mlx90614_10',['Non-Contact Thermometer (&lt;span class=&quot;tt&quot;&gt;Sensors/MLX90614/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md5',1,'']]],
-  ['core_11',['Core System (&lt;span class=&quot;tt&quot;&gt;Core/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md3',1,'']]],
-  ['core_20system_20core_12',['Core System (&lt;span class=&quot;tt&quot;&gt;Core/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md3',1,'']]],
-  ['cpp_13',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md47',1,'']]]
+  ['contactless_20temperature_11',['MLX90614 Contactless Temperature',['../group___m_l_x90614___group.html',1,'']]],
+  ['core_12',['Core System (&lt;span class=&quot;tt&quot;&gt;Core/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md3',1,'']]],
+  ['core_20system_20core_13',['Core System (&lt;span class=&quot;tt&quot;&gt;Core/&lt;/span&gt;)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md3',1,'']]],
+  ['cpp_14',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md52',1,'']]]
 ];

@@ -9,11 +9,11 @@
  */
 
 /**
-11:  * @addtogroup OLED_Group
-12:  * @{
-13:  */
-14: 
-15: #pragma once
+ * @addtogroup OLED_Group
+ * @{
+ */
+
+#pragma once
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -109,5 +109,5 @@ private:
     // Draw a single ASCII character at (x, y)
     void drawChar(char c, uint8_t x, uint8_t y);
 };
-107: 
-108: /** @} */
+
+/** @} */

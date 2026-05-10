@@ -9,11 +9,11 @@
  */
 
 /**
-11:  * @addtogroup MLX90614_Group
-12:  * @{
-13:  */
-14: 
-15: #pragma once
+ * @addtogroup MLX90614_Group
+ * @{
+ */
+
+#pragma once
 
 #include "Adafruit_MLX90614.h"
 #include "../../Core/Config.h"
@@ -38,5 +38,5 @@ private:
     float    _ambientTemp = 0.0f;
     uint32_t _lastReadMs  = 0;
 };
-36: 
-37: /** @} */
+
+/** @} */

@@ -54,8 +54,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_adafruit___m_l_x90614_8cpp.html",
-"group__mpu6050__basic__driver.html#ga47a9d14317022ff750450d300c1d48fb",
-"group__mpu6050__dmp__driver.html#ga60bf51ca435a75d6e52ed42c02ad03e2"
+"group__mpu6050__basic__driver.html#ga4641434d3b89e4432249a85d27dc5208",
+"group__mpu6050__dmp__driver.html#ga5e7590cf3620da9a5fc7abd2b0c025ce"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

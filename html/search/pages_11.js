@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['objects_20declared_20in_20main_20cpp_0',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md47',1,'']]],
+  ['objects_20declared_20in_20main_20cpp_0',['Global Objects (declared in main.cpp)',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md52',1,'']]],
   ['oled_1',['OLED',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md7',1,'Display Driver (&lt;span class=&quot;tt&quot;&gt;Sensors/OLED/&lt;/span&gt;)'],['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md27',1,'SSD1306 (OLED)']]],
   ['oled_20display_20blank_2',['OLED Display Blank',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md32',1,'']]],
   ['on_20i2c_20bus_3',['Sensors on I2C Bus',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md11',1,'']]],

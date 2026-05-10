@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oled_5fgroup_0',['OLED_Group',['../group___o_l_e_d___group.html',1,'']]]
+  ['inertial_20measurement_20unit_0',['MPU6050 Inertial Measurement Unit',['../group___m_p_u6050___group.html',1,'']]]
 ];
