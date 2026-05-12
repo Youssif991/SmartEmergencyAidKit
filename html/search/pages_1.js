@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['embedded_20health_20monitoring_20system_0',['SmartAidKit - Embedded Health Monitoring System',['../index.html',1,'']]]
+  ['2_20declare_20global_20instances_0',['2. Declare Global Instances',['../index.html#autotoc_md17',1,'']]]
 ];

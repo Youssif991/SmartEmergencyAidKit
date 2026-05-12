@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['project_20structure_0',['Project Structure',['../index.html#autotoc_md1',1,'']]],
-  ['property_1',['Property',['../class_property.html',1,'']]],
-  ['property_2eh_2',['Property.h',['../_property_8h.html',1,'']]],
-  ['pulse_20oximeter_20heart_20rate_3',['MAX30105 Pulse Oximeter &amp;amp; Heart Rate',['../group___m_a_x30105___group.html',1,'']]]
+  ['generating_20documentation_0',['Generating Documentation',['../index.html#autotoc_md49',1,'']]],
+  ['global_20constants_1',['Change Global Constants',['../index.html#autotoc_md22',1,'']]],
+  ['global_20instances_2',['2. Declare Global Instances',['../index.html#autotoc_md17',1,'']]],
+  ['global_20objects_20declared_20in_20main_20cpp_3',['Global Objects (declared in main.cpp)',['../index.html#autotoc_md60',1,'']]],
+  ['guide_4',['Configuration Guide',['../index.html#autotoc_md21',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['writeemissivity_0',['writeEmissivity',['../class_adafruit___m_l_x90614.html#a26477cd34fbdfc259102ec989a62d0f2',1,'Adafruit_MLX90614']]],
-  ['writeemissivityreg_1',['writeEmissivityReg',['../class_adafruit___m_l_x90614.html#ad33f8a45254d864cae6246b96cd0be6e',1,'Adafruit_MLX90614']]]
+  ['non_20contact_20thermometer_20sensors_20mlx90614_0',['Non-Contact Thermometer (&lt;span class=&quot;tt&quot;&gt;Sensors/MLX90614/&lt;/span&gt;)',['../index.html#autotoc_md7',1,'']]],
+  ['not_20found_1',['Sensor Not Found',['../index.html#autotoc_md32',1,'']]]
 ];

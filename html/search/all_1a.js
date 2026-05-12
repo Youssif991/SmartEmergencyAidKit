@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📖_20documentation_0',['📖 Documentation',['../E:/Projects/Embedded/Dr. Riyad/SmartAidKit/SmartAidKit/README.md#autotoc_md40',1,'']]]
+  ['🌡️_20mlx90614_20temperature_0',['🌡️ MLX90614 Temperature',['../index.html#autotoc_md40',1,'']]]
 ];

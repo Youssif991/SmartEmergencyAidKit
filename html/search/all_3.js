@@ -1,27 +1,4 @@
 var searchData=
 [
-  ['debug_5fprint_0',['debug_print',['../structmpu6050__handle__s.html#a95206b419f4cad624e34af2f524b5f23',1,'mpu6050_handle_s']]],
-  ['delay_5fms_1',['delay_ms',['../structmpu6050__handle__s.html#aacd8a771bdca00ae352f54e1db4aa367',1,'mpu6050_handle_s']]],
-  ['display_2',['SSD1306 OLED Display',['../group___o_l_e_d___group.html',1,'']]],
-  ['dmp_20driver_20function_3',['mpu6050 dmp driver function',['../group__mpu6050__dmp__driver.html',1,'']]],
-  ['dmp_5finited_4',['dmp_inited',['../structmpu6050__handle__s.html#ae7d385cc00c02df666d8a3e9d02dc4c1',1,'mpu6050_handle_s']]],
-  ['dmp_5forient_5fcallback_5',['dmp_orient_callback',['../structmpu6050__handle__s.html#aad4179c8eaa8db6be82e31fc1362c530',1,'mpu6050_handle_s']]],
-  ['dmp_5ftap_5fcallback_6',['dmp_tap_callback',['../structmpu6050__handle__s.html#aea2655efd10fe14af269745c870a0000',1,'mpu6050_handle_s']]],
-  ['driver_20function_7',['driver function',['../group__mpu6050__basic__driver.html',1,'mpu6050 basic driver function'],['../group__mpu6050__dmp__driver.html',1,'mpu6050 dmp driver function'],['../group__mpu6050__driver.html',1,'mpu6050 driver function'],['../group__mpu6050__example__driver.html',1,'mpu6050 example driver function'],['../group__mpu6050__extern__driver.html',1,'mpu6050 extern driver function'],['../group__mpu6050__link__driver.html',1,'mpu6050 link driver function']]],
-  ['driver_5fmpu6050_2ec_8',['driver_mpu6050.c',['../driver__mpu6050_8c.html',1,'']]],
-  ['driver_5fmpu6050_2eh_9',['driver_mpu6050.h',['../driver__mpu6050_8h.html',1,'']]],
-  ['driver_5fmpu6050_5fbasic_2ec_10',['driver_mpu6050_basic.c',['../driver__mpu6050__basic_8c.html',1,'']]],
-  ['driver_5fmpu6050_5fbasic_2eh_11',['driver_mpu6050_basic.h',['../driver__mpu6050__basic_8h.html',1,'']]],
-  ['driver_5fmpu6050_5fcode_2eh_12',['driver_mpu6050_code.h',['../driver__mpu6050__code_8h.html',1,'']]],
-  ['driver_5fmpu6050_5finterface_2ecpp_13',['driver_mpu6050_interface.cpp',['../driver__mpu6050__interface_8cpp.html',1,'']]],
-  ['driver_5fmpu6050_5flink_5fdebug_5fprint_14',['DRIVER_MPU6050_LINK_DEBUG_PRINT',['../group__mpu6050__link__driver.html#ga63867eb6e3e0e8b6eb9db96d9a8162f6',1,'driver_mpu6050.h']]],
-  ['driver_5fmpu6050_5flink_5fdelay_5fms_15',['DRIVER_MPU6050_LINK_DELAY_MS',['../group__mpu6050__link__driver.html#ga4fea7149d25ab87d8f6c80ed061d8efd',1,'driver_mpu6050.h']]],
-  ['driver_5fmpu6050_5flink_5fiic_5fdeinit_16',['DRIVER_MPU6050_LINK_IIC_DEINIT',['../group__mpu6050__link__driver.html#ga3d09d336b1613c2c4a2e4c0a1745a348',1,'driver_mpu6050.h']]],
-  ['driver_5fmpu6050_5flink_5fiic_5finit_17',['DRIVER_MPU6050_LINK_IIC_INIT',['../group__mpu6050__link__driver.html#gafabd528b60d16bfe5266db9bc4541dc1',1,'driver_mpu6050.h']]],
-  ['driver_5fmpu6050_5flink_5fiic_5fread_18',['DRIVER_MPU6050_LINK_IIC_READ',['../group__mpu6050__link__driver.html#gaea7651083f5094d743da95032ee52a57',1,'driver_mpu6050.h']]],
-  ['driver_5fmpu6050_5flink_5fiic_5fwrite_19',['DRIVER_MPU6050_LINK_IIC_WRITE',['../group__mpu6050__link__driver.html#ga496e0e45719d3440e3490dd275be214c',1,'driver_mpu6050.h']]],
-  ['driver_5fmpu6050_5flink_5finit_20',['DRIVER_MPU6050_LINK_INIT',['../group__mpu6050__link__driver.html#ga46dbd25662816592440e74fc88f8f034',1,'driver_mpu6050.h']]],
-  ['driver_5fmpu6050_5flink_5freceive_5fcallback_21',['DRIVER_MPU6050_LINK_RECEIVE_CALLBACK',['../group__mpu6050__link__driver.html#gabed3b0caba4d09b9429cdc173ef10ba6',1,'driver_mpu6050.h']]],
-  ['driver_5fversion_22',['DRIVER_VERSION',['../driver__mpu6050_8c.html#ae578001fe043b4cca7a0edd801cfe9c4',1,'driver_mpu6050.c']]],
-  ['driver_5fversion_23',['driver_version',['../structmpu6050__info__s.html#a89be4f6914d5afcb32b834cb472847b2',1,'mpu6050_info_s']]]
+  ['4_20update_20in_20loop_0',['4. Update in Loop',['../index.html#autotoc_md19',1,'']]]
 ];

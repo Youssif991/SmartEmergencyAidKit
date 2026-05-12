@@ -1,5 +1,6 @@
 /**
  * @file main.cpp
+ * @author Youssef Mohammed, Youssef Hisham, Mahmoud Abdeldayem
  * @brief Program entry point - Optimized for non-blocking sensor flow
  */
 
@@ -26,7 +27,8 @@ void setup()
 
   // Initialize IMU
   Wire.setClock(100000);
-  if (!imu.begin()) {
+  if (!imu.begin())
+  {
     Serial.println("IMU Init Failed!");
   }
 
@@ -34,12 +36,14 @@ void setup()
   oxygen.begin(sensor);
 
   // Initialize Temp
+  Wire.setClock(50000);
   temp.begin();
 
   // Finalize bus speed for the main loop
   Wire.setClock(400000);
 
-  if (display.begin()) {
+  if (display.begin())
+  {
     display.printText("SmartAidKit", 30, 10);
     display.display();
   }
@@ -75,11 +79,10 @@ void loop()
 
     // BLE Update (Now inside the non-blocking timer)
     sendBLE(
-      imu.accelX(), imu.accelY(), imu.accelZ(),
-            imu.gyroX(),  imu.gyroY(),  imu.gyroZ(),
-            heartbeat.beatAvg(), oxygen.spo2Avg(),
-            temp.objectTemp(), temp.ambientTemp()
-    );
+        imu.accelX(), imu.accelY(), imu.accelZ(),
+        imu.gyroX(), imu.gyroY(), imu.gyroZ(),
+        heartbeat.beatAvg(), oxygen.spo2Avg(),
+        temp.objectTemp(), temp.ambientTemp());
   }
 
   // 3. OLED Update (Slightly different frequency if desired)

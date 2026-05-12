@@ -1,15 +1,18 @@
 var searchData=
 [
-  ['iic_5faddr_0',['iic_addr',['../structmpu6050__handle__s.html#af5343496ce4dfec8dae116480909f77c',1,'mpu6050_handle_s']]],
-  ['iic_5fdeinit_1',['iic_deinit',['../structmpu6050__handle__s.html#a91500f89650813fb217fb930d517b8dc',1,'mpu6050_handle_s']]],
-  ['iic_5finit_2',['iic_init',['../structmpu6050__handle__s.html#af546f9e18941e68036d0d5af4b28baf7',1,'mpu6050_handle_s']]],
-  ['iic_5fread_3',['iic_read',['../structmpu6050__handle__s.html#a34903b151f42cc449d705d568211f197',1,'mpu6050_handle_s']]],
-  ['iic_5fwrite_4',['iic_write',['../structmpu6050__handle__s.html#a454040f9fe707dff5188e4c66636c3d2',1,'mpu6050_handle_s']]],
-  ['imu_5',['IMU',['../class_i_m_u.html',1,'']]],
-  ['imu_2ecpp_6',['imu.cpp',['../imu_8cpp.html',1,'']]],
-  ['imu_2eh_7',['imu.h',['../imu_8h.html',1,'']]],
-  ['imudata_8',['IMUData',['../struct_i_m_u_data.html',1,'']]],
-  ['inertial_20measurement_20unit_9',['MPU6050 Inertial Measurement Unit',['../group___m_p_u6050___group.html',1,'']]],
-  ['inited_10',['inited',['../structmpu6050__handle__s.html#aa80e001edb2f266968b28a9894556dbc',1,'mpu6050_handle_s']]],
-  ['interface_11',['interface',['../structmpu6050__info__s.html#a837dcb9195a5dc5eb19de343a0b0e4e1',1,'mpu6050_info_s']]]
+  ['c3_0',['🔌 Hardware Connections (ESP32-C3)',['../index.html#autotoc_md12',1,'']]],
+  ['change_20global_20constants_1',['Change Global Constants',['../index.html#autotoc_md22',1,'']]],
+  ['chip_5fname_2',['CHIP_NAME',['../driver__mpu6050_8c.html#adc9da0a24824ca1239b593f6459b3954',1,'driver_mpu6050.c']]],
+  ['chip_5fname_3',['chip_name',['../structmpu6050__info__s.html#adcf971c9dca2719a25a7af07ebba0dd3',1,'mpu6050_info_s']]],
+  ['code_20organization_4',['Code Organization',['../index.html#autotoc_md36',1,'']]],
+  ['config_2eh_5',['Config.h',['../_config_8h.html',1,'']]],
+  ['configuration_20files_6',['Configuration Files',['../index.html#autotoc_md10',1,'']]],
+  ['configuration_20guide_7',['Configuration Guide',['../index.html#autotoc_md21',1,'']]],
+  ['connections_20esp32_20c3_8',['🔌 Hardware Connections (ESP32-C3)',['../index.html#autotoc_md12',1,'']]],
+  ['constants_9',['Change Global Constants',['../index.html#autotoc_md22',1,'']]],
+  ['contact_20thermometer_20sensors_20mlx90614_10',['Non-Contact Thermometer (&lt;span class=&quot;tt&quot;&gt;Sensors/MLX90614/&lt;/span&gt;)',['../index.html#autotoc_md7',1,'']]],
+  ['contactless_20temperature_11',['MLX90614 Contactless Temperature',['../group___m_l_x90614___group.html',1,'']]],
+  ['core_12',['Core System (&lt;span class=&quot;tt&quot;&gt;Core/&lt;/span&gt;)',['../index.html#autotoc_md5',1,'']]],
+  ['core_20system_20core_13',['Core System (&lt;span class=&quot;tt&quot;&gt;Core/&lt;/span&gt;)',['../index.html#autotoc_md5',1,'']]],
+  ['cpp_14',['Global Objects (declared in main.cpp)',['../index.html#autotoc_md60',1,'']]]
 ];
