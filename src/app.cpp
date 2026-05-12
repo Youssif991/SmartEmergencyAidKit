@@ -1,23 +1,14 @@
 /**
  * @file app.cpp
  * @brief BLE GATT server implementation
- * @author Youssef Mohammed, Youssef Hisham, Mahmoud Abdel-Dayem
- * @date 2026-05-06
- * @version 3.2
  */
 
 #include "app.h"
 
-// ---------------------------------------------------------------------------
-// Private state
-// ---------------------------------------------------------------------------
 static NimBLEServer*         pServer   = nullptr;
 static NimBLECharacteristic* pDataChar = nullptr;
 static bool                  connected = false;
 
-// ---------------------------------------------------------------------------
-// Connection callbacks — re-advertise on disconnect
-// ---------------------------------------------------------------------------
 class BleCallbacks : public NimBLEServerCallbacks
 {
     void onConnect(NimBLEServer*) override
@@ -34,9 +25,6 @@ class BleCallbacks : public NimBLEServerCallbacks
     }
 };
 
-// ---------------------------------------------------------------------------
-// bleInit
-// ---------------------------------------------------------------------------
 void bleInit()
 {
     NimBLEDevice::init(BLE_DEVICE_NAME);
@@ -55,37 +43,28 @@ void bleInit()
     NimBLEDevice::getAdvertising()->addServiceUUID(BLE_SERVICE_UUID);
     NimBLEDevice::getAdvertising()->start();
 
-    Serial.println("[BLE] Advertising as \"" BLE_DEVICE_NAME "\"");
+    Serial.println("[BLE] Advertising started.");
 }
 
-// ---------------------------------------------------------------------------
-// sendBLE
-// ---------------------------------------------------------------------------
 void sendBLE(float accx, float accy, float accz,
              float gyrx, float gyry, float gyrz,
              int   hr,   int   spo2,
              float temp_obj, float temp_amb)
 {
+    // If no one is listening, don't waste cycles formatting strings
     if (!connected) return;
 
     char buf[256];
     snprintf(buf, sizeof(buf),
-        "{"
-        "\"hr\":%d,\"spo2\":%d,\"fp\":%d,"
-        "\"tObj\":%.1f,\"tAmb\":%.1f,"
-        "\"ax\":%.2f,\"ay\":%.2f,\"az\":%.2f,"
-        "\"gx\":%.1f,\"gy\":%.1f,\"gz\":%.1f"
-        "}",
-        hr, spo2,
-        (spo2 > 50) ? 1 : 0,
-        temp_obj, temp_amb,
-        accx, accy, accz,
-        gyrx, gyry, gyrz
+             "{\"hr\":%d,\"spo2\":%d,\"fp\":%d,\"tObj\":%.1f,\"tAmb\":%.1f,"
+             "\"ax\":%.2f,\"ay\":%.2f,\"az\":%.2f,\"gx\":%.1f,\"gy\":%.1f,\"gz\":%.1f}",
+             hr, spo2, (spo2 > 50) ? 1 : 0,
+             temp_obj, temp_amb,
+             accx, accy, accz,
+             gyrx, gyry, gyrz
     );
 
     pDataChar->setValue(buf);
     pDataChar->notify();
-    Serial.println(buf);
-    Serial.println("[BLE] Sent.");
-    delay(1000);
+    // No delay here! We handle timing in main.cpp
 }
